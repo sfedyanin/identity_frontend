@@ -1,0 +1,68 @@
+{% load static %}
+<html>
+    <head>
+        <title>VaDiX Identity</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'vdx_id/css/vadix.css' %}">        
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+
+        {% block head_extra %}
+        {% endblock %}
+    </head>
+    <body>
+        {% include "navbar.html" %}
+        <div class="content container-fluid">
+            
+            <div class="container-fluid" style="height:2%">
+            </div>
+
+            {% block content %}
+            {% endblock %}
+        </div>
+        <canvas class="background"></canvas>
+        <script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
+    </body>
+    {% block nonbody %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{% static 'jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery/jquery.cookie.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+    <script type="text/javascript">
+        /////////////////////////////////////////////
+        // CSRF management via cookies
+        /////////////////////////////////////////////
+        // Get the jquery.cookie library!
+        function csrfSafeMethod(method){
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings){
+                var csrftoken = $.cookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        window.onload = function() {
+            Particles.init({
+                selector: '.background',
+                color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
+                connectParticles: true,
+                responsive: true,
+            });
+        };
+
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</html>

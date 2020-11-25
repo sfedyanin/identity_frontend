@@ -1,0 +1,70 @@
+{% extends "access_management/acm_base.html" %}
+{% load i18n staticfiles %}
+
+{% block content %}
+<style>
+    #sidesearch {
+        width: 300px;
+        background: linear-gradient(
+            90deg,
+            rgba(51, 103, 155, 0.433) 0%,
+            rgba(34, 66, 97, 0.796) 60%,
+            rgb(16, 44, 70) 100%
+        );
+    }
+    #sidesearch div{
+        width: 100%;
+    }
+    .sidesearch_search {
+        background: linear-gradient(
+            180deg,
+            rgba(176, 194, 211, 0.85) 0%,
+            rgba(112, 132, 151, 0.796) 90%,
+            rgb(57, 67, 77) 100%
+        );
+    }
+    .sidesearch_result {
+    }
+    .search_meta {
+        min-height: 100px;
+        background: linear-gradient(
+            180deg,
+            rgba(176, 194, 211, 0.85) 0%,
+            rgba(112, 132, 151, 0.796) 98%,
+            rgb(57, 67, 77) 100%
+        );
+    }
+    .search_content {
+    }
+</style>
+
+    <div id="sidesearch" class="d-flex">
+        <div class="d-flex flex-column">
+            <div class="sidesearch_search container-fluid">
+                {% block sidesearch_search %}
+                    test search
+                {% endblock %}
+            </div>
+            <div class="sidesearch_result flex-grow-1">
+                {% block sidesearch_result %}
+                    
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div id="main-control" class="d-inline-flex flex-grow-1">
+        <div class="d-flex flex-column flex-grow-1">
+            <div class="search_meta container-fluid">
+                {% block search_meta %}
+                    test meta
+                {% endblock %}
+            </div>
+            <div class="search_content flex-grow-1">
+                {% block search_content %}
+                    test content
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

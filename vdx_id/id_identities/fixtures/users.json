@@ -1,0 +1,20 @@
+[
+    {
+        "model": "id_users.VdxIdUser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$120000$m1nii7I63Ty6$UFFC21lUA5rK/Naum5epNCX5p/Aa0tU8vXrRRp8TIbE=",
+            "last_login": "2019-03-26T23:54:47.225Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2019-03-26T23:54:15.986Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

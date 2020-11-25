@@ -1,0 +1,194 @@
+{% extends "access_management/acm_base.html" %}
+{% load i18n staticfiles %}
+
+{% block head_extra %}
+  <link rel="stylesheet" href="{% static 'vdx_id/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-column flex-grow-1">
+
+    <div class="p-2 demo-header">
+      <h4 class="text-primary">Vdx-Id Demo <small class="text-muted">A demonstration of the VaDiX Identify IAM engine</small></h4>
+      <div class="row">
+        <div class="col-md-6">
+          <dl>
+            <dt class="text-success">Simple Scalable Access</dt>
+              <dd class="text-light">Access composed of Items and Groups.</dd>
+              <dd class="text-light">Groups are logical groups of items <span class=text-success>(which you can request)</span>.</dd>
+              <dd class="text-light">Items represent real a single piece of access <span class=text-warning>(cannot request)</span>.</dd>
+              <!-- <dd>Groups can only directly contain Access Items from a single platform.</dd>
+              <dd>Groups can inherit any other Groups, which can in turn, inherit more groups.</dd>
+              <dd><span class=text-warning>(Not in demo)</span> Business logic is applied to Groups.</dd> -->
+          </dl>
+        </div>
+        <div class="col-md-6">
+          <dl>
+            <dt class="text-success">Access in seconds, not days</dt>
+              <dd class="text-light">Access re-evaluated in milliseconds</dd>
+              <dd class="text-light">Requests optimized and distributed to IOT scale networks in seconds</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row-fluid d-flex flex-grow-1 m-3">
+      {% if not identity.pk %}
+        <div class="m-3">
+          
+          <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Demo Unavailable <small class="text-muted">Account requires setup</small></h4>
+            <p class="font-weight-bold"><a href="mailto:dan.vagg@vadix.io">Contact support</a> to obtain a virtual identity.</p>
+          </div>
+
+        </div>
+      {% else %}
+        
+      <div class="row mbr-justify-content-center">
+
+        <div class="col-lg-6 mbr-col-md-10">
+          <a class="wrap" href="{% url 'web:acm:view_access' %}">
+              <div class="ico-wrap">
+                <span class="mbr-iconfont fa-telegram fa"></span>
+              </div>
+              <div class="text-wrap vcenter">
+                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">View <span>Access</span></h2>
+                <p class="mbr-fonts-style text1 mbr-text display-6">Search and <strong>request new access</strong></p>
+              </div>
+          </a>
+        </div>
+        
+        <div class="col-lg-6 mbr-col-md-10">
+            <a class="wrap" href="{% url 'web:acm:my_access' %}">
+                <div class="ico-wrap">
+                  <span class="mbr-iconfont fa-id-badge fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">My <span>Access</span></h2>
+                  <p class="mbr-fonts-style text1 mbr-text display-6">Review your existing access membership and access requests</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-lg-6 mbr-col-md-10">
+            <div class="wrap">
+                <div class="ico-wrap">
+                  <span class="mbr-iconfont fa-inbox fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Review <span>Access Requests</span></h2>
+                  <p class="mbr-fonts-style text1 mbr-text display-6">Review all access requests and history</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mbr-col-md-10">
+            <div class="wrap">
+                <div class="ico-wrap">
+                    <span class="mbr-iconfont fa-handshake-o fa"></span>
+                </div>
+                <div class="text-wrap vcenter">
+                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Approve <span>Requests and Changes</span></h2>
+                  <p class="mbr-fonts-style text1 mbr-text display-6">Authorize access-requests, access-group changes, etc</p>
+                </div>
+            </div>
+        </div>
+        
+
+      </div>
+
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% verbatim handle_bar_templates %}
+    <style>
+
+      ul.features {
+        list-style-type: none;
+        position: relative;
+      }
+      ul.features:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+      }
+      ul.features > li {
+        margin: 20px 0;
+        padding-left: 20px;
+      }
+      ul.features > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+      }
+    </style>
+
+
+<div id="demo-welcome" class="d-none">
+  <h3 class="text-success">Welcome to the demo!</h3>
+  <p>This is a demonstration of a novel Identity & Access Management (<strong>IAM</strong>) platform designed for IOT scale systems.</p>
+
+  <ul class="features text-left">
+    <li>
+      <h5><span class="badge badge-primary">Lightning-fast infrastructure discovery</span></h5>
+      <p>Simple. Fast. Direct. Platform workers will scan your systems periodically to ensure they are up-to-date and accounted for.</p>
+    </li>
+    <li>
+      <h5><span class="badge badge-primary">Manage modern infrastructure simply</span></h5>
+      <p>Companies scale, and so will their infrastructure both in <strong class="text-primary">size and complexity</strong>.</p>
+      <p>Identity understands your infrastructure, and configuring it is kept <strong class="text-success">simple and intuitive</strong></p>
+    </li>
+    <li>
+      <h5><span class="badge badge-primary">Quick and Clean</span></h5>
+      <p>Workers anywhere in the world will <strong class="text-success">scale</strong> at the push of a button to meet your needs</p>
+      <p>Communications <strong class="text-primary">encrypted</strong> following industry best-practices and <strong class="text-primary">fault-tolerant</strong> by design</p>
+      <p>Extensible interfaces - <strong class="text-success">support for any system</strong></p>
+    </li>
+    <li>
+      <h5><span class="badge badge-success">Dynamic to fit your requirements</span></h5>
+      <p>Supporting managed cloud deployments, or on-premise installations, or anything in-between!</p>
+      <p><a href="mailto:contact@vadix.io?subject=Vadix Identity Platform">Contact VaDiX</a> to find out how we can make your life simpler.</p>
+    </li>
+  </ul>
+
+</div>
+{% endverbatim handle_bar_templates %}
+  
+{% endblock %}
+
+{% block script %}
+    {{grps_processing|json_script:"grps-processing-data"}}
+
+    <script type="text/javascript">
+      $(function () {
+        Handlebars.registerHelper('contains', function(needle, haystack, options) {
+           needle = Handlebars.escapeExpression(needle);
+           haystack = Handlebars.escapeExpression(haystack);
+           return (haystack.indexOf(needle) > -1) ? options.fn(this) : options.inverse(this);
+        });
+
+        {% if request.session.new_visit %}
+          swal.fire({
+            width: 1200,
+            html: $('#demo-welcome').html(),
+            type: 'info',
+          })
+        {% endif %}
+      });
+    </script>
+{% endblock %}
+

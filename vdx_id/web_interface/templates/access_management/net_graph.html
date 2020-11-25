@@ -1,0 +1,14 @@
+{% load i18n staticfiles %}
+
+{% load static %}
+<html>
+    <head>
+      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"></script>
+      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-1.4.0.min.js"></script>
+  </head>
+  <body>
+    {{ bok_div|safe }}
+  </body>
+  {{ bok_script|safe }}
+</html>

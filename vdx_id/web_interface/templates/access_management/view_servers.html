@@ -1,0 +1,357 @@
+{% extends "access_management/acm_search_side_base.html" %}
+{% load i18n staticfiles %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{% static 'jstree/themes/default/style.min.css' %}" />
+<style>
+    /* Removes folder icon from children in collection tree */
+    .jstree-leaf > .jstree-anchor > .jstree-themeicon { background: none !important; }
+</style>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'datatables/datatables.min.css' %}"/>
+{% endblock %}
+
+{% block sidesearch_search %}
+<h4>ServerGroup Search</h4>
+<form class="form">
+    <div class="form-group row">
+        <label for="agent_filter" class="col-sm-4 col-form-label col-form-label-sm">Agent</label>
+        <div class="col-sm-8">
+            <select class="form-control form-control-sm" id="agent_filter">
+                <option selected>Choose...</option>
+                <option value="1">agent_internal</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="name_filter" class="col-sm-4 col-form-label col-form-label-sm">ServerGroup</label>
+        <div class="col-sm-8">
+            <input type="email" class="form-control form-control-sm" id="name_filter" placeholder="Filter by name">
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block sidesearch_result %}
+<style>
+    .search_obj_card{
+        -moz-transition: all .2s ease-in;
+        -o-transition: all .2s ease-in;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+    .search_obj_card:hover {
+        background-color: skyblue;
+        cursor: pointer;
+    }
+    .search_obj_card:active {
+        background-color: blue;
+        -moz-transition: none;
+        -webkit-transition: none;
+        -o-transition: color 0 ease-in;
+        transition: none;
+    }
+    .search_obj_card.selected {
+        background-color: steelblue;
+    }
+    #nav-tabContent {
+        overflow-y: auto;
+    }
+</style>
+    {% for sgrp in server_groups %}
+        <div class="row mt-3 border search_obj_card" data-sgroup_id={{sgrp.id}}>
+            <div class="col-md-12 card-body ">
+                <h4>{{sgrp.title}}</h4>
+                <p>{{sgrp.description}}</p>
+                <ul class="list-unstyled">
+                    <li>Agent:
+                        <span class="badge badge-dark">{{sgrp.associated_agent}}</span>
+                    </li>
+                    <li>Discovered Hosts:
+                        <span class="badge badge-pill badge-info">{{sgrp.servers.count}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block search_meta %}
+    <div class="row">
+        {% if selected_group %}
+            <div class="col-md-12 col-lg-6">
+                <h3>{{selected_group.title}}</h3>
+                <p class="lead">{{selected_group.description}}</p>
+                
+                {% if request.user.is_staff %}
+                    <button class="btn btn-success"
+                        onclick="request_scan({{selected_group.pk}})">
+                        Scan Server Group</button>
+                {% endif %}
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <table>
+                    <caption>
+                    Server Group metadata
+                    </caption>
+                    <tbody>
+                        <tr><td>Agent:</td><td><span class="badge badge-dark">
+                            {{selected_group.associated_agent.agent_name}}</span></td></tr>
+                        <tr><td>Scan Interval:</td><td><span class="badge badge-primary">
+                            {{selected_group.scan_interval}}</span></td></tr>
+                        <tr><td>Server Retire Timeout:</td><td><span class="badge badge-primary">
+                            {{selected_group.server_retire_time}}</span></td></tr>
+                        <tr><td>Last Updated:</td><td><span class="badge badge-info">{{selected_group.modified}}</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block search_content %}
+<nav>
+    <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="server_group-items-tab"
+            data-toggle="tab" href="#server_group-items" role="tab"
+            aria-controls="server_group-items" aria-selected="false">Discovered Hosts & Assignment</a>
+        <a class="nav-link" id="server_group-definition-tab"
+            data-toggle="tab" href="#server_group-definition" role="tab"
+            aria-controls="server_group-definition" aria-selected="true">Range Definition</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade" id="server_group-definition" role="tabpanel" aria-labelledby="server_group-definition-tab">
+        <pre><code class="language-json">{{selected_scan_definition}}</code></pre>
+    </div>
+    <div class="tab-pane fade show active container-fluid" id="server_group-items" role="tabpanel" aria-labelledby="server_group-items-tab">
+        <table class="table table-sm table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">PK</th>
+                    <th scope="col">FQDN</th>
+                    <th scope="col">Platform</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for group in selected_group.servers.all %}
+                    <tr>
+                        <th scope="row">{{group.server_pk}}</th>
+                        <td>{{group.fqdn}}</td>
+                        <td>{{group.platform}}</td>
+                        <td>{{group.active}}</td>
+                        <td>{{group.created}}</td>
+                        <td>{{group.modified}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="row-fluid">
+            <form class="form-inline" id="platform_set_form">
+                {% csrf_token %}
+                <label class="sr-only" for="platform_set_select">Platform Assignment</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Platform Assignment</div>
+                    </div>
+                    <select class="form-control" id="platform_set_select">
+                        <option> -- Select Platform -- </option>
+                        {% for platform in server_platforms %}
+                            <option data-platform_id="{{platform.pk}}">
+                                {{platform.title}} -- {{platform.interface}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn btn-success mb-2" id="platform_set_btn">Set</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+
+
+{% block nonbody %}
+
+    {% verbatim handle_bar_templates %}
+
+    <div id="workorder-progress" class="d-none">
+        <div class="col-xs-1" align="center">
+            <h4 class="text-info">Waiting for WorkOrder</h4>
+            {{#if complete}}
+                <h5> <span class="text-success">Done</span></h5>
+            {{else}}
+                <h5> <span class="spinner-border text-info"></span></h5>
+            {{/if}}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>WorkOrder</td>
+                        <td><span class="badge badge-info">
+                            {{pk}}
+                        </span></td>
+                    </tr>
+                        <td>Status</td>
+                        <td>
+                            {{#if active}}
+                                <span class="badge badge-primary">
+                                    In Progress
+                                </span>
+                            {{else if complete}}
+                                <span class="badge badge-success">
+                                    Complete
+                                </span>
+                            {{else}}
+                                <span class="badge badge-secondary">
+                                    Pending
+                                </span>
+                            {{/if}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {{#if complete}}
+                <hr>
+                <a class="btn btn-success btn-xs btn-block" 
+                    href="javascript:window.location.reload(true)">Okay</a>
+            {{/if}}
+        </div>
+    </div>
+
+    <div id="view-collection-template" class="d-none">
+        <h4>Collection Data</h4>
+        <h5>Server FQDN: <span class="badge badge-dark">{{fqdn}}</span></h5>
+        <div class="jstree_div" style="text-align: left;">
+        </div>
+    </div>
+
+    {% endverbatim handle_bar_templates %}
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'jstree/jstree.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'datatables/datatables.min.js' %}"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+
+    $(".search_obj_card").on("click", function(){
+        srgp_id = $(this).data("sgroup_id");
+        sgrp_url = "{% url 'web:acm:view_servers' 999 %}";
+        window.location = sgrp_url.replace(999, srgp_id);
+    });
+
+    $(document).ready(function() {
+        $(".search_obj_card[data-srgp_id='{{selected_group.id}}'").addClass("selected");
+    });
+    
+    var server_table = $('#server_group-items table').DataTable( {
+        select: true
+    });
+
+    $('#platform_set_btn').on("click", function(){
+        selected_servers = server_table.rows( { selected: true } ).data();
+        server_pks = []
+        for (var i=0; i < selected_servers.length; i++){
+            server_pks.push(parseInt((selected_servers[i][0])));
+        }
+        plat_id = $('#platform_set_select :selected').data("platform_id");
+        if (plat_id === undefined){
+            Swal.fire({
+                html: `You must set a platform`,
+                type: 'error'
+            });
+        } else {
+            plat_attach_url = "{% url 'api:sys:id_platforms:platform-detail' 999 %}attach_servers/";
+            plat_attach_url = plat_attach_url.replace(999, plat_id);
+            
+            $.ajax({
+                url: plat_attach_url,
+                data: JSON.stringify({
+                    "server_pks": server_pks
+                }),
+                processData: false,
+                dataType: 'json',
+                contentType: 'application/json',
+                type: "POST",
+                success: function(data){
+                    window.location.reload();                    
+                }
+            });
+        }
+    });
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false,
+        showCancelButton: false,
+        showConfirmButton: false,
+    });
+
+    function request_scan(sgrp_id){
+        scan_url = "{% url 'api:sys:id_servers:servergroup-detail' 999 %}scan";
+        scan_url = scan_url.replace(999, sgrp_id);
+        console.log("Requesting: " + scan_url);
+        
+        fetch(scan_url)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            } else {
+                return res.json();
+            }
+        }).then(resjson => {
+            console.log(resjson);
+            collect_wo_url = "{% url 'api:sys:id_agents:agentwo-detail' 999 %}";
+            collect_wo_url = collect_wo_url.replace(999, resjson.pk);
+            var templ = Handlebars.compile($("#workorder-progress").html());
+
+            populatedHtml = templ(resjson);
+            swalWithBootstrapButtons.fire({
+                html: populatedHtml,
+            });
+
+            var interval = null;
+            function check_collect_status(){
+                $.ajax({
+                    url: collect_wo_url,
+                    success: function(data){
+                        console.log(data);
+                        new_alert_html = templ(data);
+                        if (new_alert_html != populatedHtml){
+                            populatedHtml = new_alert_html;
+                            $('#swal2-content').html(populatedHtml);
+                        }
+                        if (data.complete){
+                            clearInterval(interval); // stop the interval
+                        }
+                    },
+                    error: function(){
+                        clearInterval(interval); // stop the interval
+                        Swal.fire({
+                            title: "Request failed",
+                            html: `Error monitoring workorder: ${err}`,
+                            type: 'error'
+                        });
+                    }
+                });
+            }
+            interval = setInterval(check_collect_status, 1000);
+        }).catch( err =>  Swal.fire({
+            title: "Request failed",
+            html: `Error requesting collection: ${err}`,
+            type: 'error'
+        }))
+    }
+</script>
+{% endblock %}
