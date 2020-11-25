@@ -6,6 +6,22 @@
 		"name": "example.com"
 	}
 }, {
+	"model": "id_identities.vdxidentity",
+	"pk": 1,
+	"fields": {
+		"properties": {},
+		"unique_identifier": "test_admin_ident",
+		"access_synchronized": true
+	}
+}, {
+	"model": "id_identities.vdxidentity",
+	"pk": 2,
+	"fields": {
+		"properties": {},
+		"unique_identifier": "admin_ident",
+		"access_synchronized": true
+	}
+}, {
 	"model": "id_platforms.viplatform",
 	"pk": 1,
 	"fields": {
@@ -211,22 +227,6 @@
 		"justification": "",
 		"parent_request": null,
 		"attention_identities": []
-	}
-}, {
-	"model": "id_identities.vdxidentity",
-	"pk": 1,
-	"fields": {
-		"properties": {},
-		"unique_identifier": "test_admin_ident",
-		"access_synchronized": true
-	}
-}, {
-	"model": "id_identities.vdxidentity",
-	"pk": 2,
-	"fields": {
-		"properties": {},
-		"unique_identifier": "admin_ident",
-		"access_synchronized": true
 	}
 }, {
 	"model": "id_servers.viservergroup",
