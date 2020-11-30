@@ -29,39 +29,13 @@
 				<div class="row-fluid">
 					{% include "navbar.html" %}
 				</div>
-				<div class="container-fluid page-body-wrapper">
-					
-					<!-- Left Sidebar -->
-					<div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
-						<ul class="nav list-group flex-grow-1">
-								{% block sidebar %}
-								{% endblock %}
-						</ul>
+				<div class="content container-fluid">
+						
+					<div class="container-fluid" style="height:2%">
 					</div>
 
-					<!-- partial -->
-					<div class="main-panel">
-						<div class="content-wrapper">
-							
-							<!-- Main Container -->
-							<div id="main-control" class="d-inline-flex flex-grow-1 w-100">
-								{% block content %}
-								{% endblock %}
-							</div>
-
-						</div>
-						<!-- content-wrapper ends -->
-						<!-- partial:partials/_footer.html -->
-						<footer class="footer">
-							<div class="container-fluid clearfix">
-								<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-								<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
-								</span>
-							</div>
-						</footer>
-						<!-- partial -->
-					</div>
-					<!-- main-panel ends -->
+					{% block content %}
+					{% endblock %}
 				</div>
 				<canvas class="background"></canvas>
 				<script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
