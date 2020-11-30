@@ -1,0 +1,13 @@
+[0;1;31m●[0m docker.service - Docker Application Container Engine
+   Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+   Active: [0;1;31mfailed[0m (Result: exit-code) since Sun 2020-11-29 05:54:30 CET; 13s ago
+     Docs: https://docs.docker.com
+  Process: 30377 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock [0;1;31m(code=exited, status=1/FAILURE)[0m
+ Main PID: 30377 (code=exited, status=1/FAILURE)
+
+нов 29 05:54:30 Bang systemd[1]: docker.service: Service hold-off time over, scheduling restart.
+нов 29 05:54:30 Bang systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.
+нов 29 05:54:30 Bang systemd[1]: Stopped Docker Application Container Engine.
+нов 29 05:54:30 Bang systemd[1]: [0;1;39m[0;1;31m[0;1;39mdocker.service: Start request repeated too quickly.[0m
+нов 29 05:54:30 Bang systemd[1]: [0;1;39m[0;1;31m[0;1;39mdocker.service: Failed with result 'exit-code'.[0m
+нов 29 05:54:30 Bang systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Docker Application Container Engine.[0m

@@ -176,9 +176,9 @@
     <script type="text/javascript">
       $(function () {
         Handlebars.registerHelper('contains', function(needle, haystack, options) {
-           needle = Handlebars.escapeExpression(needle);
-           haystack = Handlebars.escapeExpression(haystack);
-           return (haystack.indexOf(needle) > -1) ? options.fn(this) : options.inverse(this);
+            needle = Handlebars.escapeExpression(needle);
+            haystack = Handlebars.escapeExpression(haystack);
+            return (haystack.indexOf(needle) > -1) ? options.fn(this) : options.inverse(this);
         });
 
         {% if request.session.new_visit %}

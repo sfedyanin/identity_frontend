@@ -41,14 +41,28 @@ h2 {
     font-weight: 700;
 }
 
- p {
+p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     line-height: 25px;
 }
 .display-6 {
     font-family: 'Source Sans Pro',sans-serif;
-    font-size: 1re}
+    font-size: 1rem;
+    color: black;
+}
+
+.wrap:hover p {
+    color: white
+}
+
+.wrap h2 {
+    color: #007bff;
+}
+
+.wrap:hover h2 {
+    color: white
+}
 
 .demo-header {
     background: rgb(51, 84, 101);
@@ -57,5 +71,5 @@ h2 {
 }
 
 .demo-body {
-    }
-      
+
+}

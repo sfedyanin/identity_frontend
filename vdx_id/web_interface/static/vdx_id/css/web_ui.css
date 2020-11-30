@@ -25,17 +25,17 @@
 #sidebar-container .list-group a {
     height: 50px;
     color: white;
-    background:
-      linear-gradient(
+    /* background:
+    linear-gradient(
         to left, 
         rgba(0,150,182,1) 0%,
         rgba(3,79,84,1) 12%,
         rgba(255,93,177,0) 47%
-      )
-      left 
-      bottom
-      #777    
-      no-repeat; 
+    )
+    left 
+    bottom
+    #777    
+    no-repeat;  */
     background-size:100% 2px ;
 }
 

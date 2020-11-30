@@ -3,27 +3,27 @@
 
 {% block head_extra %}
 <style>
-    #group_req_table tbody tr {
-        cursor: pointer;
-    }
-    #item_req_table tbody tr {
-        cursor: pointer;
-    }
-    .swal2-modal {
-        /* background-color: #bec4caf5 !important; */
-        background: linear-gradient(
-            180deg,
-            rgb(71, 82, 93) 0%,
-            rgb(64, 79, 93) 30%,
-            rgba(27, 60, 101, 0.62) 100%) !important;
-    }
-    .swal2-title {
-        color: #007bff!important;
-    }
-    .swal2-content {
-        color: #17a2b8!important;
-    }
-    
+		#group_req_table tbody tr {
+				cursor: pointer;
+		}
+		#item_req_table tbody tr {
+				cursor: pointer;
+		}
+		.swal2-modal {
+				/* background-color: #bec4caf5 !important; */
+				background: linear-gradient(
+						180deg,
+						rgb(71, 82, 93) 0%,
+						rgb(64, 79, 93) 30%,
+						rgba(27, 60, 101, 0.62) 100%) !important;
+		}
+		.swal2-title {
+				color: #007bff!important;
+		}
+		.swal2-content {
+				color: #17a2b8!important;
+		}
+		
 </style>
 <link rel="stylesheet" href="{% static 'vdx_id/css/home.css' %}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
@@ -33,152 +33,152 @@
 {% block content %}
 <div class="flex-grow-1">
 
-    <div class="row-fluid">
-        <div class="p-2 demo-header">
-          <h4 class="text-primary">My Access <small class="text-muted">State of your access managed by Identify</small></h4>
-          <div class="row">
-            <div class="col-md-6">
-              <dl>
-                <dt class="text-success">Access Membership</dt>
-                  <dd class="text-light">Shows the groups you are currently a member of</dd>
-                  <dd class="text-light">You will be automatically kept in sync with changes to this access</dd>
-                  <dd class="text-light">Whether or not your access is correctly synchronized is shown above</dd>
-              </dl>
-            </div>
-            <div class="col-md-6">
-              <dl>
-                <dt class="text-success">Requesting Access</dt>
-                  <dd class="text-light"><span class=text-success>Click</span> on an Access Group to open the Access Detail View</dd>
-                  <dd class="text-light">From the Access Detail View, you can <span class=text-primary>request access</span></dd>
-              </dl>
-            </div>
-          </div>
-        </div>
-    </div>
+		<div class="row-fluid">
+				<div class="p-2 demo-header">
+					<h4 class="text-primary">My Access <small class="text-muted">State of your access managed by Identify</small></h4>
+					<div class="row">
+						<div class="col-md-6">
+							<dl>
+								<dt class="text-success">Access Membership</dt>
+									<dd class="text-light">Shows the groups you are currently a member of</dd>
+									<dd class="text-light">You will be automatically kept in sync with changes to this access</dd>
+									<dd class="text-light">Whether or not your access is correctly synchronized is shown above</dd>
+							</dl>
+						</div>
+						<div class="col-md-6">
+							<dl>
+								<dt class="text-success">Requesting Access</dt>
+									<dd class="text-light"><span class=text-success>Click</span> on an Access Group to open the Access Detail View</dd>
+									<dd class="text-light">From the Access Detail View, you can <span class=text-primary>request access</span></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+		</div>
 
-      
-    <div class="row">
+			
+		<div class="row p-4">
 
-        <div class="col-xl-6">
-            <div class="card bg-secondary">
-                <div class="card-header bg-dark">
-                    <h5 class="mb-0 text-primary">
-                        Access Membership <small class="text-muted">Access currently enabled</small>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    {% if request.user.associated_identity.access_synchronized %}
-                        <div class="alert alert-success" role="alert">
-                            Access Membership is Synchronized
-                        </div>
-                    {% else %}
-                        <div class="alert alert-warning" role="alert">
-                            Access Membership is being Synchronized..
-                        </div>
-                    {% endif %}
+				<div class="col-xl-6">
+						<div class="card bg-secondary">
+								<div class="card-header bg-dark">
+										<h5 class="mb-0 text-primary">
+												Access Membership <small class="text-muted">Access currently enabled</small>
+										</h5>
+								</div>
+								<div class="card-body">
+										{% if request.user.associated_identity.access_synchronized %}
+												<div class="alert alert-success" role="alert">
+														Access Membership is Synchronized
+												</div>
+										{% else %}
+												<div class="alert alert-warning" role="alert">
+														Access Membership is being Synchronized..
+												</div>
+										{% endif %}
 
-                    <table id="membership_table" class="table table-hover table-sm">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>{% trans "Access Group" %}</th>
-                                <th>{% trans "Date Created" %}</th>
-                                <th>{% trans "Expiry Date" %}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>{% trans "Access Group" %}</th>
-                                <th>{% trans "Date Created" %}</th>
-                                <th>{% trans "Expiry Date" %}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
+										<table id="membership_table" class="table table-hover table-sm">
+												<thead class="thead-dark">
+														<tr>
+																<th>{% trans "Access Group" %}</th>
+																<th>{% trans "Date Created" %}</th>
+																<th>{% trans "Expiry Date" %}</th>
+														</tr>
+												</thead>
+												<tbody>
+												</tbody>
+												<tfoot>
+														<tr>
+																<th>{% trans "Access Group" %}</th>
+																<th>{% trans "Date Created" %}</th>
+																<th>{% trans "Expiry Date" %}</th>
+														</tr>
+												</tfoot>
+										</table>
+								</div>
+						</div>
+				</div>
 
-        <div class="col-xl-6">
-            <div id="accordion">
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Group Access Requests
-                                <span class="badge badge-pill badge-warning">{{group_req.processing}} Processing</span>
-                                <span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
-                            </button>
-                        </h5>
-                    </div>
-                
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            <table id="group_req_table" class="table table-hover table-sm">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>{% trans "Access Group" %}</th>
-                                        <th>{% trans "Current State" %}</th>
-                                        <th>{% trans "Target State" %}</th>
-                                        <th>{% trans "Processing" %}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>{% trans "Access Group" %}</th>
-                                        <th class="table_select">{% trans "Current State" %}</th>
-                                        <th class="table_select">{% trans "Target State" %}</th>
-                                        <th class="table_select">{% trans "Processing" %}</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                Item Access Requests
-                                    <span class="badge badge-pill badge-warning">{{item_req.processing}} Processing</span>
-                                    <span class="badge badge-pill badge-dark">{{item_req.processed}} Processed</span>
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            <table id="item_req_table" class="table table-hover table-sm">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>{% trans "Access Item" %}</th>
-                                        <th>{% trans "Platform" %}</th>
-                                        <th>{% trans "Current State" %}</th>
-                                        <th>{% trans "Target State" %}</th>
-                                        <th>{% trans "Processing" %}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>{% trans "Access Item" %}</th>
-                                        <th class="table_select">{% trans "Platform" %}</th>
-                                        <th class="table_select">{% trans "Current State" %}</th>
-                                        <th class="table_select">{% trans "Target State" %}</th>
-                                        <th class="table_select">{% trans "Processing" %}</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+				<div class="col-xl-6">
+						<div id="accordion">
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="headingOne">
+												<h5 class="mb-0">
+														<button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+														Group Access Requests
+																<span class="badge badge-pill badge-warning">{{group_req.processing}} Processing</span>
+																<span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
+														</button>
+												</h5>
+										</div>
+								
+										<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+												<div class="card-body">
+														<table id="group_req_table" class="table table-hover table-sm">
+																<thead class="thead-dark">
+																		<tr>
+																				<th>{% trans "Access Group" %}</th>
+																				<th>{% trans "Current State" %}</th>
+																				<th>{% trans "Target State" %}</th>
+																				<th>{% trans "Processing" %}</th>
+																		</tr>
+																</thead>
+																<tbody>
+																</tbody>
+																<tfoot>
+																		<tr>
+																				<th>{% trans "Access Group" %}</th>
+																				<th class="table_select">{% trans "Current State" %}</th>
+																				<th class="table_select">{% trans "Target State" %}</th>
+																				<th class="table_select">{% trans "Processing" %}</th>
+																		</tr>
+																</tfoot>
+														</table>
+												</div>
+										</div>
+								</div>
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="headingTwo">
+												<h5 class="mb-0">
+														<button class="btn btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+																Item Access Requests
+																		<span class="badge badge-pill badge-warning">{{item_req.processing}} Processing</span>
+																		<span class="badge badge-pill badge-dark">{{item_req.processed}} Processed</span>
+														</button>
+												</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+												<div class="card-body">
+														<table id="item_req_table" class="table table-hover table-sm">
+																<thead class="thead-dark">
+																		<tr>
+																				<th>{% trans "Access Item" %}</th>
+																				<th>{% trans "Platform" %}</th>
+																				<th>{% trans "Current State" %}</th>
+																				<th>{% trans "Target State" %}</th>
+																				<th>{% trans "Processing" %}</th>
+																		</tr>
+																</thead>
+																<tbody>
+																</tbody>
+																<tfoot>
+																		<tr>
+																				<th>{% trans "Access Item" %}</th>
+																				<th class="table_select">{% trans "Platform" %}</th>
+																				<th class="table_select">{% trans "Current State" %}</th>
+																				<th class="table_select">{% trans "Target State" %}</th>
+																				<th class="table_select">{% trans "Processing" %}</th>
+																		</tr>
+																</tfoot>
+														</table>
+												</div>
+										</div>
+								</div>
+								
+						</div>
 
-        </div>
-    </div>
+				</div>
+		</div>
 
 </div>
 {% endblock %}
@@ -187,201 +187,201 @@
 
 {% block nonbody %}
 
-    {% verbatim handle_bar_templates %}
-    <style>
+		{% verbatim handle_bar_templates %}
+		<style>
 
-    ul.state_log {
-        list-style-type: none;
-        position: relative;
-    }
-    ul.state_log:before {
-        content: ' ';
-        background: #d4d9df;
-        display: inline-block;
-        position: absolute;
-        left: 29px;
-        width: 2px;
-        height: 100%;
-        z-index: 400;
-    }
-    ul.state_log > li {
-        margin: 20px 0;
-        padding-left: 20px;
-    }
-    ul.state_log > li:before {
-        content: ' ';
-        background: white;
-        display: inline-block;
-        position: absolute;
-        border-radius: 50%;
-        border: 3px solid #22c0e8;
-        left: 20px;
-        width: 20px;
-        height: 20px;
-        z-index: 400;
-    }
-    </style>
+		ul.state_log {
+				list-style-type: none;
+				position: relative;
+		}
+		ul.state_log:before {
+				content: ' ';
+				background: #d4d9df;
+				display: inline-block;
+				position: absolute;
+				left: 29px;
+				width: 2px;
+				height: 100%;
+				z-index: 400;
+		}
+		ul.state_log > li {
+				margin: 20px 0;
+				padding-left: 20px;
+		}
+		ul.state_log > li:before {
+				content: ' ';
+				background: white;
+				display: inline-block;
+				position: absolute;
+				border-radius: 50%;
+				border: 3px solid #22c0e8;
+				left: 20px;
+				width: 20px;
+				height: 20px;
+				z-index: 400;
+		}
+		</style>
 
-    <div id="grp_req-template" class="d-none">
-        <div class="gdetail-head">
-            <h5>
-                Identity(<strong class="badge badge-primary">{{identity}}</strong>)
-                to be <strong class="badge badge-secondary">{{target_state}}</strong>
-                -
-                Group(<strong class="badge badge-info">{{access_group}}</strong>)
-            </h5>
-        </div>
-        
-        <div class="gdetail-body flex-grow-1">
-            {{#if processing}}
-                <div class="alert alert-warning" role="alert">
-                    Request is in progress
-                </div>
-            {{else}}
-                <div class="alert alert-success" role="alert">
-                    Request complete
-                </div>
-            {{/if}}
-            <hr>
-            <div>
-                
-            </div>
-            <div id="state_accordion">
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="state_log">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_table_collapse" aria-expanded="true" aria-controls="acc_table_collapse">
-                                Access Table
-                            </button>
-                        </h5>
-                    </div>
-                
-                    <div id="acc_table_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
-                        <div class="card-body">
-                            <div class="embed-responsive embed-responsive-1by1">
-                                <iframe class="embed-responsive-item"
-                                src="/access_management/access_network?layout=fruchterman_reingold&group_id={{access_group}}
-                                "></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+		<div id="grp_req-template" class="d-none">
+				<div class="gdetail-head">
+						<h5>
+								Identity(<strong class="badge badge-primary">{{identity}}</strong>)
+								to be <strong class="badge badge-secondary">{{target_state}}</strong>
+								-
+								Group(<strong class="badge badge-info">{{access_group}}</strong>)
+						</h5>
+				</div>
+				
+				<div class="gdetail-body flex-grow-1">
+						{{#if processing}}
+								<div class="alert alert-warning" role="alert">
+										Request is in progress
+								</div>
+						{{else}}
+								<div class="alert alert-success" role="alert">
+										Request complete
+								</div>
+						{{/if}}
+						<hr>
+						<div>
+								
+						</div>
+						<div id="state_accordion">
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="state_log">
+												<h5 class="mb-0">
+														<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_table_collapse" aria-expanded="true" aria-controls="acc_table_collapse">
+																Access Table
+														</button>
+												</h5>
+										</div>
+								
+										<div id="acc_table_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
+												<div class="card-body">
+														<div class="embed-responsive embed-responsive-1by1">
+																<iframe class="embed-responsive-item"
+																src="/access_management/access_network?layout=fruchterman_reingold&group_id={{access_group}}
+																"></iframe>
+														</div>
+												</div>
+										</div>
+								</div>
 
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="state_log">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#state_log_collapse" aria-expanded="true" aria-controls="state_log_collapse">
-                                Request State Log
-                            </button>
-                        </h5>
-                    </div>
-                
-                    <div id="state_log_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
-                        <div class="card-body">
-                            <ul class="state_log text-left">
-                                {{#state_log}}
-                                    <li>
-                                        <span class="badge badge-pill badge-dark">{{timestamp}}</span>
-                                        {{#if by}}
-                                            <span class="badge badge-primary">{{by}} - {{transition}}</span>
-                                        {{/if}}
-                                        <p>
-                                            <small>
-                                            <span class="badge badge-info">{{source_state}}</span>
-                                            <i class="fa fa-arrow-circle-right"></i>
-                                            <span class="badge badge-info">{{state}}</span>
-                                        </small></p>
-                                    </li>
-                                {{/state_log}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="state_log">
+												<h5 class="mb-0">
+														<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#state_log_collapse" aria-expanded="true" aria-controls="state_log_collapse">
+																Request State Log
+														</button>
+												</h5>
+										</div>
+								
+										<div id="state_log_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
+												<div class="card-body">
+														<ul class="state_log text-left">
+																{{#state_log}}
+																		<li>
+																				<span class="badge badge-pill badge-dark">{{timestamp}}</span>
+																				{{#if by}}
+																						<span class="badge badge-primary">{{by}} - {{transition}}</span>
+																				{{/if}}
+																				<p>
+																						<small>
+																						<span class="badge badge-info">{{source_state}}</span>
+																						<i class="fa fa-arrow-circle-right"></i>
+																						<span class="badge badge-info">{{state}}</span>
+																				</small></p>
+																		</li>
+																{{/state_log}}
+														</ul>
+												</div>
+										</div>
+								</div>
 
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="state_log">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_graph_collapse" aria-expanded="true" aria-controls="acc_graph_collapse">
-                                Access Graph
-                            </button>
-                        </h5>
-                    </div>
-                
-                    <div id="acc_graph_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
-                        <div class="card-body">
-                            <div class="embed-responsive embed-responsive-1by1">
-                                <iframe class="embed-responsive-item"
-                                src="/access_management/access_network?layout=fruchterman_reingold&group_id={{access_group}}
-                                "></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="state_log">
+												<h5 class="mb-0">
+														<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_graph_collapse" aria-expanded="true" aria-controls="acc_graph_collapse">
+																Access Graph
+														</button>
+												</h5>
+										</div>
+								
+										<div id="acc_graph_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
+												<div class="card-body">
+														<div class="embed-responsive embed-responsive-1by1">
+																<iframe class="embed-responsive-item"
+																src="/access_management/access_network?layout=fruchterman_reingold&group_id={{access_group}}
+																"></iframe>
+														</div>
+												</div>
+										</div>
+								</div>
 
-            </div>
-        </div>
-    </div>
+						</div>
+				</div>
+		</div>
 
-    <div id="item_req-template" class="d-none">
-        <div class="gdetail-head">
-            <h5>
-                Identity(<strong class="badge badge-primary">{{identity}}</strong>)
-                to be <strong class="badge badge-secondary">{{target_state}}</strong>
-                -
-                Item(<strong class="badge badge-info">{{access_item}}</strong>)
-                Platform(<strong class="badge badge-info">{{platform}}</strong>)
-            </h5>
-        </div>
-        
-        <div class="gdetail-body flex-grow-1">
-            {{#if processing}}
-                <div class="alert alert-warning" role="alert">
-                    Request is in progress
-                </div>
-            {{else}}
-                <div class="alert alert-success" role="alert">
-                    Request complete
-                </div>
-            {{/if}}
-            <hr>
-            <div>
-                
-            </div>
-            <div id="state_accordion">
-                <div class="card bg-secondary">
-                    <div class="card-header bg-dark" id="state_log">
-                        <h5 class="mb-0">
-                            <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#state_log_collapse" aria-expanded="true" aria-controls="state_log_collapse">
-                                Request State Log
-                            </button>
-                        </h5>
-                    </div>
-                
-                    <div id="state_log_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
-                        <div class="card-body">
-                            <ul class="state_log text-left">
-                                {{#state_log}}
-                                    <li>
-                                        <span class="badge badge-pill badge-dark">{{timestamp}}</span>
-                                        {{#if by}}
-                                            <span class="badge badge-primary">{{by}} - {{transition}}</span>
-                                        {{/if}}
-                                        <p>
-                                            <small>
-                                            <span class="badge badge-info">{{source_state}}</span>
-                                            <i class="fa fa-arrow-circle-right"></i>
-                                            <span class="badge badge-info">{{state}}</span>
-                                        </small></p>
-                                    </li>
-                                {{/state_log}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endverbatim handle_bar_templates %}
+		<div id="item_req-template" class="d-none">
+				<div class="gdetail-head">
+						<h5>
+								Identity(<strong class="badge badge-primary">{{identity}}</strong>)
+								to be <strong class="badge badge-secondary">{{target_state}}</strong>
+								-
+								Item(<strong class="badge badge-info">{{access_item}}</strong>)
+								Platform(<strong class="badge badge-info">{{platform}}</strong>)
+						</h5>
+				</div>
+				
+				<div class="gdetail-body flex-grow-1">
+						{{#if processing}}
+								<div class="alert alert-warning" role="alert">
+										Request is in progress
+								</div>
+						{{else}}
+								<div class="alert alert-success" role="alert">
+										Request complete
+								</div>
+						{{/if}}
+						<hr>
+						<div>
+								
+						</div>
+						<div id="state_accordion">
+								<div class="card bg-secondary">
+										<div class="card-header bg-dark" id="state_log">
+												<h5 class="mb-0">
+														<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#state_log_collapse" aria-expanded="true" aria-controls="state_log_collapse">
+																Request State Log
+														</button>
+												</h5>
+										</div>
+								
+										<div id="state_log_collapse" class="collapse" aria-labelledby="state_log" data-parent="#state_accordion">
+												<div class="card-body">
+														<ul class="state_log text-left">
+																{{#state_log}}
+																		<li>
+																				<span class="badge badge-pill badge-dark">{{timestamp}}</span>
+																				{{#if by}}
+																						<span class="badge badge-primary">{{by}} - {{transition}}</span>
+																				{{/if}}
+																				<p>
+																						<small>
+																						<span class="badge badge-info">{{source_state}}</span>
+																						<i class="fa fa-arrow-circle-right"></i>
+																						<span class="badge badge-info">{{state}}</span>
+																				</small></p>
+																		</li>
+																{{/state_log}}
+														</ul>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		{% endverbatim handle_bar_templates %}
 {% endblock %}
 
 
@@ -390,336 +390,336 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-    var group_table;
-    var group_req_table;
-    var item_req_table;
+		var group_table;
+		var group_req_table;
+		var item_req_table;
 
-    $(document).ready(function() {
-        create_membership_table();
-        create_grp_req_table();
-        create_itm_req_table();
-    });
+		$(document).ready(function() {
+				create_membership_table();
+				create_grp_req_table();
+				create_itm_req_table();
+		});
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        width: "600px",
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    })
+		const swalWithBootstrapButtons = Swal.mixin({
+				width: "600px",
+				customClass: {
+						confirmButton: 'btn btn-success',
+						cancelButton: 'btn btn-danger'
+				},
+				buttonsStyling: false
+		})
 
-    function create_membership_table(){
-        
-        $('#membership_table tfoot th').each(function(){
-            var title = $(this).text();
-            if (title.length > 0){
-                $(this).html(
-                    '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-            }
-        });
-        
-        membership_table = $('#membership_table').DataTable({
-            "autoWidth": false,
-            "ajax": {
-                url: "{% url 'api:iam:id_access:group_membership-list' %}?identity={{identity.pk}}",
-                dataSrc: ""
-            },
-            "columns": [
-                { 
-                    "data": "access_group",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-success d-block">
-                                ${data}</span></h5>`
-                    }},
-                { "data": "date_created" },
-                { "data": "membership_expiry" },
-            ],
-            "responsive": true,
-            "initComplete": function(settings, json) {
-                setup_tfoot_search(membership_table, $('#membership_table tfoot th'));
-            },
-            "columnDefs": [{
-                "targets": ['_all'],
-                "className": 'mdc-data-table__cell'
-            }]
-        });
-    }
+		function create_membership_table(){
+				
+				$('#membership_table tfoot th').each(function(){
+						var title = $(this).text();
+						if (title.length > 0){
+								$(this).html(
+										'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+						}
+				});
+				
+				membership_table = $('#membership_table').DataTable({
+						"autoWidth": false,
+						"ajax": {
+								url: "{% url 'api:iam:id_access:group_membership-list' %}?identity={{identity.pk}}",
+								dataSrc: ""
+						},
+						"columns": [
+								{ 
+										"data": "access_group",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-success d-block">
+																${data}</span></h5>`
+										}},
+								{ "data": "date_created" },
+								{ "data": "membership_expiry" },
+						],
+						"responsive": true,
+						"initComplete": function(settings, json) {
+								setup_tfoot_search(membership_table, $('#membership_table tfoot th'));
+						},
+						"columnDefs": [{
+								"targets": ['_all'],
+								"className": 'mdc-data-table__cell'
+						}]
+				});
+		}
 
-    function setup_tfoot_search(dtable, search_dom){
-        search_dom.each(function( i ){
-            var title = $(this).text();
+		function setup_tfoot_search(dtable, search_dom){
+				search_dom.each(function( i ){
+						var title = $(this).text();
 
-            if ($(this).hasClass('table_select') == true) {
-                var select = $('<select class="form-control"><option value=""></option></select>')
-                    .appendTo( $(this).empty() )
-                    .on( 'change', function () {
-                        var val = $(this).val();
-                        
-                        dtable.column( i )
-                            .search( val ? $(this).val() : val, true, false )
-                            .draw();
-                    } );
-                dtable.column( i ).data().unique().sort().each( function ( d, j ) {  
+						if ($(this).hasClass('table_select') == true) {
+								var select = $('<select class="form-control"><option value=""></option></select>')
+										.appendTo( $(this).empty() )
+										.on( 'change', function () {
+												var val = $(this).val();
+												
+												dtable.column( i )
+														.search( val ? $(this).val() : val, true, false )
+														.draw();
+										} );
+								dtable.column( i ).data().unique().sort().each( function ( d, j ) {  
 					select.append( '<option value="'+d+'">'+d+'</option>' );
-		        } );
-            } else if (title.length > 0){
-                $(this).html(
-                    '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-            }
-        });
+						} );
+						} else if (title.length > 0){
+								$(this).html(
+										'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+						}
+				});
 
-        dtable.columns().every( function () {
-            var that = this;
-            $( 'input', this.footer() ).on( 'keyup change', function () {
-                if ( that.search() !== this.value ) {
-                    that.search( this.value, true ).draw();
-                }
-            } );
-        } );
-    }
-    
-    function create_grp_req_table(){
-        
-        $('#group_req_table').on('click', 'tbody tr', function(){
-            create_grp_req_popup(this);
-        });
+				dtable.columns().every( function () {
+						var that = this;
+						$( 'input', this.footer() ).on( 'keyup change', function () {
+								if ( that.search() !== this.value ) {
+										that.search( this.value, true ).draw();
+								}
+						} );
+				} );
+		}
+		
+		function create_grp_req_table(){
+				
+				$('#group_req_table').on('click', 'tbody tr', function(){
+						create_grp_req_popup(this);
+				});
 
-        $('#group_req_table tfoot th').each(function(){
-            var title = $(this).text();
-            if (title.length > 0){
-                $(this).html(
-                    '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-            }
-        });
-        
-        group_req_table = $('#group_req_table').DataTable({
-            "autoWidth": false,
-            "ajax": {
-                url: "{% url 'api:iam:id_access:group_request-list' %}?identity={{identity.pk}}",
-                dataSrc: ""
-            },
-            "order": [
-                [ 3, "desc" ]
-            ],
-            "columns": [
-                { 
-                    "data": "access_group",
-                    "render": function (data, type, row) {
-                        var group_req_pk = row['pk'];
-                        return `
-                            <h5><span 
-                                class="group_req_identifier badge badge-info d-block"
-                                data-pk=${group_req_pk}>${data}</span></h5>`
-                    }},
-                { 
-                    "data": "state",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-light d-block">
-                                ${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "target_state",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-light d-block">
-                                ${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "processing",
-                    "render": function (data, type, row) {
-                        if (data == true){
-                            return `
-                                <h5><span 
-                                    class="badge badge-warning d-block">
-                                    ${data}</span></h5>`
-                        } else {
-                            return `
-                                <h5><span 
-                                    class="badge badge-dark d-block">
-                                    ${data}</span></h5>`
-                        }
-                    }
-                },
-            ],
-            "responsive": true,
-            "initComplete": function(settings, json) {
-                setup_tfoot_search(group_req_table, $('#group_req_table tfoot th'));
-            },
-        });
-    }
+				$('#group_req_table tfoot th').each(function(){
+						var title = $(this).text();
+						if (title.length > 0){
+								$(this).html(
+										'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+						}
+				});
+				
+				group_req_table = $('#group_req_table').DataTable({
+						"autoWidth": false,
+						"ajax": {
+								url: "{% url 'api:iam:id_access:group_request-list' %}?identity={{identity.pk}}",
+								dataSrc: ""
+						},
+						"order": [
+								[ 3, "desc" ]
+						],
+						"columns": [
+								{ 
+										"data": "access_group",
+										"render": function (data, type, row) {
+												var group_req_pk = row['pk'];
+												return `
+														<h5><span 
+																class="group_req_identifier badge badge-info d-block"
+																data-pk=${group_req_pk}>${data}</span></h5>`
+										}},
+								{ 
+										"data": "state",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-light d-block">
+																${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "target_state",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-light d-block">
+																${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "processing",
+										"render": function (data, type, row) {
+												if (data == true){
+														return `
+																<h5><span 
+																		class="badge badge-warning d-block">
+																		${data}</span></h5>`
+												} else {
+														return `
+																<h5><span 
+																		class="badge badge-dark d-block">
+																		${data}</span></h5>`
+												}
+										}
+								},
+						],
+						"responsive": true,
+						"initComplete": function(settings, json) {
+								setup_tfoot_search(group_req_table, $('#group_req_table tfoot th'));
+						},
+				});
+		}
 
-    function create_grp_req_popup(row){
-        var req_identifier_dom = $(row).find(".group_req_identifier")
-        var req_identifier = req_identifier_dom.text();
-        var req_pk = req_identifier_dom.data("pk");
-        var req_url = "{% url 'api:iam:id_access:group_request-detail' pk=999 %}".replace(
-            "999", req_pk);
+		function create_grp_req_popup(row){
+				var req_identifier_dom = $(row).find(".group_req_identifier")
+				var req_identifier = req_identifier_dom.text();
+				var req_pk = req_identifier_dom.data("pk");
+				var req_url = "{% url 'api:iam:id_access:group_request-detail' pk=999 %}".replace(
+						"999", req_pk);
 
-        swalWithBootstrapButtons.fire({
-            html: `
-                <h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
-                <p>Retrieving request info for Group(<strong>${req_identifier}</strong>)</p>`,
-            showCancelButton: true,
-            showConfirmButton: false,
-            buttonsStyling: false,
-        })
-        .then(
-            fetch(req_url)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText);
-                } else {
-                    return res.json();
-                }
-            }).then(resjson => {
-                var source = $("#grp_req-template").html();
-                var templ = Handlebars.compile(source);
-                var populatedHtml = templ(resjson);
-                swalWithBootstrapButtons.fire({
-                    title: "Group Request",
-                    html: populatedHtml,
-                    confirmButtonText: 'Ok'
-                })
-            })
-        ).catch( err =>  Swal.fire({
-            title: "Request failed",
-            html: `Error requesting group info: ${err}`,
-            type: 'error'
-        }))
-    }
+				swalWithBootstrapButtons.fire({
+						html: `
+								<h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
+								<p>Retrieving request info for Group(<strong>${req_identifier}</strong>)</p>`,
+						showCancelButton: true,
+						showConfirmButton: false,
+						buttonsStyling: false,
+				})
+				.then(
+						fetch(req_url)
+						.then(res => {
+								if (!res.ok) {
+										throw new Error(res.statusText);
+								} else {
+										return res.json();
+								}
+						}).then(resjson => {
+								var source = $("#grp_req-template").html();
+								var templ = Handlebars.compile(source);
+								var populatedHtml = templ(resjson);
+								swalWithBootstrapButtons.fire({
+										title: "Group Request",
+										html: populatedHtml,
+										confirmButtonText: 'Ok'
+								})
+						})
+				).catch( err =>  Swal.fire({
+						title: "Request failed",
+						html: `Error requesting group info: ${err}`,
+						type: 'error'
+				}))
+		}
 
-    function create_itm_req_table(){
-        
-        $('#item_req_table').on('click', 'tbody tr', function(){
-            create_item_req_popup(this);
-        });
+		function create_itm_req_table(){
+				
+				$('#item_req_table').on('click', 'tbody tr', function(){
+						create_item_req_popup(this);
+				});
 
-        $('#item_req_table tfoot th').each(function(){
-            var title = $(this).text();
-            if (title.length > 0){
-                $(this).html(
-                    '<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-            }
-        });
-        
-        item_req_table = $('#item_req_table').DataTable({
-            "autoWidth": false,
-            "ajax": {
-                url: "{% url 'api:iam:id_access:item_request-list' %}?identity={{identity.pk}}",
-                dataSrc: ""
-            },
-            "order": [
-                [ 4, "desc" ]
-            ],
-            "columns": [
-                { 
-                    "data": "access_item",
-                    "render": function (data, type, row) {
-                        var item_req_pk = row['pk'];
-                        return `
-                            <h5><span 
-                                class="access_identifier badge badge-info d-block"
-                                data-pk=${item_req_pk}>${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "platform",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-primary d-block">
-                                ${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "state",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-light d-block">
-                                ${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "target_state",
-                    "render": function (data, type, row) {
-                        return `
-                            <h5><span 
-                                class="badge badge-light d-block">
-                                ${data}</span></h5>`
-                    }
-                },
-                { 
-                    "data": "processing",
-                    "render": function (data, type, row) {
-                        if (data == true){
-                            return `
-                                <h5><span 
-                                    class="badge badge-warning d-block">
-                                    ${data}</span></h5>`
-                        } else {
-                            return `
-                                <h5><span 
-                                    class="badge badge-dark d-block">
-                                    ${data}</span></h5>`
-                        }
-                    }
-                },
-            ],
-            "responsive": true,
-            "initComplete": function(settings, json) {
-                setup_tfoot_search(item_req_table, $('#item_req_table tfoot th'));
-            },
-        });
-    }
+				$('#item_req_table tfoot th').each(function(){
+						var title = $(this).text();
+						if (title.length > 0){
+								$(this).html(
+										'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+						}
+				});
+				
+				item_req_table = $('#item_req_table').DataTable({
+						"autoWidth": false,
+						"ajax": {
+								url: "{% url 'api:iam:id_access:item_request-list' %}?identity={{identity.pk}}",
+								dataSrc: ""
+						},
+						"order": [
+								[ 4, "desc" ]
+						],
+						"columns": [
+								{ 
+										"data": "access_item",
+										"render": function (data, type, row) {
+												var item_req_pk = row['pk'];
+												return `
+														<h5><span 
+																class="access_identifier badge badge-info d-block"
+																data-pk=${item_req_pk}>${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "platform",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-primary d-block">
+																${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "state",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-light d-block">
+																${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "target_state",
+										"render": function (data, type, row) {
+												return `
+														<h5><span 
+																class="badge badge-light d-block">
+																${data}</span></h5>`
+										}
+								},
+								{ 
+										"data": "processing",
+										"render": function (data, type, row) {
+												if (data == true){
+														return `
+																<h5><span 
+																		class="badge badge-warning d-block">
+																		${data}</span></h5>`
+												} else {
+														return `
+																<h5><span 
+																		class="badge badge-dark d-block">
+																		${data}</span></h5>`
+												}
+										}
+								},
+						],
+						"responsive": true,
+						"initComplete": function(settings, json) {
+								setup_tfoot_search(item_req_table, $('#item_req_table tfoot th'));
+						},
+				});
+		}
 
-    
-    function create_item_req_popup(row){
-        var req_identifier_dom = $(row).find(".access_identifier")
-        var req_identifier = req_identifier_dom.text();
-        var req_pk = req_identifier_dom.data("pk");
-        var req_url = "{% url 'api:iam:id_access:item_request-detail' pk=999 %}".replace(
-            "999", req_pk);
+		
+		function create_item_req_popup(row){
+				var req_identifier_dom = $(row).find(".access_identifier")
+				var req_identifier = req_identifier_dom.text();
+				var req_pk = req_identifier_dom.data("pk");
+				var req_url = "{% url 'api:iam:id_access:item_request-detail' pk=999 %}".replace(
+						"999", req_pk);
 
-        swalWithBootstrapButtons.fire({
-            html: `
-                <h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
-                <p>Retrieving request info for Item(<strong>${req_identifier}</strong>)</p>`,
-            showCancelButton: true,
-            showConfirmButton: false,
-            buttonsStyling: false,
-        })
-        .then(
-            fetch(req_url)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText);
-                } else {
-                    return res.json();
-                }
-            }).then(resjson => {
-                var source = $("#item_req-template").html();
-                var templ = Handlebars.compile(source);
-                var populatedHtml = templ(resjson);
-                swalWithBootstrapButtons.fire({
-                    title: "Item Request",
-                    html: populatedHtml,
-                    confirmButtonText: 'Ok'
-                })
-            })
-        ).catch( err =>  Swal.fire({
-            title: "Request failed",
-            html: `Error requesting item info: ${err}`,
-            type: 'error'
-        }))
-    }
+				swalWithBootstrapButtons.fire({
+						html: `
+								<h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
+								<p>Retrieving request info for Item(<strong>${req_identifier}</strong>)</p>`,
+						showCancelButton: true,
+						showConfirmButton: false,
+						buttonsStyling: false,
+				})
+				.then(
+						fetch(req_url)
+						.then(res => {
+								if (!res.ok) {
+										throw new Error(res.statusText);
+								} else {
+										return res.json();
+								}
+						}).then(resjson => {
+								var source = $("#item_req-template").html();
+								var templ = Handlebars.compile(source);
+								var populatedHtml = templ(resjson);
+								swalWithBootstrapButtons.fire({
+										title: "Item Request",
+										html: populatedHtml,
+										confirmButtonText: 'Ok'
+								})
+						})
+				).catch( err =>  Swal.fire({
+						title: "Request failed",
+						html: `Error requesting item info: ${err}`,
+						type: 'error'
+				}))
+		}
 </script>
 {% endblock %}

@@ -6,6 +6,9 @@
 ### Static file collection (important to remember to do this if you change static files)
 `docker-compose exec django_wsgi python3 manage.py collectstatic --no-input`
 
+### Migrate site
+`docker-compose exec django_wsgi python3 manage.py migrate`
+
 ### Load the initial data for testing/login
 `docker-compose exec django_wsgi python3 manage.py loaddata testing_data`
 

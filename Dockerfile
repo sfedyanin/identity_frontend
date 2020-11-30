@@ -13,7 +13,7 @@ RUN apt-get update && \
 WORKDIR /opt/vdx_id
 
 COPY vdx_id/requirements.txt /opt/vdx_id/requirements.txt
-RUN pip3 install -r /opt/vdx_id/requirements.txt
+RUN pip3 install --default-timeout=1000 -r /opt/vdx_id/requirements.txt
 
 COPY vdx_id/requirements_delta.txt /opt/vdx_id/requirements_delta.txt
 RUN pip3 install -r /opt/vdx_id/requirements_delta.txt
