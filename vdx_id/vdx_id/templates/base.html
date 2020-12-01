@@ -44,9 +44,11 @@
 				<div class="content-wrapper">
 					
 					<!-- Main Container -->
-					<div id="main-control" class="d-inline-flex flex-grow-1 w-100">
-						{% block content %}
-						{% endblock %}
+					<div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
+						<div class="w-100">
+							{% block content %}
+							{% endblock %}
+						</div>
 					</div>
 
 				</div>

@@ -8,32 +8,35 @@
 {% block content %}
   <div class="d-flex flex-column flex-grow-1">
 
-    <div class="p-2 demo-header">
-      <h4 class="text-primary">Vdx-Id Demo <small class="text-muted">A demonstration of the VaDiX Identify IAM engine</small></h4>
-      <div class="row">
-        <div class="col-md-6">
-          <dl>
-            <dt class="text-success">Simple Scalable Access</dt>
-              <dd class="text-light">Access composed of Items and Groups.</dd>
-              <dd class="text-light">Groups are logical groups of items <span class=text-success>(which you can request)</span>.</dd>
-              <dd class="text-light">Items represent real a single piece of access <span class=text-warning>(cannot request)</span>.</dd>
-              <!-- <dd>Groups can only directly contain Access Items from a single platform.</dd>
-              <dd>Groups can inherit any other Groups, which can in turn, inherit more groups.</dd>
-              <dd><span class=text-warning>(Not in demo)</span> Business logic is applied to Groups.</dd> -->
-          </dl>
-        </div>
-        <div class="col-md-6">
-          <dl>
-            <dt class="text-success">Access in seconds, not days</dt>
-              <dd class="text-light">Access re-evaluated in milliseconds</dd>
-              <dd class="text-light">Requests optimized and distributed to IOT scale networks in seconds</dd>
-          </dl>
+    <div class="p-3 demo-header">
+      <div class="demo-header-body p-3">
+        <h4 class="text-primary">Vdx-Id Demo <small class="text-muted">A demonstration of the VaDiX Identify IAM engine</small></h4>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <dl>
+              <dt class="text-success">Simple Scalable Access</dt>
+                <dd class="text-light">Access composed of Items and Groups.</dd>
+                <dd class="text-light">Groups are logical groups of items <span class=text-success>(which you can request)</span>.</dd>
+                <dd class="text-light">Items represent real a single piece of access <span class=text-warning>(cannot request)</span>.</dd>
+            </dl>
+          </div>
+          <div class="col-12 col-md-6">
+            <dl>
+              <dt class="text-success">Access in seconds, not days</dt>
+                <dd class="text-light">Access re-evaluated in milliseconds</dd>
+                <dd class="text-light">Requests optimized and distributed to IOT scale networks in seconds</dd>
+            </dl>
+          </div>
         </div>
       </div>
     </div>
+      
+    <div class="row no-gutters">
 
 
-    <div class="row-fluid d-flex flex-grow-1 m-3">
+    </div>
+
+    <div class="d-flex flex-grow-1 m-2 row no-gutters">
       {% if not identity.pk %}
         <div class="m-3">
           
@@ -44,59 +47,73 @@
 
         </div>
       {% else %}
-        
-      <div class="row mbr-justify-content-center">
-
-        <div class="col-lg-6 mbr-col-md-10">
-          <a class="wrap" href="{% url 'web:acm:view_access' %}">
-              <div class="ico-wrap">
-                <span class="mbr-iconfont fa-telegram fa"></span>
-              </div>
-              <div class="text-wrap vcenter">
-                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">View <span>Access</span></h2>
-                <p class="mbr-fonts-style text1 mbr-text display-6">Search and <strong>request new access</strong></p>
-              </div>
-          </a>
-        </div>
-        
-        <div class="col-lg-6 mbr-col-md-10">
-            <a class="wrap" href="{% url 'web:acm:my_access' %}">
-                <div class="ico-wrap">
-                  <span class="mbr-iconfont fa-id-badge fa"></span>
+        <div class="col-12 col-md-6 pt-3 px-2 stretch-card access-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'web:acm:view_access' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="mbr-iconfont fa-telegram fa cl-white d-block text-center" style="width: 120px;"></span>
+                  <div class="d-flex flex-column ml-4"  style="width: calc( 100% - 120px ) ">
+                    <span class="d-flex flex-column">
+                      <h3 class="font-weight-bold">View Access</h3>
+                      <p class="mb-0">Search and <strong>request new access</strong></p>
+                    </span>
+                  </div>
                 </div>
-                <div class="text-wrap vcenter">
-                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">My <span>Access</span></h2>
-                  <p class="mbr-fonts-style text1 mbr-text display-6">Review your existing access membership and access requests</p>
-                </div>
-            </a>
-        </div>
-        
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div class="ico-wrap">
-                  <span class="mbr-iconfont fa-inbox fa"></span>
-                </div>
-                <div class="text-wrap vcenter">
-                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Review <span>Access Requests</span></h2>
-                  <p class="mbr-fonts-style text1 mbr-text display-6">Review all access requests and history</p>
-                </div>
+              </a>
             </div>
+          </div>
         </div>
-        <div class="col-lg-6 mbr-col-md-10">
-            <div class="wrap">
-                <div class="ico-wrap">
-                    <span class="mbr-iconfont fa-handshake-o fa"></span>
+
+        <div class="col-12 col-md-6 pt-3 px-2 stretch-card access-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'web:acm:my_access' %}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="mbr-iconfont fa-id-badge fa cl-white d-block text-center" style="width: 120px;"></span>
+                  <div class="d-flex flex-column ml-4"  style="width: calc( 100% - 120px ) ">
+                    <span class="d-flex flex-column">
+                      <h3 class="font-weight-bold">My Access</h3>
+                      <p class="mb-0">Review your existing access membership and access requests</p>
+                    </span>
+                  </div>
                 </div>
-                <div class="text-wrap vcenter">
-                  <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Approve <span>Requests and Changes</span></h2>
-                  <p class="mbr-fonts-style text1 mbr-text display-6">Authorize access-requests, access-group changes, etc</p>
-                </div>
+              </a>
             </div>
+          </div>
         </div>
-        
 
-      </div>
+        <div class="col-12 col-md-6 pt-3 px-2 stretch-card access-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="mbr-iconfont fa-inbox fa cl-white d-block text-center" style="width: 120px;"></span>
+                <div class="d-flex flex-column ml-4"  style="width: calc( 100% - 120px ) ">
+                  <span class="d-flex flex-column">
+                    <h3 class="font-weight-bold">Review Access Request</h3>
+                    <p class="mb-0">Review all access requests and history</p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-12 col-md-6 pt-3 px-2 stretch-card access-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="mbr-iconfont fa-handshake-o fa cl-white d-block text-center" style="width: 120px;"></span>
+                <div class="d-flex flex-column ml-4"  style="width: calc( 100% - 120px ) ">
+                  <span class="d-flex flex-column">
+                    <h3 class="font-weight-bold">Approve Requests and Changes</h3>
+                    <p class="mb-0">Authorize access-requests, access-group changes, etc</p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       {% endif %}
     </div>
 

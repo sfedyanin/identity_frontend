@@ -1,14 +1,11 @@
 .wrap {
     display: flex;
-    background: white;
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 0.5rem;
-    box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
 }
 
 .wrap:hover {
-    background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%);
+    /* background: linear-gradient(135deg,#6394ff 0%,#0a193b 100%); */
     color: white;
 }
 
@@ -65,11 +62,46 @@ p {
 }
 
 .demo-header {
-    background: rgb(51, 84, 101);
-    background: linear-gradient( 180deg, rgb(71, 82, 93) 0%, rgb(64, 79, 93) 30%, rgba(27, 60, 101, 0.62) 100%);
+    background: #1c1e2f;
+    /* background: linear-gradient( 180deg, rgb(71, 82, 93) 0%, rgb(64, 79, 93) 30%, rgba(27, 60, 101, 0.62) 100%); */
     border-bottom-color: #0055cc;
 }
 
-.demo-body {
+.demo-header-body {
+    background-color: #222437;
+}
 
+.fa.cl-white {
+    color: white;
+}
+
+.access-card .card {
+    border-radius: 5px;
+}
+
+.access-card h3 {
+    color: #2196f3
+}
+
+.access-card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #181a27;
+}
+
+.access-card:hover .card {
+    opacity: 1;
+}
+
+.access-card:hover h3 {
+    color: white;
+}
+
+.access-card a:hover {
+    text-decoration: unset;
+}
+
+table {
+    display: block;
+    overflow: auto;
+    width: 100%;
 }
