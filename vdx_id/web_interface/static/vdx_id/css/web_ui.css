@@ -39,6 +39,10 @@
     background-size:100% 2px ;
 }
 
+#sidebar-container .list-group a:not(.nav-link) {
+    height: unset;
+}
+
 /* Submenu item*/
 #sidebar-container .list-group .sidebar-submenu a {
     height: 45px;

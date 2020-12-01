@@ -1,4 +1,26 @@
-<li class="nav-item nav-category">Test</li>
+{% load socialaccount %}
+
+<!-- Top Navbar -> Left Sidebar :) -->
+{% if user.is_authenticated %}
+	<li class="nav-item px-3 mt-3">
+		<a class="btn btn-outline-success w-100 " role="button" href="{% url 'web:acm:home' %}">Access Management</a>
+	</li>
+	<li class="nav-item px-3 mt-3">
+		<a class="btn btn-outline-light w-100 " role="button" target="_api" href="/docs_api">REST API</a>
+	</li>
+	{% if user.is_staff %}
+		<li class="nav-item px-3 mt-3">
+			<a class="btn btn-outline-warning w-100 " role="button" target="_admin" href="/admin">Administration</a>
+		</li>
+	{% endif %} 
+{% else %}
+	<li class="nav-item px-3 mt-3">
+		<a class="btn btn-outline-info w-100 " role="button" target="_api" href="/docs_api">REST API</a>
+	</li>
+{% endif %}
+
+
+<li class="nav-item nav-category">HOME</li>
 
 <li class="nav-item">
 	<a class="nav-link" href="{% url 'web:acm:home' %}">
@@ -137,3 +159,16 @@
 		<span class="menu-title">Help</span>
 	</a>
 </li>
+
+{% if user.is_authenticated %}
+	<li class="nav-item px-3 mt-2 d-block d-lg-none">
+		<a class="btn btn-outline-info w-100" role="button" href="{% url 'logout' %}">Logout ({{user}})</a>
+	</li>
+{% else %}
+	<li class="nav-item px-3 mt-2 d-block d-lg-none">
+		<a class="btn btn-outline-primary w-100" role="button" href="{% provider_login_url 'google' %}">Google Login</a>
+	</li>
+	<li class="nav-item px-3 mt-2 d-block d-lg-none">
+		<a class="btn btn-outline-info w-100" role="button" href="{% url 'login' %}">Demo Login</a>
+	</li>
+{% endif %}

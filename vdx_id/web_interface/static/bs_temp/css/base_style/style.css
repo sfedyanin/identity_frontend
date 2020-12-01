@@ -10129,7 +10129,7 @@ pre {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13); }
     @media (max-width: 991px) {
       .navbar.default-layout .navbar-menu-wrapper {
-        width: calc(100%); } }
+        width: calc(100% - 70px); } }
     .navbar.default-layout .navbar-menu-wrapper .navbar-toggler {
       border: 0;
       color: inherit; }
