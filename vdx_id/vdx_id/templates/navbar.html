@@ -1,44 +1,40 @@
 {% load socialaccount %}
 
-
 <nav class="navbar default-layout navbar-dark bg-dark fixed-top col-lg-12 col-12 p-0 d-flex flex-row">
-    
-    <div class="text-center navbar-brand-wrapper align-items-top justify-content-center">
-			<a class="navbar-brand brand-logo justify-content-center" href="/">
-				Identity<span class="text-muted">&nbsp;[alpha]</span>
-			</a>
-			<a class="navbar-brand brand-logo-mini" href="/">
-				Identity
-			</a>
+  <div class="text-center navbar-brand-wrapper align-items-top justify-content-center">
+    <a class="navbar-brand brand-logo justify-content-center" href="/">
+      Identity<span class="text-muted">&nbsp;[alpha]</span>
+    </a>
+    <a class="navbar-brand brand-logo-mini" href="/">
+      Identity
+    </a>
+  </div>
+  
+  <div class="navbar-menu-wrapper d-flex align-items-center">
+    <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="mdi mdi-menu"></span>
+    </button> -->
+    <!-- <div class="navbar-nav">
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-success" role="button" style="margin-left:10px" href="{% url 'web:acm:home' %}">Access Management</a>
+        <a class="btn btn-outline-light" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
+        {% if user.is_staff %}
+          <a class="btn btn-outline-warning" role="button" target="_admin" style="margin-left:10px" href="/admin">Administration</a>
+        {% endif %} 
+      {% else %}
+        <a class="btn btn-outline-info" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
+      {% endif %}
+    </div> -->
+    <div class="navbar-nav ml-auto d-none d-lg-flex">
+      {% if user.is_authenticated %}
+        <a class="btn btn-outline-info" role="button" style="margin-left:10px" href="{% url 'logout' %}">Logout ({{user}})</a>
+      {% else %}
+        <a class="btn btn-outline-primary" role="button" style="margin-left:10px" href="{% provider_login_url 'google' %}">Google Login</a>
+        <a class="btn btn-outline-info" role="button" style="margin-left:10px" href="{% url 'login' %}">Demo Login</a>
+      {% endif %}
     </div>
-    
-    <div class="navbar-menu-wrapper d-flex align-items-center">
-        
-			<!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-				<span class="mdi mdi-menu"></span>
-			</button> -->
-			
-			<!-- <div class="navbar-nav">
-				{% if user.is_authenticated %}
-					<a class="btn btn-outline-success" role="button" style="margin-left:10px" href="{% url 'web:acm:home' %}">Access Management</a>
-					<a class="btn btn-outline-light" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
-					{% if user.is_staff %}
-						<a class="btn btn-outline-warning" role="button" target="_admin" style="margin-left:10px" href="/admin">Administration</a>
-					{% endif %} 
-				{% else %}
-					<a class="btn btn-outline-info" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
-				{% endif %}
-			</div> -->
-			<div class="navbar-nav ml-auto d-none d-lg-flex">
-				{% if user.is_authenticated %}
-					<a class="btn btn-outline-info" role="button" style="margin-left:10px" href="{% url 'logout' %}">Logout ({{user}})</a>
-				{% else %}
-					<a class="btn btn-outline-primary" role="button" style="margin-left:10px" href="{% provider_login_url 'google' %}">Google Login</a>
-					<a class="btn btn-outline-info" role="button" style="margin-left:10px" href="{% url 'login' %}">Demo Login</a>
-				{% endif %}
-			</div>
-			<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center ml-auto m-lg-0" type="button" data-toggle="offcanvas">
-				<span class="mdi mdi-menu"></span>
-			</button>
-    </div>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center ml-auto m-lg-0" type="button" data-toggle="offcanvas">
+      <span class="mdi mdi-menu"></span>
+    </button>
+  </div>
 </nav>

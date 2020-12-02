@@ -1,6 +1,6 @@
 {% load static %}
 <html>
-	<head>
+  <head>
   <title>VaDiX Identity</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
@@ -9,9 +9,9 @@
 
   <link rel="stylesheet" href="{% static 'vdx_id/css/vadix.css' %}">        
   <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
-	
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 
   <!-- BootStrap Theme CSS -->
   <link rel="stylesheet" href="{% static 'bs_temp/css/flag-icon.min.css' %}">
@@ -26,102 +26,102 @@
 
   {% block head_extra %}
   {% endblock %}
-	</head>
-	<body>
-  <div class="row-fluid">
-  	{% include "navbar.html" %}
-  </div>
-  <div class="container-fluid page-body-wrapper">
-  	
-  	<!-- Left Sidebar -->
-  	<div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
-    <ul class="nav list-group flex-grow-1 pb-3">
-    	{% block sidebar %}
-    	{% endblock %}
-    </ul>
-  	</div>
-
-  	<!-- partial -->
-  	<div class="main-panel">
-    <div class="content-wrapper">
-    	
-    	<!-- Main Container -->
-    	<div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
-      <div class="w-100">
-      	{% block content %}
-      	{% endblock %}
-      </div>
-    	</div>
-
+  </head>
+  <body>
+    <div class="row-fluid">
+      {% include "navbar.html" %}
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-    	<div class="container-fluid clearfix">
-				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020. All rights reserved.</span>
-    	</div>
-    </footer>
-    <!-- partial -->
-  	</div>
-  	<!-- main-panel ends -->
-  </div>
-  <canvas class="background"></canvas>
-  <script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
-	</body>
-	{% block nonbody %}
-	{% endblock %}
+    <div class="container-fluid page-body-wrapper">
+      
+      <!-- Left Sidebar -->
+      <div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
+        <ul class="nav list-group flex-grow-1 pb-3">
+          {% block sidebar %}
+          {% endblock %}
+        </ul>
+      </div>
 
-	<script type="text/javascript" src="{% static 'bs_temp/js/vendor.bundle.base.js' %}"></script>
-	<script type="text/javascript" src="{% static 'jquery/jquery.cookie.js' %}"></script>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          <!-- Main Container -->
+          <div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
+            <div class="w-100">
+              {% block content %}
+              {% endblock %}
+            </div>
+          </div>
 
-	<!-- Plugin js for this page -->
-	<script src="{% static 'bs_temp/js/Chart.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/jquery-jvectormap.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/jquery-jvectormap-world-mill-en.js' %}"></script>
-	<script src="{% static 'bs_temp/js/raphael-2.1.4.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/justgage.js' %}"></script>
-	<!-- End plugin js for this page -->
-	<!-- inject:js -->
-	<script src="{% static 'bs_temp/js/off-canvas.js' %}"></script>
-	<script src="{% static 'bs_temp/js/hoverable-collapse.js' %}"></script>
-	<script src="{% static 'bs_temp/js/misc.js' %}"></script>
-	<script src="{% static 'bs_temp/js/settings.js' %}"></script>
-	<script src="{% static 'bs_temp/js/todolist.js' %}"></script>
-	<!-- endinject -->
-	<!-- Custom js for this page -->
-	<script src="{% static 'bs_temp/js/dashboard.js' %}"></script>
-	<!-- End custom js for this page -->
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020. All rights reserved.</span>
+          </div>
+        </footer>
+      <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <canvas class="background"></canvas>
+    <script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
+  </body>
+  {% block nonbody %}
+  {% endblock %}
 
-	{% block script %}
-	{% endblock %}
-	<script type="text/javascript">
-  	/////////////////////////////////////////////
-  	// CSRF management via cookies
-  	/////////////////////////////////////////////
-  	// Get the jquery.cookie library!
-  	function csrfSafeMethod(method){
-    	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-  	}
+  <script type="text/javascript" src="{% static 'bs_temp/js/vendor.bundle.base.js' %}"></script>
+  <script type="text/javascript" src="{% static 'jquery/jquery.cookie.js' %}"></script>
 
-  	$.ajaxSetup({
-    	beforeSend: function(xhr, settings){
-      	var csrftoken = $.cookie('csrftoken');
-      	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-        	xhr.setRequestHeader("X-CSRFToken", csrftoken);
-      	}
-    	}
-  	});
+  <!-- Plugin js for this page -->
+  <script src="{% static 'bs_temp/js/Chart.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/jquery-jvectormap.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/jquery-jvectormap-world-mill-en.js' %}"></script>
+  <script src="{% static 'bs_temp/js/raphael-2.1.4.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/justgage.js' %}"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'bs_temp/js/off-canvas.js' %}"></script>
+  <script src="{% static 'bs_temp/js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'bs_temp/js/misc.js' %}"></script>
+  <script src="{% static 'bs_temp/js/settings.js' %}"></script>
+  <script src="{% static 'bs_temp/js/todolist.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="{% static 'bs_temp/js/dashboard.js' %}"></script>
+  <!-- End custom js for this page -->
 
-  	window.onload = function() {
-    	Particles.init({
-      	selector: '.background',
-      	color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
-      	connectParticles: true,
-      	responsive: true,
-    	});
-  	};
+  {% block script %}
+  {% endblock %}
+  <script type="text/javascript">
+    /////////////////////////////////////////////
+    // CSRF management via cookies
+    /////////////////////////////////////////////
+    // Get the jquery.cookie library!
+    function csrfSafeMethod(method){
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
 
-	</script>
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings){
+        var csrftoken = $.cookie('csrftoken');
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+
+    window.onload = function() {
+      Particles.init({
+        selector: '.background',
+        color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
+        connectParticles: true,
+        responsive: true,
+      });
+    };
+
+  </script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 </html>

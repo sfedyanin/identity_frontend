@@ -258,7 +258,7 @@
     <div class="gdetail-head">
       <h5>
         Identity(<strong class="badge badge-primary">{{identity}}</strong>)
-        to be <strong class="badge badge-secondary">{{target_state}}</strong>
+        to be <strong class="  badge badge-primary">{{target_state}}</strong>
         -
         Group(<strong class="badge badge-info">{{access_group}}</strong>)
       </h5>
@@ -358,7 +358,7 @@
     <div class="gdetail-head">
       <h5>
         Identity(<strong class="badge badge-primary">{{identity}}</strong>)
-        to be <strong class="badge badge-secondary">{{target_state}}</strong>
+        to be <strong class="  badge badge-primary">{{target_state}}</strong>
         -
         Item(<strong class="badge badge-info">{{access_item}}</strong>)
         Platform(<strong class="badge badge-info">{{platform}}</strong>)
@@ -551,7 +551,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-dark d-block">
+                class="badge badge-outline-light d-block">
                 ${data}</span></h5>`
           }
         },
@@ -560,7 +560,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-dark d-block">
+                class="badge badge-outline-light d-block">
                 ${data}</span></h5>`
           }
         },
@@ -658,7 +658,7 @@
             var item_req_pk = row['pk'];
             return `
               <h5><span 
-                class="access_identifier badge badge-info d-block"
+                class="access_identifier badge badge-outline-info d-block"
                 data-pk=${item_req_pk}>${data}</span></h5>`
           }
         },
@@ -667,7 +667,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-primary d-block">
+                class="badge badge-outline-primary d-block">
                 ${data}</span></h5>`
           }
         },
@@ -676,7 +676,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-dark d-block">
+                class="badge badge-outline-light d-block">
                 ${data}</span></h5>`
           }
         },
@@ -685,7 +685,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-dark d-block">
+                class="badge badge-outline-light d-block">
                 ${data}</span></h5>`
           }
         },
@@ -695,12 +695,12 @@
             if (data == true){
               return `
                 <h5><span 
-                  class="badge badge-warning d-block">
+                  class="badge badge-outline-success d-block">
                   ${data}</span></h5>`
             } else {
               return `
                 <h5><span 
-                  class="badge badge-dark d-block">
+                  class="badge badge-outline-warning d-block">
                   ${data}</span></h5>`
             }
           }

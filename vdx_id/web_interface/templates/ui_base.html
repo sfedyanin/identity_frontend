@@ -1,6 +1,6 @@
 {% load static %}
 <html>
-	<head>
+  <head>
   <title>{% block title %}Vadix Identify{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'vdx_id/css/vadix.css' %}">
   <link rel="stylesheet" href="{% static 'vdx_id/css/web_ui.css' %}">
-	<!-- <link rel="stylesheet" href="{% static 'datatables/dataTables.bootstrap4.min.css' %}"> -->
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="{% static 'datatables/dataTables.bootstrap4.min.css' %}"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
   
   <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
@@ -30,264 +30,264 @@
   {% endblock %}
 
   <style type="text/css">
-  	body {
-    	overflow-x: hidden;
-  	}
+    body {
+      overflow-x: hidden;
+    }
 
-  	[data-pnotify].pnotify.translucent.pnotify-fade-in {
-    	opacity: 0.8;
-  	}
+    [data-pnotify].pnotify.translucent.pnotify-fade-in {
+      opacity: 0.8;
+    }
 
-  	.ui-pnotify-icon {
-    	color: #FFA;
-  	}
+    .ui-pnotify-icon {
+      color: #FFA;
+    }
   </style>
-	</head>
+  </head>
 
-	<body>
+  <body>
   <div class="container-scroller">
     
-  	<!-- Top Navbar -->
-  	<div class="row-fluid">
-    	{% include "navbar.html" %}
-  	</div>
+    <!-- Top Navbar -->
+    <div class="row-fluid">
+      {% include "navbar.html" %}
+    </div>
 
-  	<!-- partial -->
-  	<div class="container-fluid page-body-wrapper">
-    	
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      
     <!-- Left Sidebar -->
     <div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
-    	<ul class="nav list-group flex-grow-1 pb-3">
+      <ul class="nav list-group flex-grow-1 pb-3">
       {% include "access_management/sidebar.html" %}
-    	</ul>
+      </ul>
     </div>
 
     <!-- partial -->
     <div class="main-panel">
-    	<div class="content-wrapper">
-      	
+      <div class="content-wrapper">
+        
       <!-- Main Container -->
       <div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
-      	<div class="w-100">
+        <div class="w-100">
         {% block content %}
         {% endblock %}
-      	</div>
+        </div>
       </div>
 
-    	</div>
-    	<!-- content-wrapper ends -->
-    	<!-- partial:partials/_footer.html -->
-    	<footer class="footer">
-				<div class="container-fluid clearfix">
-					<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020. All rights reserved.</span>
-				</div>
-    	</footer>
-    	<!-- partial -->
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="container-fluid clearfix">
+          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020. All rights reserved.</span>
+        </div>
+      </footer>
+      <!-- partial -->
     </div>
     <!-- main-panel ends -->
-  	</div>
-  	<!-- page-body-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
   </div>
 
   <canvas class="background"></canvas>
   <script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
-	</body>
-	
-	<div class="d-none">
-  	{% block nonbody %}
-  	{% endblock %}
-	</div>
+  </body>
+  
+  <div class="d-none">
+    {% block nonbody %}
+    {% endblock %}
+  </div>
 
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<!-- BootStrap Theme JS -->
-	
-	<script type="text/javascript" src="{% static 'bs_temp/js/vendor.bundle.base.js' %}"></script>
-	
-	<script type="text/javascript" src="{% static 'notify/notify.js' %}"></script>
-	<script type="text/javascript" src="{% static 'sweetalert/sweetalert2.js' %}"></script>
-	
-	<!-- Plugin js for this page -->
-	<script src="{% static 'bs_temp/js/Chart.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/jquery-jvectormap.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/jquery-jvectormap-world-mill-en.js' %}"></script>
-	<script src="{% static 'bs_temp/js/raphael-2.1.4.min.js' %}"></script>
-	<script src="{% static 'bs_temp/js/justgage.js' %}"></script>
-	<!-- End plugin js for this page -->
-	<!-- inject:js -->
-	<script src="{% static 'bs_temp/js/off-canvas.js' %}"></script>
-	<script src="{% static 'bs_temp/js/hoverable-collapse.js' %}"></script>
-	<script src="{% static 'bs_temp/js/misc.js' %}"></script>
-	<script src="{% static 'bs_temp/js/settings.js' %}"></script>
-	<script src="{% static 'bs_temp/js/todolist.js' %}"></script>
-	<!-- endinject -->
-	<!-- Custom js for this page -->
-	<script src="{% static 'bs_temp/js/dashboard.js' %}"></script>
-	<!-- End custom js for this page -->
-	
-	<script type="text/javascript">
-  	// Hide submenus
-  	$('#body-row .collapse').collapse('hide'); 
+  <!-- BootStrap Theme JS -->
+  
+  <script type="text/javascript" src="{% static 'bs_temp/js/vendor.bundle.base.js' %}"></script>
+  
+  <script type="text/javascript" src="{% static 'notify/notify.js' %}"></script>
+  <script type="text/javascript" src="{% static 'sweetalert/sweetalert2.js' %}"></script>
+  
+  <!-- Plugin js for this page -->
+  <script src="{% static 'bs_temp/js/Chart.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/jquery-jvectormap.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/jquery-jvectormap-world-mill-en.js' %}"></script>
+  <script src="{% static 'bs_temp/js/raphael-2.1.4.min.js' %}"></script>
+  <script src="{% static 'bs_temp/js/justgage.js' %}"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'bs_temp/js/off-canvas.js' %}"></script>
+  <script src="{% static 'bs_temp/js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'bs_temp/js/misc.js' %}"></script>
+  <script src="{% static 'bs_temp/js/settings.js' %}"></script>
+  <script src="{% static 'bs_temp/js/todolist.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="{% static 'bs_temp/js/dashboard.js' %}"></script>
+  <!-- End custom js for this page -->
+  
+  <script type="text/javascript">
+    // Hide submenus
+    $('#body-row .collapse').collapse('hide'); 
 
-  	// Collapse/Expand icon
-  	$('#collapse-icon').addClass('fa-angle-double-left'); 
+    // Collapse/Expand icon
+    $('#collapse-icon').addClass('fa-angle-double-left'); 
 
-  	// Collapse click
-  	$('[data-toggle=sidebar-colapse]').click(function() {
-    	SidebarCollapse();
-  	});
+    // Collapse click
+    $('[data-toggle=sidebar-colapse]').click(function() {
+      SidebarCollapse();
+    });
 
-  	function SidebarCollapse () {
-    	$('.menu-collapsed').toggleClass('d-none');
-    	$('.sidebar-submenu').toggleClass('d-none');
-    	$('.submenu-icon').toggleClass('d-none');
-    	$('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
-    	
-    	// Treating d-flex/d-none on separators with title
-    	var SeparatorTitle = $('.sidebar-separator-title');
-    	if ( SeparatorTitle.hasClass('d-flex') ) {
-      	SeparatorTitle.removeClass('d-flex');
-    	} else {
-      	SeparatorTitle.addClass('d-flex');
-    	}
-    	
-    	// Collapse/Expand icon
-    	$('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
-  	}
-	</script>
+    function SidebarCollapse () {
+      $('.menu-collapsed').toggleClass('d-none');
+      $('.sidebar-submenu').toggleClass('d-none');
+      $('.submenu-icon').toggleClass('d-none');
+      $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+      
+      // Treating d-flex/d-none on separators with title
+      var SeparatorTitle = $('.sidebar-separator-title');
+      if ( SeparatorTitle.hasClass('d-flex') ) {
+        SeparatorTitle.removeClass('d-flex');
+      } else {
+        SeparatorTitle.addClass('d-flex');
+      }
+      
+      // Collapse/Expand icon
+      $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+    }
+  </script>
 
-	{% block script %}
-	{% endblock %}
-	
-	{% block tooltip_script %}
-  	<script type="text/javascript">
-    	$(function () {
-      	$('[data-toggle="tooltip"]').tooltip()
-    	})
-  	</script>
-	{% endblock %}
+  {% block script %}
+  {% endblock %}
+  
+  {% block tooltip_script %}
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+  {% endblock %}
 
-	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script> -->
-	{% block notification_sys %}
-  	<script>
-    	// const notification_sock = new ReconnectingWebSocket(
-    	const notification_sock = new WebSocket(
-      	'wss://'
-      	+ window.location.host
-      	+ '/ws/notifications/',
-    	);
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script> -->
+  {% block notification_sys %}
+    <script>
+      // const notification_sock = new ReconnectingWebSocket(
+      const notification_sock = new WebSocket(
+        'wss://'
+        + window.location.host
+        + '/ws/notifications/',
+      );
 
-    	window.stack_contexts = {}
+      window.stack_contexts = {}
 
-    	// Send an initial message
-    	notification_sock.onmessage = function(e) {
-      	const data = JSON.parse(e.data);
-      	console.log("Received websocket message");
-      	console.log(data);
-      	display_notification(data)
-    	};
+      // Send an initial message
+      notification_sock.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        console.log("Received websocket message");
+        console.log(data);
+        display_notification(data)
+      };
 
-    	notification_sock.onclose = function(e) {
-      	console.error('Notification socket closed unexpectedly');
-    	};
+      notification_sock.onclose = function(e) {
+        console.error('Notification socket closed unexpectedly');
+      };
 
-    	$.notify.addStyle('vdx_id_blue', {
-      	html: "<div class='p-2'><i class='fa fa-info-circle p-1' style='color: #DDD;' aria-hidden='true'></i><span data-notify-text/></div>",
-      	classes: {
-        	"base": {
-          	"white-space": "nowrap",
-          	"background": "rgba(50,146,197,0.9)",
-          	"padding": "8px",
-          	"color": "#fff",
-          	"font-weight": 420,
-          	"font-size": 20,
-          	"border-radius": "10px",
-          	"border": "solid 1px white"
-        	},
-        	"wo-created": {
-          	"background": "rgba(45,82,158,0.9)",
-          	"border": "solid 2px white"
-        	},
-        	"wo-processing": {
-          	"background": "linear-gradient(90deg, rgba(58,58,161,1) 0%, rgba(64,227,178,1) 100%)",
-          	"border": "solid 2px white"
-        	},
-        	"wo-complete": {
-          	"background": "rgba(36,135,45,0.9)",
-          	"border": "solid 2px white"
-        	},
-        	"info": {
-          	"background": "rgba(0,46,120,0.9)",
-          	"border": "solid 2px cyan"
-        	},
-        	"success": {
-          	"background": "rgba(0,120,47,0.9)",
-          	"border": "solid 2px green"
-        	},
-        	"danger": {
-          	"background": "rgba(97,26,27,0.9)",
-          	"border": "solid 2px red"
-        	}
-      	}
-    	});
+      $.notify.addStyle('vdx_id_blue', {
+        html: "<div class='p-2'><i class='fa fa-info-circle p-1' style='color: #DDD;' aria-hidden='true'></i><span data-notify-text/></div>",
+        classes: {
+          "base": {
+            "white-space": "nowrap",
+            "background": "rgba(50,146,197,0.9)",
+            "padding": "8px",
+            "color": "#fff",
+            "font-weight": 420,
+            "font-size": 20,
+            "border-radius": "10px",
+            "border": "solid 1px white"
+          },
+          "wo-created": {
+            "background": "rgba(45,82,158,0.9)",
+            "border": "solid 2px white"
+          },
+          "wo-processing": {
+            "background": "linear-gradient(90deg, rgba(58,58,161,1) 0%, rgba(64,227,178,1) 100%)",
+            "border": "solid 2px white"
+          },
+          "wo-complete": {
+            "background": "rgba(36,135,45,0.9)",
+            "border": "solid 2px white"
+          },
+          "info": {
+            "background": "rgba(0,46,120,0.9)",
+            "border": "solid 2px cyan"
+          },
+          "success": {
+            "background": "rgba(0,120,47,0.9)",
+            "border": "solid 2px green"
+          },
+          "danger": {
+            "background": "rgba(97,26,27,0.9)",
+            "border": "solid 2px red"
+          }
+        }
+      });
 
-    	function display_notification(data) {
-      	if (data.identity == undefined || data.identity == "{{user.associated_identity.unique_identifier}}"){
-        	$.notify(
-          	data.text,
-          	{ 
-            	position: "top right",
-            	style: 'vdx_id_blue',
-            	className: data.style,
-            	arrowShow: false,
-            	showAnimation: 'slideDown',
-            	showDuration: 400,
-            	hideAnimation: 'slideUp',
-            	hideDuration: 200,
-            	gap: 2
-          	}
-        	);
-      	}
-    	}
+      function display_notification(data) {
+        if (data.identity == undefined || data.identity == "{{user.associated_identity.unique_identifier}}"){
+          $.notify(
+            data.text,
+            { 
+              position: "top right",
+              style: 'vdx_id_blue',
+              className: data.style,
+              arrowShow: false,
+              showAnimation: 'slideDown',
+              showDuration: 400,
+              hideAnimation: 'slideUp',
+              hideDuration: 200,
+              gap: 2
+            }
+          );
+        }
+      }
 
-  	</script>
-	{% endblock %}
+    </script>
+  {% endblock %}
 
-	<!-- Templating -->
-	<script type="text/javascript" src="{% static 'handlebars/handlebars.min.js' %}"></script>
-	
-	<script type="text/javascript" src="{% static 'jquery/jquery.cookie.js' %}"></script>
+  <!-- Templating -->
+  <script type="text/javascript" src="{% static 'handlebars/handlebars.min.js' %}"></script>
+  
+  <script type="text/javascript" src="{% static 'jquery/jquery.cookie.js' %}"></script>
 
 
 
-	<script type="text/javascript">
-  	/////////////////////////////////////////////
-  	// CSRF management via cookies
-  	/////////////////////////////////////////////
-  	// Get the jquery.cookie library!
-  	function csrfSafeMethod(method){
-    	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-  	}
+  <script type="text/javascript">
+    /////////////////////////////////////////////
+    // CSRF management via cookies
+    /////////////////////////////////////////////
+    // Get the jquery.cookie library!
+    function csrfSafeMethod(method){
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
 
-  	$(document).ready(function() {
-    	$.ajaxSetup({
-      	beforeSend: function(xhr, settings){
-        	var csrftoken = $.cookie('csrftoken');
-        	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-          	xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        	}
-      	}
-    	});
+    $(document).ready(function() {
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings){
+          var csrftoken = $.cookie('csrftoken');
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
 
-  	});
+    });
 
-  	window.onload = function() {
-    	Particles.init({
-      	selector: '.background',
-      	color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
-      	connectParticles: true,
-      	responsive: true,
-    	});
-  	};
-	</script>
+    window.onload = function() {
+      Particles.init({
+        selector: '.background',
+        color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
+        connectParticles: true,
+        responsive: true,
+      });
+    };
+  </script>
 </html>
