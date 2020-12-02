@@ -20,7 +20,7 @@
     }
   }
   @media only screen and (max-width: 640px) {
-    #group_req_table, #item_req_table {
+    #group_req_table, #item_req_table, #membership_table {
       display: block;
     }
   }
@@ -52,6 +52,7 @@
   }
   .my-access-table-body .card-header {
     min-height: 100px;
+    max-height: 100px;
   }
   
 </style>
@@ -65,7 +66,7 @@
 
   <div class="row-fluid">
     <div class="p-3 demo-header">
-    	<div class="demo-header-body p-3">
+      <div class="demo-header-body p-3">
         <h4 class="text-primary">My Access <small class="text-muted">State of your access managed by Identify</small></h4>
         <div class="row">
           <div class="col-md-6">
@@ -84,11 +85,11 @@
           </dl>
           </div>
         </div>
-    	</div>
+      </div>
     </div>
   </div>
 
-  	
+    
   <div class="row m-0">
 
     <div class="col-xl-6 px-3 pl-xl-3 pr-xl-2 my-access-table-body">
@@ -132,12 +133,12 @@
     </div>
 
     <div class="col-xl-6 px-3 pr-xl-3 pl-xl-2 mt-3 mt-xl-0 my-access-table-body">
-      <div id="accordion">
+      <!-- <div id="accordion">
         <div class="card">
           <div class="card-header bg-dark" id="headingOne">
             <h5 class="mb-0">
               <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Group Access Requests
+                Group Access Requests
                 <span class="badge badge-pill badge-warning">{{group_req.processing}} Processing</span>
                 <span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
               </button>
@@ -174,8 +175,8 @@
             <h5 class="mb-0">
               <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 Item Access Requests
-                  <span class="badge badge-pill badge-warning">{{item_req.processing}} Processing</span>
-                  <span class="badge badge-pill badge-dark">{{item_req.processed}} Processed</span>
+                <span class="badge badge-pill badge-warning">{{item_req.processing}} Processing</span>
+                <span class="badge badge-pill badge-dark">{{item_req.processed}} Processed</span>
               </button>
             </h5>
           </div>
@@ -206,9 +207,78 @@
             </div>
           </div>
         </div>
-        
-      </div>
+      </div> -->
 
+      <div class="card">
+        <div class="card-header bg-dark d-flex align-items-center" id="headingOne">
+          <nav class="w-100">
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist" style="height: calc( 100px - 2rem );">
+              <button class="nav-link btn btn-primary border-0 w-50 p-1 active" style="border-radius: unset;" id="platform-hosts-tab" data-toggle="tab" href="#platform-hosts" role="tab" aria-controls="platform-hosts" aria-selected="true">
+                Group Access Requests
+                <span class="badge badge-pill badge-warning mt-2">{{group_req.processing}} Processing</span>
+                <span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
+              </button>
+              <button class="nav-link btn btn-primary border-0 w-50 p-1" style="border-radius: unset;" id="platform-workorders-tab" data-toggle="tab" href="#platform-workorders" role="tab" aria-controls="platform-workorders" aria-selected="false">
+                Item Access Requests
+                <span class="badge badge-pill badge-warning mt-2">{{item_req.processing}} Processing</span>
+                <span class="badge badge-pill badge-dark">{{item_req.processed}} Processed</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade active show" id="platform-hosts" role="tabpanel" aria-labelledby="platform-hosts-tab">
+            <div class="card-body">
+              <table id="group_req_table" class="table table-hover table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>{% trans "Access Group" %}</th>
+                    <th>{% trans "Current State" %}</th>
+                    <th>{% trans "Target State" %}</th>
+                    <th>{% trans "Processing" %}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>{% trans "Access Group" %}</th>
+                    <th class="table_select">{% trans "Current State" %}</th>
+                    <th class="table_select">{% trans "Target State" %}</th>
+                    <th class="table_select">{% trans "Processing" %}</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="platform-workorders" role="tabpanel" aria-labelledby="platform-workorders-tab">
+            <div class="card-body">
+              <table id="item_req_table" class="table table-hover table-sm w-100">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>{% trans "Access Item" %}</th>
+                    <th>{% trans "Platform" %}</th>
+                    <th>{% trans "Current State" %}</th>
+                    <th>{% trans "Target State" %}</th>
+                    <th>{% trans "Processing" %}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>{% trans "Access Item" %}</th>
+                    <th class="table_select">{% trans "Platform" %}</th>
+                    <th class="table_select">{% trans "Current State" %}</th>
+                    <th class="table_select">{% trans "Target State" %}</th>
+                    <th class="table_select">{% trans "Processing" %}</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -495,7 +565,7 @@
               .draw();
           } );
         dtable.column( i ).data().unique().sort().each( function ( d, j ) {  
-    	select.append( '<option value="'+d+'">'+d+'</option>' );
+      select.append( '<option value="'+d+'">'+d+'</option>' );
       } );
       } else if (title.length > 0){
         $(this).html(
