@@ -149,15 +149,15 @@
       <td>{{group.description}}</td>
       <td>
       	{% for in_grp in group.access_groups.all %}
-        <span class="badge badge-info">{{in_grp}}</span>
+        <span class="badge badge-outline-info">{{in_grp}}</span>
       	{% endfor %}
       </td>
       <td>
       	{% for in_item in group.access_items.all %}
-        <span class="badge badge-info">{{in_item}}</span>
+        <span class="badge badge-outline-info">{{in_item}}</span>
       	{% endfor %}
       </td>
-      <td><a class="btn btn-xs btn-block btn-primary"
+      <td><a class="btn btn-xs btn-block btn-outline-primary"
       	href="{% url 'web:acm:view_access' %}?identifier={{group.identifier}}">
       	Request</a></td>
     	</tr>
@@ -203,7 +203,7 @@
       <td>{{server.server_group.title}}</td>
       <td>{{server.created}}</td>
       <td>{{server.modified}}</td>
-      <td><button class="btn btn-xs btn-block btn-primary show_server_collection"
+      <td><button class="btn btn-xs btn-block btn-outline-primary show_server_collection"
       	data-server_pk={{server.pk}}>
       	View Data</button></td>
     	</tr>

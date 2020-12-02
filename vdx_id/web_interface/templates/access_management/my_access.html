@@ -109,7 +109,7 @@
             </div>
           {% endif %}
 
-          <table id="membership_table" class="table table-hover table-sm">
+          <table id="membership_table" class="table table-striped table-sm dataTable">
             <thead class="thead-dark">
               <tr>
                 <th>{% trans "Access Group" %}</th>
@@ -138,8 +138,8 @@
             <h5 class="mb-0">
               <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Group Access Requests
-              	<span class="badge badge-pill badge-warning">{{group_req.processing}} Processing</span>
-              	<span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
+                <span class="badge badge-pill badge-warning">{{group_req.processing}} Processing</span>
+                <span class="badge badge-pill badge-dark">{{group_req.processed}} Processed</span>
               </button>
             </h5>
           </div>
@@ -463,7 +463,7 @@
           "render": function (data, type, row) {
             return `
               <h5><span 
-                class="badge badge-success d-block">
+                class="badge badge-outline-success d-block">
                 ${data}</span></h5>`
           }},
         { "data": "date_created" },
@@ -543,7 +543,7 @@
             var group_req_pk = row['pk'];
             return `
               <h5><span 
-                class="group_req_identifier badge badge-info d-block"
+                class="group_req_identifier badge badge-outline-info d-block"
                 data-pk=${group_req_pk}>${data}</span></h5>`
           }},
         { 
@@ -570,12 +570,12 @@
             if (data == true){
               return `
                 <h5><span 
-                  class="badge badge-warning d-block">
+                  class="badge badge-outline-success d-block">
                   ${data}</span></h5>`
             } else {
               return `
                 <h5><span 
-                  class="badge badge-dark d-block">
+                  class="badge badge-outline-warning d-block">
                   ${data}</span></h5>`
             }
           }

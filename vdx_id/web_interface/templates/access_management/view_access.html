@@ -395,7 +395,7 @@
             var group_pk = row['pk'];
             return `
               <h5><span 
-                class="group_identifier badge badge-primary d-block" 
+                class="group_identifier badge badge-outline-primary d-block" 
                 data-pk=${group_pk}>${data}</span></h5>`
           }
         },
@@ -408,7 +408,7 @@
             for (d in data){item_list.push("<li>"+data[d]+"</li>")}
             btnhtml = [
               '<span style="display: none" class="invisible">' + data + '</span>',
-              '<button type="button" class="btn btn-sm btn-info" ',
+              '<button type="button" class="btn btn-sm btn-outline-info" ',
               'data-toggle="tooltip" data-placement="left" data-html="true"',
               ' title="Contains<ul>' + item_list.join(' ') + '</ul>" >',
               'Groups <span class="badge badge-light">' + data.length + '</span>',                            
@@ -423,7 +423,7 @@
             for (d in data){item_list.push("<li>"+data[d]+"</li>")}
             btnhtml = [
               '<span style="display: none" class="invisible">' + data + '</span>',
-              '<button type="button" class="btn btn-sm btn-primary" ',
+              '<button type="button" class="btn btn-sm btn-outline-primary" ',
               'data-toggle="tooltip" data-placement="left" data-html="true"',
               ' title="Contains<ul>' + item_list.join(' ') + '</ul>" >',
               'Items <span class="badge badge-light">' + data.length + '</span>',                            
