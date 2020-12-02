@@ -2,377 +2,377 @@
 	"model": "sites.site",
 	"pk": 1,
 	"fields": {
-		"domain": "example.com",
-		"name": "example.com"
+  "domain": "example.com",
+  "name": "example.com"
 	}
 }, {
 	"model": "id_identities.vdxidentity",
 	"pk": 1,
 	"fields": {
-		"properties": {},
-		"unique_identifier": "test_admin_ident",
-		"access_synchronized": true
+  "properties": {},
+  "unique_identifier": "test_admin_ident",
+  "access_synchronized": true
 	}
 }, {
 	"model": "id_identities.vdxidentity",
 	"pk": 2,
 	"fields": {
-		"properties": {},
-		"unique_identifier": "admin_ident",
-		"access_synchronized": true
+  "properties": {},
+  "unique_identifier": "admin_ident",
+  "access_synchronized": true
 	}
 }, {
 	"model": "id_platforms.viplatform",
 	"pk": 1,
 	"fields": {
-		"properties": {
-			"ssh_user": "root",
-			"host_string": "{fqdn}",
-			"ssh_password": "root"
-		},
-		"title": "Demo platform",
-		"description": "Demo platform",
-		"collection_task": null,
-		"interface": 1,
-		"default_account_template": 1,
-		"generate_new_accounts": true,
-		"generate_new_access_items": true
+  "properties": {
+  	"ssh_user": "root",
+  	"host_string": "{fqdn}",
+  	"ssh_password": "root"
+  },
+  "title": "Demo platform",
+  "description": "Demo platform",
+  "collection_task": null,
+  "interface": 1,
+  "default_account_template": 1,
+  "generate_new_accounts": true,
+  "generate_new_access_items": true
 	}
 }, {
 	"model": "id_access.viaccessitem",
 	"pk": 1,
 	"fields": {
-		"identifier": "sample_a",
-		"available": true,
-		"active": true,
-		"properties": {},
-		"description": "Sample access item for testing",
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1
+  "identifier": "sample_a",
+  "available": true,
+  "active": true,
+  "properties": {},
+  "description": "Sample access item for testing",
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1
 	}
 }, {
 	"model": "id_access.viaccessitem",
 	"pk": 2,
 	"fields": {
-		"identifier": "sample_b",
-		"available": true,
-		"active": true,
-		"properties": {},
-		"description": "Sample access item for testing",
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1
+  "identifier": "sample_b",
+  "available": true,
+  "active": true,
+  "properties": {},
+  "description": "Sample access item for testing",
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1
 	}
 }, {
 	"model": "id_access.viaccessitem",
 	"pk": 3,
 	"fields": {
-		"identifier": "sample_c",
-		"available": true,
-		"active": true,
-		"properties": {},
-		"description": "Sample access item for testing",
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1
+  "identifier": "sample_c",
+  "available": true,
+  "active": true,
+  "properties": {},
+  "description": "Sample access item for testing",
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1
 	}
 }, {
 	"model": "id_access.viaccessitem",
 	"pk": 4,
 	"fields": {
-		"identifier": "sample_d",
-		"available": true,
-		"active": true,
-		"properties": {},
-		"description": "Sample access item for testing",
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1
+  "identifier": "sample_d",
+  "available": true,
+  "active": true,
+  "properties": {},
+  "description": "Sample access item for testing",
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1
 	}
 }, {
 	"model": "id_access.viaccessitem",
 	"pk": 5,
 	"fields": {
-		"identifier": "sample_e",
-		"available": true,
-		"active": true,
-		"properties": {},
-		"description": "Sample access item for testing",
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1
+  "identifier": "sample_e",
+  "available": true,
+  "active": true,
+  "properties": {},
+  "description": "Sample access item for testing",
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1
 	}
 }, {
 	"model": "id_access.viaccessgroup",
 	"pk": 1,
 	"fields": {
-		"identifier": "Sample A&B",
-		"description": "Sample group containing access items sample_a and sample_b",
-		"available": true,
-		"platform": 1,
-		"rule_list": [],
-		"membership_autoexpiry": "30 00:00:00",
-		"stored_access_state": {
-			"items": [],
-			"groups": []
-		},
-		"owners": [2],
-		"access_groups": [],
-		"access_items": [1, 2]
+  "identifier": "Sample A&B",
+  "description": "Sample group containing access items sample_a and sample_b",
+  "available": true,
+  "platform": 1,
+  "rule_list": [],
+  "membership_autoexpiry": "30 00:00:00",
+  "stored_access_state": {
+  	"items": [],
+  	"groups": []
+  },
+  "owners": [2],
+  "access_groups": [],
+  "access_items": [1, 2]
 	}
 }, {
 	"model": "id_access.viaccessgroup",
 	"pk": 2,
 	"fields": {
-		"identifier": "Sample C&D&E",
-		"description": "Sample group containing C&D&E",
-		"available": true,
-		"platform": 1,
-		"rule_list": [],
-		"membership_autoexpiry": "30 00:00:00",
-		"stored_access_state": {
-			"items": [],
-			"groups": []
-		},
-		"owners": [2],
-		"access_groups": [],
-		"access_items": [3, 4, 5]
+  "identifier": "Sample C&D&E",
+  "description": "Sample group containing C&D&E",
+  "available": true,
+  "platform": 1,
+  "rule_list": [],
+  "membership_autoexpiry": "30 00:00:00",
+  "stored_access_state": {
+  	"items": [],
+  	"groups": []
+  },
+  "owners": [2],
+  "access_groups": [],
+  "access_items": [3, 4, 5]
 	}
 }, {
 	"model": "id_access.viaccessgroup",
 	"pk": 3,
 	"fields": {
-		"identifier": "Sample C&(Sample A&B)",
-		"description": "Sample group inheriting (Sample A&B) with access item sample_c",
-		"available": true,
-		"platform": 1,
-		"rule_list": [],
-		"membership_autoexpiry": "30 00:00:00",
-		"stored_access_state": {
-			"items": [3],
-			"groups": [1]
-		},
-		"owners": [2],
-		"access_groups": [1],
-		"access_items": [3]
+  "identifier": "Sample C&(Sample A&B)",
+  "description": "Sample group inheriting (Sample A&B) with access item sample_c",
+  "available": true,
+  "platform": 1,
+  "rule_list": [],
+  "membership_autoexpiry": "30 00:00:00",
+  "stored_access_state": {
+  	"items": [3],
+  	"groups": [1]
+  },
+  "owners": [2],
+  "access_groups": [1],
+  "access_items": [3]
 	}
 }, {
 	"model": "id_access.accessitemmembership",
 	"pk": 1,
 	"fields": {
-		"access": 1,
-		"account": 1,
-		"embedded_access": false,
-		"date_created": "2020-11-23",
-		"last_updated": "2020-11-23"
+  "access": 1,
+  "account": 1,
+  "embedded_access": false,
+  "date_created": "2020-11-23",
+  "last_updated": "2020-11-23"
 	}
 }, {
 	"model": "id_access.accessitemmembership",
 	"pk": 2,
 	"fields": {
-		"access": 2,
-		"account": 1,
-		"embedded_access": false,
-		"date_created": "2020-11-23",
-		"last_updated": "2020-11-23"
+  "access": 2,
+  "account": 1,
+  "embedded_access": false,
+  "date_created": "2020-11-23",
+  "last_updated": "2020-11-23"
 	}
 }, {
 	"model": "id_access.accessgroupmembership",
 	"pk": 1,
 	"fields": {
-		"access_group": 1,
-		"identity": 1,
-		"date_created": "2020-11-23",
-		"last_updated": "2020-11-23",
-		"membership_expiry": null
+  "access_group": 1,
+  "identity": 1,
+  "date_created": "2020-11-23",
+  "last_updated": "2020-11-23",
+  "membership_expiry": null
 	}
 }, {
 	"model": "id_access.viaccessitemrequest",
 	"pk": 3,
 	"fields": {
-		"processing": false,
-		"state": "member",
-		"target_state": "member",
-		"identity": 1,
-		"account": 1,
-		"account_template": null,
-		"platform": 1,
-		"access_item": 1
+  "processing": false,
+  "state": "member",
+  "target_state": "member",
+  "identity": 1,
+  "account": 1,
+  "account_template": null,
+  "platform": 1,
+  "access_item": 1
 	}
 }, {
 	"model": "id_access.viaccessitemrequest",
 	"pk": 4,
 	"fields": {
-		"processing": false,
-		"state": "member",
-		"target_state": "member",
-		"identity": 1,
-		"account": 1,
-		"account_template": null,
-		"platform": 1,
-		"access_item": 2
+  "processing": false,
+  "state": "member",
+  "target_state": "member",
+  "identity": 1,
+  "account": 1,
+  "account_template": null,
+  "platform": 1,
+  "access_item": 2
 	}
 }, {
 	"model": "id_access.viaccessgrouprequest",
 	"pk": 1,
 	"fields": {
-		"processing": false,
-		"state": "member",
-		"target_state": "member",
-		"identity": 1,
-		"access_group": 1,
-		"authorization_state": {},
-		"access_duration": null,
-		"justification": "",
-		"parent_request": null,
-		"attention_identities": []
+  "processing": false,
+  "state": "member",
+  "target_state": "member",
+  "identity": 1,
+  "access_group": 1,
+  "authorization_state": {},
+  "access_duration": null,
+  "justification": "",
+  "parent_request": null,
+  "attention_identities": []
 	}
 }, {
 	"model": "id_servers.viservergroup",
 	"pk": 1,
 	"fields": {
-		"title": "Docker sample 1-32",
-		"description": "Docker sample",
-		"scan_definition": {
-			"ports": [22],
-			"ranges": [{
-				"cidr": "172.18.0.0/24"
-			}],
-			"exclude_ranges": [{
-				"cidr": "172.18.0.0/31"
-			}]
-		},
-		"scan_results": {},
-		"scan_interval": "00:30:00",
-		"server_retire_time": "1 00:00:00",
-		"associated_agent": null,
-		"modified": "2020-01-20T00:00:00Z",
-		"location": [5.4697225, 51.441642]
+  "title": "Docker sample 1-32",
+  "description": "Docker sample",
+  "scan_definition": {
+  	"ports": [22],
+  	"ranges": [{
+    "cidr": "172.18.0.0/24"
+  	}],
+  	"exclude_ranges": [{
+    "cidr": "172.18.0.0/31"
+  	}]
+  },
+  "scan_results": {},
+  "scan_interval": "00:30:00",
+  "server_retire_time": "1 00:00:00",
+  "associated_agent": null,
+  "modified": "2020-01-20T00:00:00Z",
+  "location": [5.4697225, 51.441642]
 	}
 }, {
 	"model": "id_servers.viplatformserver",
 	"pk": 1,
 	"fields": {
-		"fqdn": "127.0.0.1",
-		"active": true,
-		"properties": {},
-		"human_readable_name": "Sample Server",
-		"hostname": "localhost",
-		"created": "2020-11-23T17:06:22.189Z",
-		"modified": "2020-11-23T17:06:22.189Z",
-		"server_group": 1,
-		"platform": 1,
-		"collection_data": {},
-		"location": [5.4697225, 51.44830866666667]
+  "fqdn": "127.0.0.1",
+  "active": true,
+  "properties": {},
+  "human_readable_name": "Sample Server",
+  "hostname": "localhost",
+  "created": "2020-11-23T17:06:22.189Z",
+  "modified": "2020-11-23T17:06:22.189Z",
+  "server_group": 1,
+  "platform": 1,
+  "collection_data": {},
+  "location": [5.4697225, 51.44830866666667]
 	}
 }, {
 	"model": "id_work_agent.viagent",
 	"pk": 1,
 	"fields": {
-		"active": "True",
-		"agent_name": "agent_internal",
-		"description": "Internal agent",
-		"heartbeat_time": "2020-04-24T22:59:51.457Z",
-		"health_state": 0,
-		"queue_name_override": null,
-		"location": [5.5697225, 51.441642]
+  "active": "True",
+  "agent_name": "agent_internal",
+  "description": "Internal agent",
+  "heartbeat_time": "2020-04-24T22:59:51.457Z",
+  "health_state": 0,
+  "queue_name_override": null,
+  "location": [5.5697225, 51.441642]
 	}
 }, {
 	"model": "id_work_agent.viagentplatforminterface",
 	"pk": 1,
 	"fields": {
-		"interface_name": "test",
-		"last_update": "2020-11-23T19:19:34.087Z",
-		"api": {},
-		"task_signature": "test",
-		"agent": 1
+  "interface_name": "test",
+  "last_update": "2020-11-23T19:19:34.087Z",
+  "api": {},
+  "task_signature": "test",
+  "agent": 1
 	}
 }, {
 	"model": "id_work_agent.viaccounttemplate",
 	"pk": 1,
 	"fields": {
-		"name": "test",
-		"identifier": "test",
-		"description": "test",
-		"properties": {
-			"test": "Test"
-		},
-		"propogate_params_to_identity": [],
-		"interface": 1
+  "name": "test",
+  "identifier": "test",
+  "description": "test",
+  "properties": {
+  	"test": "Test"
+  },
+  "propogate_params_to_identity": [],
+  "interface": 1
 	}
 }, {
 	"model": "id_work_agent.viagentworkorder",
 	"pk": 1,
 	"fields": {
-		"name": "Agent API call",
-		"api_call": "collect_accounts",
-		"celery_task": "test",
-		"queue": "platform",
-		"all_tasks_successful": false,
-		"complete": false,
-		"active": true,
-		"task_parameters": {},
-		"pooling_time": 5,
-		"trigger_platform_collection": false,
-		"agent_workorders": {},
-		"exception": "",
-		"identity": null,
-		"identity_account": null,
-		"access_item": null,
-		"platform": 1,
-		"server_pk_subset": [],
-		"created": "2020-11-23T19:20:34.523Z",
-		"modified": "2020-11-23T20:09:19.538Z",
-		"complete_time": null
+  "name": "Agent API call",
+  "api_call": "collect_accounts",
+  "celery_task": "test",
+  "queue": "platform",
+  "all_tasks_successful": false,
+  "complete": false,
+  "active": true,
+  "task_parameters": {},
+  "pooling_time": 5,
+  "trigger_platform_collection": false,
+  "agent_workorders": {},
+  "exception": "",
+  "identity": null,
+  "identity_account": null,
+  "access_item": null,
+  "platform": 1,
+  "server_pk_subset": [],
+  "created": "2020-11-23T19:20:34.523Z",
+  "modified": "2020-11-23T20:09:19.538Z",
+  "complete_time": null
 	}
 }, {
 	"model": "id_accounts.viaccount",
 	"pk": 1,
 	"fields": {
-		"active": true,
-		"identifier": "test_admin_ident",
-		"properties": {},
-		"propogate_params_to_identity": [],
-		"collection_data": {},
-		"collection_data_variance": false,
-		"platform": 1,
-		"identity": 1
+  "active": true,
+  "identifier": "test_admin_ident",
+  "properties": {},
+  "propogate_params_to_identity": [],
+  "collection_data": {},
+  "collection_data_variance": false,
+  "platform": 1,
+  "identity": 1
 	}
 }, {
 	"model": "id_users.vdxiduser",
 	"pk": 1,
 	"fields": {
-		"password": "pbkdf2_sha256$150000$TpvLlP72PimP$KxH9yb4hva5zRDMO2g/NAXwPR/An/fuzblSGNUkL5ig=",
-		"last_login": "2020-11-23T15:16:21Z",
-		"is_superuser": true,
-		"username": "admin",
-		"email": "",
-		"is_staff": true,
-		"is_active": true,
-		"date_joined": "2020-04-11T12:42:33Z",
-		"first_name": "",
-		"last_name": "",
-		"associated_identity": 2,
-		"groups": [],
-		"user_permissions": []
+  "password": "pbkdf2_sha256$150000$TpvLlP72PimP$KxH9yb4hva5zRDMO2g/NAXwPR/An/fuzblSGNUkL5ig=",
+  "last_login": "2020-11-23T15:16:21Z",
+  "is_superuser": true,
+  "username": "admin",
+  "email": "",
+  "is_staff": true,
+  "is_active": true,
+  "date_joined": "2020-04-11T12:42:33Z",
+  "first_name": "",
+  "last_name": "",
+  "associated_identity": 2,
+  "groups": [],
+  "user_permissions": []
 	}
 }, {
 	"model": "id_users.vdxiduser",
 	"pk": 2,
 	"fields": {
-		"password": "pbkdf2_sha256$150000$ucUVA0J0imai$JiSC+B/lOVUKMeRUEHJqDR/KWTRpa84HeGBsOUl1Dko=",
-		"last_login": "2020-11-23T19:29:40.353Z",
-		"is_superuser": true,
-		"username": "test_admin",
-		"email": "",
-		"is_staff": true,
-		"is_active": true,
-		"date_joined": "2020-11-23T15:17:17Z",
-		"first_name": "",
-		"last_name": "",
-		"associated_identity": 1,
-		"groups": [],
-		"user_permissions": []
+  "password": "pbkdf2_sha256$150000$ucUVA0J0imai$JiSC+B/lOVUKMeRUEHJqDR/KWTRpa84HeGBsOUl1Dko=",
+  "last_login": "2020-11-23T19:29:40.353Z",
+  "is_superuser": true,
+  "username": "test_admin",
+  "email": "",
+  "is_staff": true,
+  "is_active": true,
+  "date_joined": "2020-11-23T15:17:17Z",
+  "first_name": "",
+  "last_name": "",
+  "associated_identity": 1,
+  "groups": [],
+  "user_permissions": []
 	}
 }]

@@ -13,19 +13,19 @@
 <h4>Platform Search</h4>
 <form class="form">
 	<div class="form-group row">
-		<label for="agent_filter" class="col-sm-4 col-form-label col-form-label-sm">Agent</label>
-		<div class="col-sm-8">
-			<select class="form-control form-control-sm" id="agent_filter">
-				<option selected>Choose...</option>
-				<option value="1">agent_internal</option>
-			</select>
-		</div>
+  <label for="agent_filter" class="col-sm-4 col-form-label col-form-label-sm">Agent</label>
+  <div class="col-sm-8">
+  	<select class="form-control form-control-sm" id="agent_filter">
+    <option selected>Choose...</option>
+    <option value="1">agent_internal</option>
+  	</select>
+  </div>
 	</div>
 	<div class="form-group row">
-		<label for="name_filter" class="col-sm-4 col-form-label col-form-label-sm">Platform</label>
-		<div class="col-sm-8">
-			<input type="email" class="form-control form-control-sm" id="name_filter" placeholder="Filter by name">
-		</div>
+  <label for="name_filter" class="col-sm-4 col-form-label col-form-label-sm">Platform</label>
+  <div class="col-sm-8">
+  	<input type="email" class="form-control form-control-sm" id="name_filter" placeholder="Filter by name">
+  </div>
 	</div>
 </form>
 {% endblock %}
@@ -33,91 +33,91 @@
 {% block sidesearch_result %}
 <style>
 	.search_obj_card{
-		-moz-transition: all .2s ease-in;
-		-o-transition: all .2s ease-in;
-		-webkit-transition: all .2s ease-in;
-		transition: all .2s ease-in;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
 	}
 	.search_obj_card {
-		background-color: #1c1e2f;
-		cursor: pointer;
+  background-color: #1c1e2f;
+  cursor: pointer;
 	}
 	.search_obj_card:hover {
-		background-color: #222437;
+  background-color: #222437;
 	}
 	.search_obj_card:active {
-		background-color: blue;
-		-moz-transition: none;
-		-webkit-transition: none;
-		-o-transition: color 0 ease-in;
-		transition: none;
+  background-color: blue;
+  -moz-transition: none;
+  -webkit-transition: none;
+  -o-transition: color 0 ease-in;
+  transition: none;
 	}
 	.search_obj_card.selected {
-		background-color: #2196f3;
+  background-color: #2196f3;
 	}
 	#nav-tabContent {
-		overflow-y: auto;
+  overflow-y: auto;
 	}
 	.platform-detail-box {
-		background-color: #222437;
+  background-color: #222437;
 	}
 </style>
 	{% for plat in platforms %}
-		<div class="row mt-3 no-gutters border search_obj_card" data-platform_id={{plat.id}}>
-			<div class="col-md-12 card-body p-3 ">
-				<h4>{{plat.title}}</h4>
-				<p>{{plat.description}}</p>
-				<ul class="list-unstyled mb-0">
-					<li>Agent:
-						<span class="badge badge-dark">{{plat.interface.agent.agent_name}}</span>
-					</li>
-					<li>Hosts:
-						<span class="badge badge-pill badge-info">{{plat.servers.count}}</span>
-					</li>
-				</ul>
-			</div>
-		</div>
+  <div class="row mt-3 no-gutters border search_obj_card" data-platform_id={{plat.id}}>
+  	<div class="col-md-12 card-body p-3 ">
+    <h4>{{plat.title}}</h4>
+    <p>{{plat.description}}</p>
+    <ul class="list-unstyled mb-0">
+    	<li>Agent:
+      <span class="badge badge-dark">{{plat.interface.agent.agent_name}}</span>
+    	</li>
+    	<li>Hosts:
+      <span class="badge badge-pill badge-info">{{plat.servers.count}}</span>
+    	</li>
+    </ul>
+  	</div>
+  </div>
 	{% endfor %}
 {% endblock %}
 
 {% block search_meta %}
 	<div class="row no-gutters p-3 platform-detail-box" >
-		{% if selected_platform %}
-			<div class="col-12 col-xl-6">
-				<h3>{{selected_platform.title}}</h3>
-				<p class="lead">{{selected_platform.description}}</p>
-				
-				{% if request.user.is_staff %}
-					<button class="btn btn-success"
-						onclick="request_collection({{selected_platform.pk}})">
-						Collect Platform</button>
-				{% endif %}
-			</div>
-			<div class="col-12 col-xl-6 mt-3 mt-xl-0 ">
-				<table>
-					<caption>
-					Platform metadata
-					</caption>
-					<tbody>
-					<tr><td>Agent:</td><td><span class="badge ml-2 badge-dark">{{selected_platform.interface.agent.agent_name}}</span></td></tr>
-					<tr><td>Agent Interface:</td><td><span class="badge ml-2 badge-dark">{{selected_platform.interface}}</span></td></tr>
-					<tr><td>Last Collection:</td><td><span class="badge ml-2 badge-success">{{selected_platform_collection.complete_time}}</span></td></tr>
-					<tr><td>Hosts:</td><td><span class="badge ml-2 badge-primary">{{selected_platform.servers.count}}</span></td></tr>
-					<tr><td>User accounts:</td><td><span class="badge ml-2 badge-info">{{selected_platform.accounts.count}}</span></td></tr>
-					<tr><td>Access Items:</td><td><span class="badge ml-2 badge-info">{{selected_platform.access_items.count}}</span></td></tr>
-					<tr><td>Access Groups:</td><td><span class="badge ml-2 badge-info">{{selected_platform.associated_groups.count}}</span></td></tr>
-					<tr>
-						<td>Workorders:</td>
-						<td>
-							<span class="badge ml-2 badge-default">{{selected_platform.agent_work_orders.count}} total</span>
-							<span class="badge ml-2 badge-primary">{{sel_plat_wo.active.count}} active</span>
-							<span class="badge ml-2 badge-light">{{sel_plat_wo.pending.count}} pending</span>
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-		{% endif %}
+  {% if selected_platform %}
+  	<div class="col-12 col-xl-6">
+    <h3>{{selected_platform.title}}</h3>
+    <p class="lead">{{selected_platform.description}}</p>
+    
+    {% if request.user.is_staff %}
+    	<button class="btn btn-success"
+      onclick="request_collection({{selected_platform.pk}})">
+      Collect Platform</button>
+    {% endif %}
+  	</div>
+  	<div class="col-12 col-xl-6 mt-3 mt-xl-0 ">
+    <table>
+    	<caption>
+    	Platform metadata
+    	</caption>
+    	<tbody>
+    	<tr><td>Agent:</td><td><span class="badge ml-2 badge-dark">{{selected_platform.interface.agent.agent_name}}</span></td></tr>
+    	<tr><td>Agent Interface:</td><td><span class="badge ml-2 badge-dark">{{selected_platform.interface}}</span></td></tr>
+    	<tr><td>Last Collection:</td><td><span class="badge ml-2 badge-success">{{selected_platform_collection.complete_time}}</span></td></tr>
+    	<tr><td>Hosts:</td><td><span class="badge ml-2 badge-primary">{{selected_platform.servers.count}}</span></td></tr>
+    	<tr><td>User accounts:</td><td><span class="badge ml-2 badge-info">{{selected_platform.accounts.count}}</span></td></tr>
+    	<tr><td>Access Items:</td><td><span class="badge ml-2 badge-info">{{selected_platform.access_items.count}}</span></td></tr>
+    	<tr><td>Access Groups:</td><td><span class="badge ml-2 badge-info">{{selected_platform.associated_groups.count}}</span></td></tr>
+    	<tr>
+      <td>Workorders:</td>
+      <td>
+      	<span class="badge ml-2 badge-default">{{selected_platform.agent_work_orders.count}} total</span>
+      	<span class="badge ml-2 badge-primary">{{sel_plat_wo.active.count}} active</span>
+      	<span class="badge ml-2 badge-light">{{sel_plat_wo.pending.count}} pending</span>
+      </td>
+    	</tr>
+    	</tbody>
+    </table>
+  	</div>
+  {% endif %}
 	</div>
 {% endblock %}
 
@@ -132,110 +132,110 @@
 </nav>
 <div class="tab-content" id="nav-tabContent">
 	<div class="tab-pane fade show active" id="platform-groups" role="tabpanel" aria-labelledby="platform-groups-tab">
-		<table class="table table-sm table-dark">
-			<thead>
-			<tr>
-				<th scope="col">Identifier</th>
-				<th scope="col">Description</th>
-				<th scope="col">Inherited Groups</th>
-				<th scope="col">Inherited Items</th>
-				<th scope="col"></th>
-			</tr>
-			</thead>
-			<tbody>
-				{% for group in selected_platform.associated_groups.all %}
-					<tr>
-						<th scope="row">{{group.identifier}}</th>
-						<td>{{group.description}}</td>
-						<td>
-							{% for in_grp in group.access_groups.all %}
-								<span class="badge badge-info">{{in_grp}}</span>
-							{% endfor %}
-						</td>
-						<td>
-							{% for in_item in group.access_items.all %}
-								<span class="badge badge-info">{{in_item}}</span>
-							{% endfor %}
-						</td>
-						<td><a class="btn btn-xs btn-block btn-primary"
-							href="{% url 'web:acm:view_access' %}?identifier={{group.identifier}}">
-							Request</a></td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+  <table class="table table-sm table-dark">
+  	<thead>
+  	<tr>
+    <th scope="col">Identifier</th>
+    <th scope="col">Description</th>
+    <th scope="col">Inherited Groups</th>
+    <th scope="col">Inherited Items</th>
+    <th scope="col"></th>
+  	</tr>
+  	</thead>
+  	<tbody>
+    {% for group in selected_platform.associated_groups.all %}
+    	<tr>
+      <th scope="row">{{group.identifier}}</th>
+      <td>{{group.description}}</td>
+      <td>
+      	{% for in_grp in group.access_groups.all %}
+        <span class="badge badge-info">{{in_grp}}</span>
+      	{% endfor %}
+      </td>
+      <td>
+      	{% for in_item in group.access_items.all %}
+        <span class="badge badge-info">{{in_item}}</span>
+      	{% endfor %}
+      </td>
+      <td><a class="btn btn-xs btn-block btn-primary"
+      	href="{% url 'web:acm:view_access' %}?identifier={{group.identifier}}">
+      	Request</a></td>
+    	</tr>
+    {% endfor %}
+  	</tbody>
+  </table>
 	</div>
 	<div class="tab-pane fade" id="platform-items" role="tabpanel" aria-labelledby="platform-items-tab">
-		<table class="table table-sm table-dark">
-			<thead>
-			<tr>
-				<th scope="col">Identifier</th>
-				<th scope="col">Description</th>
-			</tr>
-			</thead>
-			<tbody>
-				{% for group in selected_platform.access_items.all %}
-					<tr>
-						<th scope="row">{{group.identifier}}</th>
-						<td>{{group.description}}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+  <table class="table table-sm table-dark">
+  	<thead>
+  	<tr>
+    <th scope="col">Identifier</th>
+    <th scope="col">Description</th>
+  	</tr>
+  	</thead>
+  	<tbody>
+    {% for group in selected_platform.access_items.all %}
+    	<tr>
+      <th scope="row">{{group.identifier}}</th>
+      <td>{{group.description}}</td>
+    	</tr>
+    {% endfor %}
+  	</tbody>
+  </table>
 	</div>
 	<div class="tab-pane fade" id="platform-hosts" role="tabpanel" aria-labelledby="platform-hosts-tab">
-		<table class="table table-sm table-dark">
-			<thead>
-			<tr>
-				<th scope="col">FQDN</th>
-				<th scope="col">Hostname</th>
-				<th scope="col">Server Group</th>
-				<th scope="col">Created</th>
-				<th scope="col">Updated</th>
-				<th scope="col"></th>
-			</tr>
-			</thead>
-			<tbody>
-				{% for server in selected_platform.servers.all %}
-					<tr>
-						<th scope="row">{{server.fqdn}}</th>
-						<td>{{server.hostname}}</td>
-						<td>{{server.server_group.title}}</td>
-						<td>{{server.created}}</td>
-						<td>{{server.modified}}</td>
-						<td><button class="btn btn-xs btn-block btn-primary show_server_collection"
-							data-server_pk={{server.pk}}>
-							View Data</button></td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+  <table class="table table-sm table-dark">
+  	<thead>
+  	<tr>
+    <th scope="col">FQDN</th>
+    <th scope="col">Hostname</th>
+    <th scope="col">Server Group</th>
+    <th scope="col">Created</th>
+    <th scope="col">Updated</th>
+    <th scope="col"></th>
+  	</tr>
+  	</thead>
+  	<tbody>
+    {% for server in selected_platform.servers.all %}
+    	<tr>
+      <th scope="row">{{server.fqdn}}</th>
+      <td>{{server.hostname}}</td>
+      <td>{{server.server_group.title}}</td>
+      <td>{{server.created}}</td>
+      <td>{{server.modified}}</td>
+      <td><button class="btn btn-xs btn-block btn-primary show_server_collection"
+      	data-server_pk={{server.pk}}>
+      	View Data</button></td>
+    	</tr>
+    {% endfor %}
+  	</tbody>
+  </table>
 	</div>
 	<div class="tab-pane fade" id="platform-workorders" role="tabpanel" aria-labelledby="platform-workorders-tab">
-		<table class="table table-sm table-dark">
-			<thead>
-			<tr>
-				<th scope="col">WO #</th>
-				<th scope="col">Api Call</th>
-				<th scope="col">Active</th>
-				<th scope="col">Complete</th>
-				<th scope="col">Created</th>
-				<th scope="col">Updated</th>
-			</tr>
-			</thead>
-			<tbody>
-				{% for wo in selected_platform.agent_work_orders.all %}
-					<tr>
-						<th scope="row">{{wo.pk}}</th>
-						<td>{{wo.api_call}}</td>
-						<td>{{wo.active}}</td>
-						<td>{{wo.complete}}</td>
-						<td>{{wo.created}}</td>
-						<td>{{wo.modified}}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+  <table class="table table-sm table-dark">
+  	<thead>
+  	<tr>
+    <th scope="col">WO #</th>
+    <th scope="col">Api Call</th>
+    <th scope="col">Active</th>
+    <th scope="col">Complete</th>
+    <th scope="col">Created</th>
+    <th scope="col">Updated</th>
+  	</tr>
+  	</thead>
+  	<tbody>
+    {% for wo in selected_platform.agent_work_orders.all %}
+    	<tr>
+      <th scope="row">{{wo.pk}}</th>
+      <td>{{wo.api_call}}</td>
+      <td>{{wo.active}}</td>
+      <td>{{wo.complete}}</td>
+      <td>{{wo.created}}</td>
+      <td>{{wo.modified}}</td>
+    	</tr>
+    {% endfor %}
+  	</tbody>
+  </table>
 	</div>
 </div>
 
@@ -247,53 +247,53 @@
 	{% verbatim handle_bar_templates %}
 
 	<div id="collection-template" class="d-none">
-		<div class="col-xs-1" align="center">
-			<h4 class="text-info">Waiting for collection</h4>
-			{{#if complete}}
-				<h5> <span class="text-success">Done</span></h5>
-			{{else}}
-				<h5> <span class="spinner-border text-info"></span></h5>
-			{{/if}}
-			<table>
-				<tbody>
-					<tr>
-						<td>WorkOrder</td>
-						<td><span class="badge badge-info">
-							{{pk}}
-						</span></td>
-					</tr>
-						<td>Status</td>
-						<td>
-							{{#if active}}
-								<span class="badge badge-primary">
-									In Progress
-								</span>
-							{{else if complete}}
-								<span class="badge badge-success">
-									Complete
-								</span>
-							{{else}}
-								<span class="badge badge-secondary">
-									Pending
-								</span>
-							{{/if}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			{{#if complete}}
-				<hr>
-				<a class="btn btn-success btn-xs btn-block" 
-					href="javascript:window.location.reload(true)">Okay</a>
-			{{/if}}
-		</div>
+  <div class="col-xs-1" align="center">
+  	<h4 class="text-info">Waiting for collection</h4>
+  	{{#if complete}}
+    <h5> <span class="text-success">Done</span></h5>
+  	{{else}}
+    <h5> <span class="spinner-border text-info"></span></h5>
+  	{{/if}}
+  	<table>
+    <tbody>
+    	<tr>
+      <td>WorkOrder</td>
+      <td><span class="badge badge-info">
+      	{{pk}}
+      </span></td>
+    	</tr>
+      <td>Status</td>
+      <td>
+      	{{#if active}}
+        <span class="badge badge-primary">
+        	In Progress
+        </span>
+      	{{else if complete}}
+        <span class="badge badge-success">
+        	Complete
+        </span>
+      	{{else}}
+        <span class="badge badge-secondary">
+        	Pending
+        </span>
+      	{{/if}}
+      </td>
+    	</tr>
+    </tbody>
+  	</table>
+  	{{#if complete}}
+    <hr>
+    <a class="btn btn-success btn-xs btn-block" 
+    	href="javascript:window.location.reload(true)">Okay</a>
+  	{{/if}}
+  </div>
 	</div>
 
 	<div id="view-collection-template" class="d-none">
-		<h4>Collection Data</h4>
-		<h5>Server FQDN: <span class="badge badge-dark">{{fqdn}}</span></h5>
-		<div class="jstree_div" style="text-align: left;">
-		</div>
+  <h4>Collection Data</h4>
+  <h5>Server FQDN: <span class="badge badge-dark">{{fqdn}}</span></h5>
+  <div class="jstree_div" style="text-align: left;">
+  </div>
 	</div>
 
 	{% endverbatim handle_bar_templates %}
@@ -306,151 +306,151 @@
 <script>
 
 	$(".search_obj_card").on("click", function(){
-		plat_id = $(this).data("platform_id");
-		plat_url = "{% url 'web:acm:view_platforms' 999 %}";
-		window.location = plat_url.replace(999, plat_id);
+  plat_id = $(this).data("platform_id");
+  plat_url = "{% url 'web:acm:view_platforms' 999 %}";
+  window.location = plat_url.replace(999, plat_id);
 	});
 
 	$(".show_server_collection").on("click", function(){
-		server_pk = $(this).data("server_pk");
-		server_url = "{% url 'api:sys:id_servers:server-detail' 999 %}";
-		server_url = server_url.replace(999, server_pk);
-		display_server_collection(server_url);
+  server_pk = $(this).data("server_pk");
+  server_url = "{% url 'api:sys:id_servers:server-detail' 999 %}";
+  server_url = server_url.replace(999, server_pk);
+  display_server_collection(server_url);
 	});
 
 	$(document).ready(function() {
-		$(".search_obj_card[data-platform_id='{{selected_platform.id}}'").addClass("selected");
+  $(".search_obj_card[data-platform_id='{{selected_platform.id}}'").addClass("selected");
 	});
 	
 	const swalWithBootstrapButtons = Swal.mixin({
-		customClass: {
-			confirmButton: 'btn btn-success',
-			cancelButton: 'btn btn-danger'
-		},
-		buttonsStyling: false,
-		showCancelButton: false,
-		showConfirmButton: false,
+  customClass: {
+  	confirmButton: 'btn btn-success',
+  	cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false,
+  showCancelButton: false,
+  showConfirmButton: false,
 	});
 
 	function request_collection(plat_id){
-		plat_collect_url = "{% url 'api:sys:id_platforms:platform-detail' 999 %}collect";
-		plat_collect_url = plat_collect_url.replace(999, plat_id);
-		console.log("Requesting: " + plat_collect_url);
-		
-		fetch(plat_collect_url)
-		.then(res => {
-			if (!res.ok) {
-				throw new Error(res.statusText);
-			} else {
-				return res.json();
-			}
-		}).then(resjson => {
-			console.log(resjson);
-			collect_wo_url = "{% url 'api:sys:id_agents:agentwo-detail' 999 %}";
-			collect_wo_url = collect_wo_url.replace(999, resjson.pk);
-			var templ = Handlebars.compile($("#collection-template").html());
+  plat_collect_url = "{% url 'api:sys:id_platforms:platform-detail' 999 %}collect";
+  plat_collect_url = plat_collect_url.replace(999, plat_id);
+  console.log("Requesting: " + plat_collect_url);
+  
+  fetch(plat_collect_url)
+  .then(res => {
+  	if (!res.ok) {
+    throw new Error(res.statusText);
+  	} else {
+    return res.json();
+  	}
+  }).then(resjson => {
+  	console.log(resjson);
+  	collect_wo_url = "{% url 'api:sys:id_agents:agentwo-detail' 999 %}";
+  	collect_wo_url = collect_wo_url.replace(999, resjson.pk);
+  	var templ = Handlebars.compile($("#collection-template").html());
 
-			populatedHtml = templ(resjson);
-			swalWithBootstrapButtons.fire({
-				html: populatedHtml,
-			});
+  	populatedHtml = templ(resjson);
+  	swalWithBootstrapButtons.fire({
+    html: populatedHtml,
+  	});
 
-			var interval = null;
-			function check_collect_status(){
-				$.ajax({
-					url: collect_wo_url,
-					success: function(data){
-						console.log(data);
-						new_alert_html = templ(data);
-						if (new_alert_html != populatedHtml){
-							populatedHtml = new_alert_html;
-							$('#swal2-content').html(populatedHtml);
-						}
-						if (data.complete){
-							clearInterval(interval); // stop the interval
-						}
-					},
-					error: function(){
-						clearInterval(interval); // stop the interval
-						Swal.fire({
-							title: "Request failed",
-							html: `Error monitoring collection: ${err}`,
-							type: 'error'
-						});
-					}
-				});
-			}
-			interval = setInterval(check_collect_status, 1000);
-		}).catch( err =>  Swal.fire({
-			title: "Request failed",
-			html: `Error requesting collection: ${err}`,
-			type: 'error'
-		}))
+  	var interval = null;
+  	function check_collect_status(){
+    $.ajax({
+    	url: collect_wo_url,
+    	success: function(data){
+      console.log(data);
+      new_alert_html = templ(data);
+      if (new_alert_html != populatedHtml){
+      	populatedHtml = new_alert_html;
+      	$('#swal2-content').html(populatedHtml);
+      }
+      if (data.complete){
+      	clearInterval(interval); // stop the interval
+      }
+    	},
+    	error: function(){
+      clearInterval(interval); // stop the interval
+      Swal.fire({
+      	title: "Request failed",
+      	html: `Error monitoring collection: ${err}`,
+      	type: 'error'
+      });
+    	}
+    });
+  	}
+  	interval = setInterval(check_collect_status, 1000);
+  }).catch( err =>  Swal.fire({
+  	title: "Request failed",
+  	html: `Error requesting collection: ${err}`,
+  	type: 'error'
+  }))
 	}
 	
 	function display_server_collection(server_url){
-		fetch(server_url)
-		.then(res => {
-			if (!res.ok) {
-				throw new Error(res.statusText);
-			} else {
-				return res.json();
-			}
-		}).then(server_json => {
-			console.log(server_json);
+  fetch(server_url)
+  .then(res => {
+  	if (!res.ok) {
+    throw new Error(res.statusText);
+  	} else {
+    return res.json();
+  	}
+  }).then(server_json => {
+  	console.log(server_json);
 
-			fetch(server_url+'collection')
-			.then(res => {
-				if (!res.ok) {
-					throw new Error(res.statusText);
-				} else {
-					return res.json();
-				}
-			}).then(collection_json => {
-				var jstree_collection_data = []
-				for (const key in collection_json) {
-					js_obj = {"text": key, "children": []};
-					for (const ckey in collection_json[key]) {
-						child_obj = {"text": ckey, "children": []};
-						for (const cckey in collection_json[key][ckey]) {
-							gchild_obj = {
-								"text": `${cckey} = ${collection_json[key][ckey][cckey]}`,
-								"li_attr": "test"};
-							child_obj['children'].push(gchild_obj);
-						}
-						js_obj['children'].push(child_obj);
-					}
-					jstree_collection_data.push(js_obj);
-				}
-				
-				var templ = Handlebars.compile($("#view-collection-template").html());
-				console.log(jstree_collection_data);
-				populatedHtml = templ(server_json);
+  	fetch(server_url+'collection')
+  	.then(res => {
+    if (!res.ok) {
+    	throw new Error(res.statusText);
+    } else {
+    	return res.json();
+    }
+  	}).then(collection_json => {
+    var jstree_collection_data = []
+    for (const key in collection_json) {
+    	js_obj = {"text": key, "children": []};
+    	for (const ckey in collection_json[key]) {
+      child_obj = {"text": ckey, "children": []};
+      for (const cckey in collection_json[key][ckey]) {
+      	gchild_obj = {
+        "text": `${cckey} = ${collection_json[key][ckey][cckey]}`,
+        "li_attr": "test"};
+      	child_obj['children'].push(gchild_obj);
+      }
+      js_obj['children'].push(child_obj);
+    	}
+    	jstree_collection_data.push(js_obj);
+    }
+    
+    var templ = Handlebars.compile($("#view-collection-template").html());
+    console.log(jstree_collection_data);
+    populatedHtml = templ(server_json);
 
-				swalWithBootstrapButtons.fire({
-					width: "80%",
-					html: populatedHtml,
-				});
-				
-				$(function () {
-					$('#swal2-content .jstree_div').jstree({
-						"core" : {
-							"themes" : {
-							},
-							"data": jstree_collection_data
-						},
-						"checkbox" : {
-							"keep_selected_style" : false
-						},
-						"plugins" : [ "wholerow" ]
-					})
-				});
-			})
-		}).catch( err =>  Swal.fire({
-			title: "Request failed",
-			html: `Error retrieving collection data: ${err}`,
-			type: 'error'
-		}))
+    swalWithBootstrapButtons.fire({
+    	width: "80%",
+    	html: populatedHtml,
+    });
+    
+    $(function () {
+    	$('#swal2-content .jstree_div').jstree({
+      "core" : {
+      	"themes" : {
+      	},
+      	"data": jstree_collection_data
+      },
+      "checkbox" : {
+      	"keep_selected_style" : false
+      },
+      "plugins" : [ "wholerow" ]
+    	})
+    });
+  	})
+  }).catch( err =>  Swal.fire({
+  	title: "Request failed",
+  	html: `Error retrieving collection data: ${err}`,
+  	type: 'error'
+  }))
 	}
 	
 </script>

@@ -6,6 +6,14 @@
 	#auth_table tbody tr {
 		cursor: pointer;
 	}
+	#auth_table {
+		display: table;
+	}
+	@media only screen and (max-width: 700px) {
+		#auth_table {
+			display: block;
+		}
+	}
 </style>
 <link rel="stylesheet" href="{% static 'vdx_id/css/home.css' %}">
 
@@ -15,66 +23,66 @@
 <div class="flex-grow-1">
 
 	<div class="row-fluid">
-		<div class="p-3 demo-header">
-			<div class="demo-header-body p-3">
+  <div class="p-3 demo-header">
+  	<div class="demo-header-body p-3">
 
-				<h4 class="text-primary">Access Approvals <small class="text-muted">Authorize Access to Users</small></h4>
-				<div class="row">
-					<div class="col-md-6">
-						<dl>
-						<dt class="text-success">Approving Access</dt>
-							<dd class="text-light">TBD</dd>
-						</dl>
-					</div>
-					<div class="col-md-6">
-						<dl>
-						<dt class="text-success">Rejecting Access</dt>
-							<dd class="text-light">TBD</dd>
-						</dl>
-					</div>
-				</div>
-			</div>
-		</div>
+    <h4 class="text-primary">Access Approvals <small class="text-muted">Authorize Access to Users</small></h4>
+    <div class="row">
+    	<div class="col-md-6">
+      <dl>
+      <dt class="text-success">Approving Access</dt>
+      	<dd class="text-light">TBD</dd>
+      </dl>
+    	</div>
+    	<div class="col-md-6">
+      <dl>
+      <dt class="text-success">Rejecting Access</dt>
+      	<dd class="text-light">TBD</dd>
+      </dl>
+    	</div>
+    </div>
+  	</div>
+  </div>
 	</div>
 
 	
 	<div class="row-fluid body-panel no-gutters p-3">
-		<div class="col-12">
-			<table id="auth_table" class="table table-hover table-sm">
-				<thead class="thead-dark">
-					<tr>
-						<th>{% trans "Requesting Identity" %}</th>
-						<th>{% trans "Access Group" %}</th>
-						<th>{% trans "Platform" %}</th>
-						<th>{% trans "Access Duration" %}</th>
-						<th>{% trans "Justification" %}</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for auth_pending_request in pending_auth_access_requests %}
-					<tr>
-						<td class="req_identifier"
-							data-group_pk={{auth_pending_request.access_group.pk}}
-							data-request_pk={{auth_pending_request.pk}}
-							>{{auth_pending_request.identity.unique_identifier}}</td>
-						<td>{{auth_pending_request.access_group}}</td>
-						<td>{{auth_pending_request.access_group.platform}}</td>
-						<td>{{auth_pending_request.access_duration}}</td>
-						<td>{{auth_pending_request.justification}}</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-				<tfoot>
-					<tr>
-						<th class="table_select">{% trans "Requesting Identity" %}</th>
-						<th class="table_select">{% trans "Access Group" %}</th>
-						<th class="table_select">{% trans "Platform" %}</th>
-						<th>{% trans "Access Duration" %}</th>
-						<th>{% trans "Justification" %}</th>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
+  <div class="col-12">
+  	<table id="auth_table" class="table table-hover table-sm">
+    <thead class="thead-dark">
+    	<tr>
+      <th>{% trans "Requesting Identity" %}</th>
+      <th>{% trans "Access Group" %}</th>
+      <th>{% trans "Platform" %}</th>
+      <th>{% trans "Access Duration" %}</th>
+      <th>{% trans "Justification" %}</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	{% for auth_pending_request in pending_auth_access_requests %}
+			<tr>
+				<td class="req_identifier"
+      	data-group_pk={{auth_pending_request.access_group.pk}}
+      	data-request_pk={{auth_pending_request.pk}}
+      	>{{auth_pending_request.identity.unique_identifier}}</td>
+				<td>{{auth_pending_request.access_group}}</td>
+				<td>{{auth_pending_request.access_group.platform}}</td>
+				<td>{{auth_pending_request.access_duration}}</td>
+				<td>{{auth_pending_request.justification}}</td>
+    	</tr>
+    	{% endfor %}
+    </tbody>
+    <tfoot>
+    	<tr>
+				<th class="table_select">{% trans "Requesting Identity" %}</th>
+				<th class="table_select">{% trans "Access Group" %}</th>
+				<th class="table_select">{% trans "Platform" %}</th>
+				<th>{% trans "Access Duration" %}</th>
+				<th>{% trans "Justification" %}</th>
+    	</tr>
+    </tfoot>
+  	</table>
+  </div>
 	</div>
 
 </div>
@@ -86,153 +94,153 @@
 	{% verbatim handle_bar_templates %}
 
 	<div id="approval-template" class="d-none">
-		<div class="row">
+  <div class="row">
 
-			<div class="col-6">
-				<div id="state_accordion">
-					<div class="card">
-						<div class="card-header bg-dark" id="acc_graph">
-							<h5 class="mb-0">
-								<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_graph_collapse" aria-expanded="true" aria-controls="acc_graph_collapse">
-									Access Graph ({{group.identifier}})
-								</button>
-							</h5>
-						</div>
-					
-						<div id="acc_graph_collapse" class="collapse show" aria-labelledby="acc_graph" data-parent="#state_accordion">
-							<div class="card-body">
-								<div class="embed-responsive embed-responsive-1by1">
-									<iframe class="embed-responsive-item"
-										src="/access_management/access_network?layout=fruchterman_reingold&group_id={{group.identifier}}"
-									></iframe>
-								</div>
-							</div>
-						</div>
-					</div>
+  	<div class="col-6">
+    <div id="state_accordion">
+    	<div class="card">
+      <div class="card-header bg-dark" id="acc_graph">
+      	<h5 class="mb-0">
+        <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_graph_collapse" aria-expanded="true" aria-controls="acc_graph_collapse">
+        	Access Graph ({{group.identifier}})
+        </button>
+      	</h5>
+      </div>
+    	
+      <div id="acc_graph_collapse" class="collapse show" aria-labelledby="acc_graph" data-parent="#state_accordion">
+      	<div class="card-body">
+        <div class="embed-responsive embed-responsive-1by1">
+        	<iframe class="embed-responsive-item"
+          src="/access_management/access_network?layout=fruchterman_reingold&group_id={{group.identifier}}"
+        	></iframe>
+        </div>
+      	</div>
+      </div>
+    	</div>
 	
-					<div class="card">
-						<div class="card-header bg-dark" id="acc_content">
-							<h5 class="mb-0">
-								<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_content_collapse" aria-expanded="true" aria-controls="acc_content_collapse">
-									Access by platform
-								</button>
-							</h5>
-						</div>
-					
-						<div id="acc_content_collapse" class="collapse" aria-labelledby="acc_content" data-parent="#state_accordion">
-							<div class="card-body">
-								<div style="overflow-y: auto;">
-									{{#each group.all_access.platform_access_set}}
-										<p class="text-info"></p>
-											<div class="card bg-light">
-												<div class="card-header p-1 bg-dark" id="acc_content">
-													<h4 class="mb-0">
-														<button class="btn btn-info btn-sm btn-block"
-															data-toggle="collapse" data-target="#nested_acc_grp_{{@index}}"
-															aria-expanded="true">
-															<span class="pull-left">{{@key}}</span>
-																<span class="badge badge-secondary">Access Items
-																	<span class="badge badge-pill badge-light">{{this.items.length}}</span></span>
-																<span class="badge badge-secondary">Servers
-																	<span class="badge badge-pill badge-light">{{this.servers.length}}</span></span>
-														</button>
-													</h4>
-												</div>
-											
-												<div id="nested_acc_grp_{{@index}}"
-													class="collapse show" aria-labelledby="access content">
-													<div class="card-body p-2">
-														<dl>
-															<dt>Access Items</dt>
-															<dd>
-																{{#each this.items}}
-																	<span class="badge badge-info">{{this}}</span>
-																{{/each}}
-															</dd>
-															<dt>Servers</dt>
-															<dd>
-																{{#each this.servers}}
-																	<span class="badge badge-secondary">{{this}}</span>
-																{{/each}}
-															</dd>
-														</dl>
-													</div>
-												</div>
-											</div>
-									{{/each}}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    	<div class="card">
+      <div class="card-header bg-dark" id="acc_content">
+      	<h5 class="mb-0">
+        <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#acc_content_collapse" aria-expanded="true" aria-controls="acc_content_collapse">
+        	Access by platform
+        </button>
+      	</h5>
+      </div>
+    	
+      <div id="acc_content_collapse" class="collapse" aria-labelledby="acc_content" data-parent="#state_accordion">
+      	<div class="card-body">
+        <div style="overflow-y: auto;">
+        	{{#each group.all_access.platform_access_set}}
+          <p class="text-info"></p>
+          	<div class="card bg-light">
+            <div class="card-header p-1 bg-dark" id="acc_content">
+            	<h4 class="mb-0">
+              <button class="btn btn-info btn-sm btn-block"
+              	data-toggle="collapse" data-target="#nested_acc_grp_{{@index}}"
+              	aria-expanded="true">
+              	<span class="pull-left">{{@key}}</span>
+                <span class="badge badge-secondary">Access Items
+                	<span class="badge badge-pill badge-light">{{this.items.length}}</span></span>
+                <span class="badge badge-secondary">Servers
+                	<span class="badge badge-pill badge-light">{{this.servers.length}}</span></span>
+              </button>
+            	</h4>
+            </div>
+          	
+            <div id="nested_acc_grp_{{@index}}"
+            	class="collapse show" aria-labelledby="access content">
+            	<div class="card-body p-2">
+              <dl>
+              	<dt>Access Items</dt>
+              	<dd>
+                {{#each this.items}}
+                	<span class="badge badge-info">{{this}}</span>
+                {{/each}}
+              	</dd>
+              	<dt>Servers</dt>
+              	<dd>
+                {{#each this.servers}}
+                	<span class="badge badge-secondary">{{this}}</span>
+                {{/each}}
+              	</dd>
+              </dl>
+            	</div>
+            </div>
+          	</div>
+        	{{/each}}
+        </div>
+      	</div>
+      </div>
+    	</div>
+    </div>
+  	</div>
 
-			<div class="col-6">
-				<h4>Request Details</h4>
-				<form>
-					<div class="form-group">
-						<label for="identity">Identity</label>
-						<input type="text" class="form-control"
-							name="identity" aria-describedby="identity"
-							value="{{request.identity}}" readonly>
-					</div>
-					<div class="form-group">
-						<label for="access_group">Access Group</label>
-						<input type="text" class="form-control"
-						name="access_group" aria-describedby="access_group"
-						value="{{request.access_group}}" readonly>
-					</div>
-					<div class="form-group">
-						<label for="duration">Access Duration</label>
-						<input type="text" class="form-control"
-						name="access_duration" value="{{request.duration}}" readonly>
-					</div>
-					<div class="form-group">
-						<label for="justification">Access Justification</label>
-						<input type="text" class="form-control" name="justification"
-						value="{{request.justification}}" readonly>
-					</div>
-				</form>
+  	<div class="col-6">
+    <h4>Request Details</h4>
+    <form>
+    	<div class="form-group">
+      <label for="identity">Identity</label>
+      <input type="text" class="form-control"
+      	name="identity" aria-describedby="identity"
+      	value="{{request.identity}}" readonly>
+    	</div>
+    	<div class="form-group">
+      <label for="access_group">Access Group</label>
+      <input type="text" class="form-control"
+      name="access_group" aria-describedby="access_group"
+      value="{{request.access_group}}" readonly>
+    	</div>
+    	<div class="form-group">
+      <label for="duration">Access Duration</label>
+      <input type="text" class="form-control"
+      name="access_duration" value="{{request.duration}}" readonly>
+    	</div>
+    	<div class="form-group">
+      <label for="justification">Access Justification</label>
+      <input type="text" class="form-control" name="justification"
+      value="{{request.justification}}" readonly>
+    	</div>
+    </form>
 
-				<div class="row p-3" style="border: 1px solid rgb(65, 107, 136); border-radius: 5px;">
-					
-					<div class="col-12 p-3">
-						<label for="auth_note">Authorization Note</label>
-						<input type="text" class="form-control" id="auth_note" name="auth_note"
-							placeholder="Enter any notes to supply with Approval/Rejection">
-					</div>
-					<div class="col-4">
-						<button class="btn btn-secondary btn-block">Cancel</button>
-					</div>
-					<div class="offset-2 col-6">
-						<div class="btn-group btn-block" role="group" aria-label="Request buttons">
-							<button class="btn btn-danger" data-pk="{{request.pk}}" onclick="request_reject(this)">Reject</button>
-							<button class="btn btn-success" data-pk="{{request.pk}}" onclick="request_approve(this)">Approve</button>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="row p-3" style="border: 1px solid rgb(65, 107, 136); border-radius: 5px;">
+    	
+    	<div class="col-12 p-3">
+      <label for="auth_note">Authorization Note</label>
+      <input type="text" class="form-control" id="auth_note" name="auth_note"
+      	placeholder="Enter any notes to supply with Approval/Rejection">
+    	</div>
+    	<div class="col-4">
+      <button class="btn btn-secondary btn-block">Cancel</button>
+    	</div>
+    	<div class="offset-2 col-6">
+      <div class="btn-group btn-block" role="group" aria-label="Request buttons">
+      	<button class="btn btn-danger" data-pk="{{request.pk}}" onclick="request_reject(this)">Reject</button>
+      	<button class="btn btn-success" data-pk="{{request.pk}}" onclick="request_approve(this)">Approve</button>
+      </div>
+    	</div>
+    </div>
+  	</div>
 
-		</div>
-		
+  </div>
+  
 
 	</div>
 
 	<div id="approval-state-template" class="d-none">
-			{{#each approval_state}}
-				<p class="badge badge-info" style="display: block;">{{@key}}</p>
-				<dl class="row text-left">
-					<dt class="col-sm-3">State</dt>
-					<dd class="col-sm-9">{{this.state}}</dd>
-					<dt class="col-sm-3">Time</dt>
-					<dd class="col-sm-9">{{this.time}}</dd>
-					<dt class="col-sm-3">By</dt>
-					<dd class="col-sm-9">{{this.by}}</dd>
-					<dt class="col-sm-3">Note</dt>
-					<dd class="col-sm-9">{{this.note}}</dd>
-				</dl>
-			{{/each}}
-		</dl>
+  	{{#each approval_state}}
+    <p class="badge badge-info" style="display: block;">{{@key}}</p>
+    <dl class="row text-left">
+    	<dt class="col-sm-3">State</dt>
+    	<dd class="col-sm-9">{{this.state}}</dd>
+    	<dt class="col-sm-3">Time</dt>
+    	<dd class="col-sm-9">{{this.time}}</dd>
+    	<dt class="col-sm-3">By</dt>
+    	<dd class="col-sm-9">{{this.by}}</dd>
+    	<dt class="col-sm-3">Note</dt>
+    	<dd class="col-sm-9">{{this.note}}</dd>
+    </dl>
+  	{{/each}}
+  </dl>
 	</div>
 	{% endverbatim handle_bar_templates %}
 {% endblock %}
@@ -244,182 +252,182 @@
 	var auth_table;
 
 	$(document).ready(function() {
-		create_auth_table();
+  create_auth_table();
 	});
 
 	function create_auth_table(){
-		
-		$('#auth_table').on('click', 'tbody tr', function(){
-			create_auth_popup(this);
-		});
+  
+  $('#auth_table').on('click', 'tbody tr', function(){
+  	create_auth_popup(this);
+  });
 
-		$('#auth_table tfoot th').each(function(){
-			var title = $(this).text();
-			if (title.length > 0){
-				$(this).html(
-					`<input class="form-control" type="text"
-					placeholder="Search ${title}"/>`
-				);
-			}
-		});
-		
-		auth_table = $('#auth_table').DataTable({
-			"autoWidth": false,
-			"responsive": true,
-			"order": [], // Default order is the first column, this changes it to nothing, so our own ordering of querysets is used
-			"initComplete": function(settings, json) {
-				$(function () {
-					$('[data-toggle="tooltip"]').tooltip();
-					setup_tfoot_search();
-				});
-			}
-		});
+  $('#auth_table tfoot th').each(function(){
+  	var title = $(this).text();
+  	if (title.length > 0){
+    $(this).html(
+    	`<input class="form-control" type="text"
+    	placeholder="Search ${title}"/>`
+    );
+  	}
+  });
+  
+  auth_table = $('#auth_table').DataTable({
+  	"autoWidth": false,
+  	"responsive": true,
+  	"order": [], // Default order is the first column, this changes it to nothing, so our own ordering of querysets is used
+  	"initComplete": function(settings, json) {
+    $(function () {
+    	$('[data-toggle="tooltip"]').tooltip();
+    	setup_tfoot_search();
+    });
+  	}
+  });
 	}
 
 	function setup_tfoot_search(){
-		$('#auth_table tfoot th').each(function( i ){
-			var title = $(this).text();
+  $('#auth_table tfoot th').each(function( i ){
+  	var title = $(this).text();
 
-			if ($(this).hasClass('table_select') == true) {
-				var select = $(
-					'<select class="form-control"><option value=""></option></select>')
-					.appendTo( $(this).empty() )
-					.on( 'change', function () {
-						var val = $(this).val();
-						
-						auth_table.column( i )
-							.search( val ? '^'+$(this).val()+'$' : val, true, false )
-							.draw();
-					} );
-				auth_table.column( i ).data().unique().sort().each( function ( d, j ) {  
-					select.append( '<option value="'+d+'">'+d+'</option>' );
-				} );
-			} else if (title.length > 0){
-				$(this).html(
-					'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
-			}
-		});
+  	if ($(this).hasClass('table_select') == true) {
+    var select = $(
+    	'<select class="form-control"><option value=""></option></select>')
+    	.appendTo( $(this).empty() )
+    	.on( 'change', function () {
+      var val = $(this).val();
+      
+      auth_table.column( i )
+      	.search( val ? '^'+$(this).val()+'$' : val, true, false )
+      	.draw();
+    	} );
+    auth_table.column( i ).data().unique().sort().each( function ( d, j ) {  
+    	select.append( '<option value="'+d+'">'+d+'</option>' );
+    } );
+  	} else if (title.length > 0){
+    $(this).html(
+    	'<input class="form-control" type="text" placeholder="Search '+title+'" />' );
+  	}
+  });
 
-		auth_table.columns().every( function () {
-			var that = this;
-			$( 'input', this.footer() ).on( 'keyup change', function () {
-				if ( that.search() !== this.value ) {
-					that.search( this.value, true ).draw();
-				}
-			} );
-		} );
+  auth_table.columns().every( function () {
+  	var that = this;
+  	$( 'input', this.footer() ).on( 'keyup change', function () {
+    if ( that.search() !== this.value ) {
+    	that.search( this.value, true ).draw();
+    }
+  	} );
+  } );
 	}
 
 	const swalWithBootstrapButtons = Swal.mixin({
-		width: "600px",
-		customClass: {
-			confirmButton: 'btn btn-success',
-			cancelButton: 'btn btn-danger'
-		},
-		buttonsStyling: false,
-		showCancelButton: false,
-		showConfirmButton: false,
+  width: "600px",
+  customClass: {
+  	confirmButton: 'btn btn-success',
+  	cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false,
+  showCancelButton: false,
+  showConfirmButton: false,
 	})
 
 	function create_auth_popup(row){
-		var req_identifier_dom = $(row).find(".req_identifier")
-		var req_identifier = req_identifier_dom.text();
-		var group_pk = req_identifier_dom.data("group_pk");
-		var request_pk = req_identifier_dom.data("request_pk");
-		var group_url = "{% url 'api:iam:id_access:group-detail' pk=999 %}".replace("999", group_pk);
-		var request_url = "{% url 'api:iam:id_access:group_request-detail' pk=999 %}".replace("999", request_pk);
+  var req_identifier_dom = $(row).find(".req_identifier")
+  var req_identifier = req_identifier_dom.text();
+  var group_pk = req_identifier_dom.data("group_pk");
+  var request_pk = req_identifier_dom.data("request_pk");
+  var group_url = "{% url 'api:iam:id_access:group-detail' pk=999 %}".replace("999", group_pk);
+  var request_url = "{% url 'api:iam:id_access:group_request-detail' pk=999 %}".replace("999", request_pk);
 
-		swalWithBootstrapButtons.fire({
-			html: `
-				<h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
-				<p>Retrieving group info for: <strong>${req_identifier}</strong></p>`,
-			showCancelButton: true,
-			showConfirmButton: false,
-			buttonsStyling: false,
-		})
-		.then(
-			fetch(group_url)
-			.then(res => {
-				if (!res.ok) {
-					throw new Error(res.statusText);
-				} else {
-					return res.json();
-				}
-			}).then(grp_res => {
-				fetch(request_url)
-				.then(res => {
-					if (!res.ok) {
-						throw new Error(res.statusText);
-					} else {
-						return res.json();
-					}
-				}).then(req_res => {
-					var templ = Handlebars.compile($("#approval-template").html());
-					var populatedHtml = templ(
-						{"group": grp_res, "request": req_res});
-					
-					swalWithBootstrapButtons.fire({
-						width: "80%",
-						animation: false,
-						html: populatedHtml,
-						onOpen: function(){
-							var iframe = $('.swal2-container').find('iframe');
-							iframe.attr('src', iframe.data('src'));
-						}
-					});
-				})
-			})
-			.catch( err =>  Swal.fire({
-				title: "Request failed",
-				animation: false,
-				html: `Error requesting group info: ${err}`,
-				type: 'error'
-			}))
-		)
+  swalWithBootstrapButtons.fire({
+  	html: `
+    <h4 class="text-info">Hang tight!</h4><h5> <span class="spinner-border text-info"></span></h5>
+    <p>Retrieving group info for: <strong>${req_identifier}</strong></p>`,
+  	showCancelButton: true,
+  	showConfirmButton: false,
+  	buttonsStyling: false,
+  })
+  .then(
+  	fetch(group_url)
+  	.then(res => {
+    if (!res.ok) {
+    	throw new Error(res.statusText);
+    } else {
+    	return res.json();
+    }
+  	}).then(grp_res => {
+    fetch(request_url)
+    .then(res => {
+    	if (!res.ok) {
+      throw new Error(res.statusText);
+    	} else {
+      return res.json();
+    	}
+    }).then(req_res => {
+    	var templ = Handlebars.compile($("#approval-template").html());
+    	var populatedHtml = templ(
+      {"group": grp_res, "request": req_res});
+    	
+    	swalWithBootstrapButtons.fire({
+      width: "80%",
+      animation: false,
+      html: populatedHtml,
+      onOpen: function(){
+      	var iframe = $('.swal2-container').find('iframe');
+      	iframe.attr('src', iframe.data('src'));
+      }
+    	});
+    })
+  	})
+  	.catch( err =>  Swal.fire({
+    title: "Request failed",
+    animation: false,
+    html: `Error requesting group info: ${err}`,
+    type: 'error'
+  	}))
+  )
 	}
 
 	function request_reject(el){
-		var request_pk = $(el).data("pk");
-		console.log("Rejecting request " + request_pk)
-		var reject_url = "{% url 'api:iam:id_access:group_request-reject' pk=999 %}".replace("999", request_pk);
-		submit_auth_request(reject_url, "AccessRequest rejected successfully");
+  var request_pk = $(el).data("pk");
+  console.log("Rejecting request " + request_pk)
+  var reject_url = "{% url 'api:iam:id_access:group_request-reject' pk=999 %}".replace("999", request_pk);
+  submit_auth_request(reject_url, "AccessRequest rejected successfully");
 	}
 
 	function request_approve(el){
-		var request_pk = $(el).data("pk");
-		console.log("Approving request " + request_pk)
-		var approve_url = "{% url 'api:iam:id_access:group_request-approve' pk=999 %}".replace("999", request_pk);
-		submit_auth_request(approve_url, "AccessRequest approved successfully");
+  var request_pk = $(el).data("pk");
+  console.log("Approving request " + request_pk)
+  var approve_url = "{% url 'api:iam:id_access:group_request-approve' pk=999 %}".replace("999", request_pk);
+  submit_auth_request(approve_url, "AccessRequest approved successfully");
 	}
 
 	function submit_auth_request(auth_url, auth_message){
-		var note = $('#auth_note').val();
-		Swal.close();
-		console.log("Auth response to " + auth_url);
-		$.ajax({
-			url: auth_url,
-			type: 'POST',
-			data: {"note": note},
-			success: function(data) {
-				var templ = Handlebars.compile($("#approval-state-template").html());
-				var populatedHtml = templ({"approval_state": data});
-				Swal.fire({
-					title: auth_message,
-					html: populatedHtml,
-					type: 'info',
-					confirmButtonText: 'Close'
-				}).then(res => {
-					location.reload(true);
-				})
-			},
-			error: function(error) {
-				Swal.fire({
-					title: "Request failed",
-					html: `Error requesting membership: ${error}`,
-					type: 'error'
-				})
-			},
-		})
+  var note = $('#auth_note').val();
+  Swal.close();
+  console.log("Auth response to " + auth_url);
+  $.ajax({
+  	url: auth_url,
+  	type: 'POST',
+  	data: {"note": note},
+  	success: function(data) {
+    var templ = Handlebars.compile($("#approval-state-template").html());
+    var populatedHtml = templ({"approval_state": data});
+    Swal.fire({
+    	title: auth_message,
+    	html: populatedHtml,
+    	type: 'info',
+    	confirmButtonText: 'Close'
+    }).then(res => {
+    	location.reload(true);
+    })
+  	},
+  	error: function(error) {
+    Swal.fire({
+    	title: "Request failed",
+    	html: `Error requesting membership: ${error}`,
+    	type: 'error'
+    })
+  	},
+  })
 	}
 	
 </script>

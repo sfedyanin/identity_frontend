@@ -1,72 +1,72 @@
 {% load static %}
 <html>
 	<head>
-		<title>VaDiX Identity</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">		
-		<link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
-		<link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+  <title>VaDiX Identity</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
 
-		<link rel="stylesheet" href="{% static 'vdx_id/css/vadix.css' %}">        
-		<link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'vdx_id/css/vadix.css' %}">        
+  <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 
-		<!-- BootStrap Theme CSS -->
-		<link rel="stylesheet" href="{% static 'bs_temp/css/flag-icon.min.css' %}">
-		<link rel="stylesheet" href="{% static 'bs_temp/css/materialdesignicons.min.css' %}">
-		<link rel="stylesheet" href="{% static 'bs_temp/css/flag-icon.min.css' %}">
-		<link rel="stylesheet" href="{% static 'bs_temp/css/themify-icons.css' %}">
-		<link rel="stylesheet" href="{% static 'bs_temp/css/typicons.css' %}">
-		<link rel="stylesheet" href="{% static 'bs_temp/css/vendor.bundle.base.css' %}">
+  <!-- BootStrap Theme CSS -->
+  <link rel="stylesheet" href="{% static 'bs_temp/css/flag-icon.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bs_temp/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bs_temp/css/flag-icon.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bs_temp/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'bs_temp/css/typicons.css' %}">
+  <link rel="stylesheet" href="{% static 'bs_temp/css/vendor.bundle.base.css' %}">
 
-		<!-- Base Style of Theme -->
-		<link rel="stylesheet" href="{% static 'bs_temp/css/base_style/style.css' %}">
+  <!-- Base Style of Theme -->
+  <link rel="stylesheet" href="{% static 'bs_temp/css/base_style/style.css' %}">
 
-		{% block head_extra %}
-		{% endblock %}
+  {% block head_extra %}
+  {% endblock %}
 	</head>
 	<body>
-		<div class="row-fluid">
-			{% include "navbar.html" %}
-		</div>
-		<div class="container-fluid page-body-wrapper">
-			
-			<!-- Left Sidebar -->
-			<div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
-				<ul class="nav list-group flex-grow-1 pb-3">
-					{% block sidebar %}
-					{% endblock %}
-				</ul>
-			</div>
+  <div class="row-fluid">
+  	{% include "navbar.html" %}
+  </div>
+  <div class="container-fluid page-body-wrapper">
+  	
+  	<!-- Left Sidebar -->
+  	<div id="sidebar-container" style="min-height: 0vh !important;" class="sidebar sidebar-offcanvas d-md-block flex-shrink-0">
+    <ul class="nav list-group flex-grow-1 pb-3">
+    	{% block sidebar %}
+    	{% endblock %}
+    </ul>
+  	</div>
 
-			<!-- partial -->
-			<div class="main-panel">
-				<div class="content-wrapper">
-					
-					<!-- Main Container -->
-					<div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
-						<div class="w-100">
-							{% block content %}
-							{% endblock %}
-						</div>
-					</div>
+  	<!-- partial -->
+  	<div class="main-panel">
+    <div class="content-wrapper">
+    	
+    	<!-- Main Container -->
+    	<div id="main-control" class="d-flex flex-grow-1 w-100 h-100">
+      <div class="w-100">
+      	{% block content %}
+      	{% endblock %}
+      </div>
+    	</div>
 
-				</div>
-				<!-- content-wrapper ends -->
-				<!-- partial:partials/_footer.html -->
-				<footer class="footer">
-					<div class="container-fluid clearfix">
-						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
-						</span>
-					</div>
-				</footer>
-				<!-- partial -->
-			</div>
-			<!-- main-panel ends -->
-		</div>
-		<canvas class="background"></canvas>
-		<script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+    	<div class="container-fluid clearfix">
+				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020. All rights reserved.</span>
+    	</div>
+    </footer>
+    <!-- partial -->
+  	</div>
+  	<!-- main-panel ends -->
+  </div>
+  <canvas class="background"></canvas>
+  <script type="text/javascript" src="{% static 'vdx_id/js/particles.min.js' %}"></script>
 	</body>
 	{% block nonbody %}
 	{% endblock %}
@@ -95,31 +95,31 @@
 	{% block script %}
 	{% endblock %}
 	<script type="text/javascript">
-			/////////////////////////////////////////////
-			// CSRF management via cookies
-			/////////////////////////////////////////////
-			// Get the jquery.cookie library!
-			function csrfSafeMethod(method){
-					return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-			}
+  	/////////////////////////////////////////////
+  	// CSRF management via cookies
+  	/////////////////////////////////////////////
+  	// Get the jquery.cookie library!
+  	function csrfSafeMethod(method){
+    	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  	}
 
-			$.ajaxSetup({
-					beforeSend: function(xhr, settings){
-							var csrftoken = $.cookie('csrftoken');
-							if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-									xhr.setRequestHeader("X-CSRFToken", csrftoken);
-							}
-					}
-			});
+  	$.ajaxSetup({
+    	beforeSend: function(xhr, settings){
+      	var csrftoken = $.cookie('csrftoken');
+      	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        	xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      	}
+    	}
+  	});
 
-			window.onload = function() {
-					Particles.init({
-							selector: '.background',
-							color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
-							connectParticles: true,
-							responsive: true,
-					});
-			};
+  	window.onload = function() {
+    	Particles.init({
+      	selector: '.background',
+      	color: ['#4A04D3', '#40FBC9', '#DBEDF3'],
+      	connectParticles: true,
+      	responsive: true,
+    	});
+  	};
 
 	</script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
