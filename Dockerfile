@@ -4,11 +4,11 @@ MAINTAINER dan.vagg@vadix.io
 
 RUN apt-get update && \
 	apt-get install -y \
-        curl wget vim \
-  python3 python3-virtualenv \
-  python3-pip libxml2-dev libxslt1-dev \
-  libsasl2-dev python3-dev libldap2-dev libssl-dev \
-        graphviz libgraphviz-dev
+      curl wget vim \
+      python3 python3-virtualenv \
+      python3-pip libxml2-dev libxslt1-dev \
+      libsasl2-dev python3-dev libldap2-dev libssl-dev \
+      graphviz libgraphviz-dev
 
 WORKDIR /opt/vdx_id
 
