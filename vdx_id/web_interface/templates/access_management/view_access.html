@@ -216,8 +216,8 @@
           <p><strong>Description: </strong><span class="text-info">{{description}}</span></p>
         </div>
       </div>
-      <div class="col-12 col-md-8 p-3 ">
-        <div class="row no-gutters">
+      <div class="col-12 col-md-8 p-0">
+        <!-- <div class="row no-gutters">
           <h5 class="float-left"><span class="badge badge-light">Included Access</span></h5>
           <hr/>
         </div>
@@ -249,7 +249,82 @@
               </div>
             {{/each}}
           </div>
+        </div> -->
+        
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header bg-dark" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Access Items
+                </button>
+              </h5>
+            </div>
+          
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <table id="group_req_table" class="table table-hover table-sm d-table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th class="pb-2">Access Item</th>
+                      <th class="pb-2">Platform</th>
+                      <th class="pb-2">Source</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{access_items}} 
+                      </td>
+                      <td>
+                        {{platform}}
+                      </td>
+                      <td>
+                        {{identifier}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header bg-dark" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Platforms & Servers
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              {{#each all_access.platform_access_set}}
+              <div class="card-body">
+                <table id="item_req_table" class="table table-hover table-sm w-100 d-table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th class="pb-2">Server ID</th>
+                      <th class="pb-2">Platform</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {{#each this.items}}
+                      <td>
+                        {{this.servers}}
+                      </td>
+                      {{/each}}
+                      <td>
+                        {{@key}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              {{/each}}
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
     
@@ -305,7 +380,7 @@
                             <dt>Access Items</dt>
                             <dd>
                               {{#each this.items}}
-                                <span class="badge badge-info">{{this}}</span>
+                                <span class="badge badge-info">{{this.items}}</span>
                               {{/each}}
                             </dd>
                             <dt>Servers</dt>

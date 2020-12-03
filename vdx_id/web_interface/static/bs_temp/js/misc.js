@@ -255,6 +255,23 @@ if ($('canvas').length) {
     }
   })
 
+  $("button.view_access").click(function() {
+
+    console.log($(this).attr("aria-selected"))
+
+    var control_item, selected_item
+    if ( !$(this).attr("aria-selected") ) {
+      control_item = $(this).attr("aria-controls")
+      selected_item = $(this).siblings().attr("aria-controls");
+      console.log("control: " + control_item )
+      console.log("select: " + selected_item )
+    } else {
+      
+    }
+    $(`#${control_item}`).addClass(" active show")
+    $(`#${selected_item}`).removeClass("active show")
+  })
+
   $(".sidebar .sidebar-inner > .nav > .nav-item").not(".brand-logo").attr('toggle-status', 'closed');
   $(".sidebar .sidebar-inner > .nav > .nav-item").on('click', function () {
     $(".sidebar .sidebar-inner > .nav > .nav-item").removeClass("active");
