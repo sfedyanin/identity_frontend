@@ -63,11 +63,12 @@ def view_access(request):
 
     context = {
         'identity': identity,
-        'referred_id': request.GET.get("identifier")
+        'referred_id': request.GET.get("identifier"),
+        'member': False
     }
     # Populate account metrics
     return render(request, 'access_management/view_access.html',
-                  context=context)
+                    context=context)
 
 
 @login_required

@@ -238,7 +238,22 @@ if ($('canvas').length) {
   });
 
   $('[data-toggle="tooltip"]').tooltip();
+  
+  var height = $(window).innerHeight() - $(".navbar").innerHeight() - $(".access-header-top").innerHeight() - $(".footer").innerHeight() - 16;
+  if ( $(window).innerWidth() > ( 1200 - 16 ) ) {
+    $(".access-body").css('height', height)
+  } else {
+    $(".access-body").css('height', 'unset')
+  }
 
+  $(window).resize(function() {
+    height = $(window).innerHeight() - $(".navbar").innerHeight() - $(".access-header-top").innerHeight() - $(".footer").innerHeight() - 16
+    if ( $(window).innerWidth() > ( 1200 - 16 ) ) {
+      $(".access-body").css('height', height)
+    } else {
+      $(".access-body").css('height', 'unset')
+    }
+  })
 
   $(".sidebar .sidebar-inner > .nav > .nav-item").not(".brand-logo").attr('toggle-status', 'closed');
   $(".sidebar .sidebar-inner > .nav > .nav-item").on('click', function () {

@@ -48,7 +48,7 @@ class ViAccessGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = ViAccessGroup
         fields = ('pk', 'url', 'identifier', 'description', 'owners',
-                  'access_groups', 'access_items', 'platform')
+                'access_groups', 'access_items', 'platform')
 
 
 class ViAccessGroupSerializerDetail(ViAccessGroupSerializer):
@@ -90,7 +90,7 @@ class ViAccessGroupSerializerDetail(ViAccessGroupSerializer):
         fields = (
             'pk', 'url', 'identifier', 'description', 'owners',
             'access_groups', 'access_items', 'platform', 'all_access',
-            'available', 'membership_autoexpiry')
+            'available', 'membership_autoexpiry' )
 
 
 class StateLogSerializer(serializers.ModelSerializer):
