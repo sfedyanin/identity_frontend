@@ -265,17 +265,21 @@
                     </tr>
                   </thead>
                   <tbody>
+                    {{#each all_access.platform_access_set }}
+                    {{#each this.items}}
                     <tr>
                       <td>
-                        {{access_items}} 
+                        {{this}} 
                       </td>
                       <td>
-                        {{platform}}
+                        {{@../key}}
                       </td>
                       <td>
-                        {{identifier}}
+                        {{../../identifier}}
                       </td>
                     </tr>
+                    {{/each}}
+                    {{/each}}
                   </tbody>
                 </table>
               </div>
