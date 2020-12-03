@@ -215,41 +215,19 @@
           </p>
           <p><strong>Description: </strong><span class="text-info">{{description}}</span></p>
         </div>
+        <div class="row p-2 flex-wrap-reverse">
+          <div class="col-12 col-sm-4 mt-3 mt-sm-0">
+            <button class=" w-100 btn btn-secondary p-2">Cancel</button>
+          </div>
+          <div class="col-12 col-sm-4">
+            <button class=" w-100 btn btn-danger p-2" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
+          </div>
+          <div class="col-12 col-sm-4">
+            <button class=" w-100 btn btn-success p-2" data-pk="{{pk}}" data-group_name="{{identifier}}" data-duration="{{membership_autoexpiry}}" onclick="group_request_popup(this)">Request</button>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-8 p-0">
-        <!-- <div class="row no-gutters">
-          <h5 class="float-left"><span class="badge badge-light">Included Access</span></h5>
-          <hr/>
-        </div>
-        <div class="row-fluid">
-          <div class="row flex-row flex-nowrap" style="overflow-x: scroll;">
-            {{#each all_access.groups}}
-              {{all_access.groups}}
-              <div class="col-6 col-lg-4 col-xl-4 p-2 p-md-3">
-                <label for="" style="min-height: 40px;">
-                  Text: {{@key}}
-                </label>
-                <div class="card card-block" style="height:180px; overflow-y: auto;">
-
-                  <h5><span class="pull-left badge badge-info">{{@key}}</span></h5>
-                  
-                  <div class="pull-left">
-                    <div>Access Items included</div>
-                    <div>
-                      <span class="badge badge-pill badge-info">{{this.direct_item_count}}</span>
-                    </div>
-                    <div>Rules</div>
-                    <div>
-                      {{#each this.rules}}
-                        <span class="badge badge-warning badge-block">{{this}}</span>
-                      {{/each}}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {{/each}}
-          </div>
-        </div> -->
         
         <div id="accordion">
           <div class="card">
@@ -328,19 +306,9 @@
       </div>
     </div>
     
-    <div class="row p-3 flex-wrap-reverse">
-      <div class="col-12 col-sm-4 mt-3 mt-sm-0">
-        <button class="btn btn-secondary btn-block">Cancel</button>
-      </div>
-      <div class="col-12 col-sm-8">
-        <div class="btn-group btn-block" role="group" aria-label="Request buttons">
-          <button class="btn btn-danger" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
-          <button class="btn btn-success" data-pk="{{pk}}" data-group_name="{{identifier}}" data-duration="{{membership_autoexpiry}}" onclick="group_request_popup(this)">Request</button>
-        </div>
-      </div>
-    </div>
     
-    <div class="row">
+    
+    <!-- <div class="row">
       <div class="card" style="width:100%;">
         <div class="card-header p-2 bg-dark" id="state_log">
           <button class="btn btn-md btn-primary btn-block"
@@ -431,7 +399,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   {% endverbatim handle_bar_templates %}
