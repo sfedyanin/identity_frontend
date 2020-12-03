@@ -153,9 +153,16 @@
 
 {% block nonbody %}
 
-  {% verbatim handle_bar_templates %}
+  
+{% endblock %}
 
-  <div id="grp_request-template" class="d-none">
+
+{% block script %}
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+{% verbatim handle_bar_templates %}
+
+  <script id="grp_request-template" type="text/html">
     <h2 class="text-success">Access Request</h2>
     <p class="text-primary">This will request membership to this group and any child groups - approvals will be required</p>
     <form onsubmit="submit_group_request(this); return false;">
@@ -182,9 +189,9 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-  </div>
+  </script>
 
-  <div id="grp_revoke-template" class="d-none">
+  <script id="grp_revoke-template" type="text/html">
     <h2>Access Request</h2>
     <p class="text-danger">This request will revoke your membership from this group</p>
     <form onsubmit="submit_group_request(this); return false;">
@@ -202,9 +209,9 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-  </div>
+  </script>
 
-  <div id="grp_info-template" class="d-none">
+  <script id="grp_info-template" type="text/html">
     <div class="row border-primary border-bottom">
       <div class="col-12 col-md-4 text-left text-primary p-3 custom-border border-primary" >
         <div>
@@ -215,32 +222,40 @@
           </p>
           <p><strong>Description: </strong><span class="text-info">{{description}}</span></p>
         </div>
-        <div class="row p-2 flex-wrap-reverse">
+
+        <div class="row p-3 flex-wrap-reverse">
           <div class="col-12 col-sm-4 mt-3 mt-sm-0">
-            <button class=" w-100 btn btn-secondary p-2">Cancel</button>
+            <button class="btn btn-secondary btn-block">Cancel</button>
           </div>
-          <div class="col-12 col-sm-4">
-            <button class=" w-100 btn btn-danger p-2" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
-          </div>
-          <div class="col-12 col-sm-4">
-            <button class=" w-100 btn btn-success p-2" data-pk="{{pk}}" data-group_name="{{identifier}}" data-duration="{{membership_autoexpiry}}" onclick="group_request_popup(this)">Request</button>
+          <div class="col-12 col-sm-8">
+            <div class="btn-group btn-block" role="group" aria-label="Request buttons">
+              <button class="btn btn-danger" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
+              <button class="btn btn-success" data-pk="{{pk}}" data-group_name="{{identifier}}" data-duration="{{membership_autoexpiry}}" onclick="group_request_popup(this)">Request</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-8 p-0">
         
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header bg-dark" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="card h-100">
+          <div class="card-body">
+
+            <nav class="w-100">
+              <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist" style="height: calc( 50px - 1rem );">
+                <a class="nav-link btn btn-primary border-0 w-50 p-1 active" style="border-radius: unset;"
+                    id="access-req-items-tab" data-toggle="tab" href="#access-req-items" role="tab" aria-controls="access-req-items" aria-selected="true">
                   Access Items
-                </button>
-              </h5>
-            </div>
-          
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
+                </a>
+                <a class="nav-link btn btn-primary border-0 w-50 p-1" style="border-radius: unset;"
+                    id="access-req-servers-tab" data-toggle="tab" href="#access-req-servers" role="tab" aria-controls="access-req-servers" aria-selected="false">
+                  Platform Servers
+                </a>
+              </div>
+            </nav>
+
+            <div class="tab-content" id="nav-tabContent">
+
+              <div class="tab-pane fade active show" id="access-req-items" role="tabpanel" aria-labelledby="access-req-items-tab">
                 <table id="group_req_table" class="table table-hover table-sm d-table">
                   <thead class="thead-dark">
                     <tr>
@@ -264,19 +279,8 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header bg-dark" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  Platforms & Servers
-                </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              {{#each all_access.platform_access_set}}
-              <div class="card-body">
+
+              <div class="tab-pane fade" id="access-req-servers" role="tabpanel" aria-labelledby="access-req-servers-tab">
                 <table id="item_req_table" class="table table-hover table-sm w-100 d-table">
                   <thead class="thead-dark">
                     <tr>
@@ -285,129 +289,29 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      {{#each this.items}}
-                      <td>
-                        {{this.servers}}
-                      </td>
+                    {{#each all_access.platform_access_set}}
+                      {{#each this.servers}}
+                        <tr>
+                          <td>{{this}}</td>
+                          <td>{{@../key}}</td>
+                        </tr>
                       {{/each}}
-                      <td>
-                        {{@key}}
-                      </td>
-                    </tr>
+                    {{/each}}
                   </tbody>
                 </table>
               </div>
-              {{/each}}
-            </div>
+
+            </div>            
           </div>
         </div>
 
       </div>
     </div>
     
-    
-    
-    <!-- <div class="row">
-      <div class="card" style="width:100%;">
-        <div class="card-header p-2 bg-dark" id="state_log">
-          <button class="btn btn-md btn-primary btn-block"
-            data-toggle="collapse" data-target="#access_content_collapse"
-            aria-expanded="true" aria-controls="state_log_collapse">
-            <strong>Access Breakdown</strong> - <span class="text-light">Graph of included access, and breakdown across platforms</span>
-          </button>
-        </div>
-        <div id="access_content_collapse" class="collapse" aria-labelledby="access content">
-          <div class="card-body p-2">
-            <div class="row">
-              <div class="col-7">
-                <h4 class='text-light text-left'>Access across platforms</h4>
-                <div id="access_accordion" style="overflow-y: auto;">
-                  {{#each all_access.platform_access_set}}
-                    <div class="card bg-light">
-                      <div class="card-header p-1 bg-dark" id="state_log">
-                        <h4 class="mb-0">
-                          <button class="btn btn-info btn-sm btn-block"
-                            data-toggle="collapse" data-target="#nested_acc_grp_{{@index}}"
-                            aria-expanded="true" aria-controls="acc_graph_collapse">
-                            <span class="pull-left">{{@key}}</span>
-                            <span class="  badge badge-primary">Access Items
-                              <span class="badge badge-pill badge-dark">{{this.items.length}}</span>
-                            </span>
-                            <span class="  badge badge-primary">Servers
-                              <span class="badge badge-pill badge-dark">{{this.servers.length}}</span>
-                            </span>
-                          </button>
-                        </h4>
-                      </div>
-                    
-                      <div id="nested_acc_grp_{{@index}}"
-                        class="collapse" aria-labelledby="access content" data-parent="#access_accordion">
-                        <div class="card-body p-2">
-                          <dl>
-                            <dt>Access Items</dt>
-                            <dd>
-                              {{#each this.items}}
-                                <span class="badge badge-info">{{this.items}}</span>
-                              {{/each}}
-                            </dd>
-                            <dt>Servers</dt>
-                            <dd>
-                              {{#each this.servers}}
-                                <span class="  badge badge-primary">{{this}}</span>
-                              {{/each}}
-                            </dd>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  {{/each}}
-                </div>
-              </div>
+  </script>
 
-              <div class="col-5">
-                <h4 class='text-light text-left'>Access graph</h4>
-                <div id="graph_accordion" style="overflow-y: auto;">
-                  
-                  <div class="card bg-light">
-                    <div class="card-header p-1 bg-dark" id="state_log">
-                      <h4 class="mb-0">
-                        <button class="btn btn-info btn-sm btn-block"
-                          data-toggle="collapse" data-target="#access_graph_collapse"
-                          aria-expanded="true" aria-controls="acc_graph_collapse">
-                          Access Graph
-                        </button>
-                      </h4>
-                    </div>
-                  
-                    <div id="access_graph_collapse"
-                      class="collapse" aria-labelledby="access content" data-parent="#access_accordion">
-                      <div class="card-body p-0" style="overflow-y: auto;">
-                        <div class="embed-responsive embed-responsive-1by1">
-                          <iframe class="embed-responsive-item"
-                            data-src="/access_management/access_network?layout=shell&group_id={{identifier}}">
-                          </iframe>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
+{% endverbatim handle_bar_templates %}
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  </div>
-
-  {% endverbatim handle_bar_templates %}
-{% endblock %}
-
-
-{% block script %}
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
   var group_table;
 
