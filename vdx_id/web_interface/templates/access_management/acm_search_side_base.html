@@ -2,58 +2,6 @@
 {% load i18n staticfiles %}
 
 {% block content %}
-<style>
-    #sidesearch {
-        width: 300px;
-        /* background: linear-gradient(
-            90deg,
-            rgba(51, 103, 155, 0.433) 0%,
-            rgba(34, 66, 97, 0.796) 60%,
-            rgb(16, 44, 70) 100%
-        ); */
-        background-color: #1c1e2f;
-    }
-    .sidesearch_right {
-        width: calc(100% - 300px);
-    }
-    @media only screen and (max-width: 768px) {
-        #sidesearch {
-            width: 240px;
-        }
-        .sidesearch_right {
-            width: calc(100% - 240px);
-        }
-    }
-    #sidesearch div{
-        width: 100%;
-    }
-    .sidesearch_search {
-        /* background: linear-gradient(
-            180deg,
-            rgba(176, 194, 211, 0.85) 0%,
-            rgba(112, 132, 151, 0.796) 90%,
-            rgb(57, 67, 77) 100%
-        ); */
-    }
-    .sidesearch_result {
-    }
-    .search_meta {
-        min-height: 100px;
-        /* background: linear-gradient(
-            180deg,
-            rgba(176, 194, 211, 0.85) 0%,
-            rgba(112, 132, 151, 0.796) 98%,
-            rgb(57, 67, 77) 100%
-        ); */
-        background-color: #1c1e2f;
-    }
-    .sidesearch_body {
-        background-color: #222437;
-    }    
-    .search_content {
-        background-color: #222437;
-    }
-</style>
 
     <div class="d-flex h-100">
         <div id="sidesearch" class="d-flex p-3">

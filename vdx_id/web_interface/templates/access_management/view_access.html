@@ -2,88 +2,7 @@
 {% load i18n staticfiles %}
 
 {% block head_extra %}
-<style>
-  #group_table tbody tr {
-    cursor: pointer;
-  }
-  #group_table {
-    display: table;
-  }
-  @media only screen and (max-width: 1400px) {
-    #group_table {
-      display: block;
-    }
-  }
-  .swal2-modal {
-    /* background-color: #bec4caf5 !important; */
-    background: linear-gradient(
-      180deg,
-      rgb(71, 82, 93) 0%,
-      rgb(64, 79, 93) 30%,
-      rgba(27, 60, 101, 0.62) 100%) !important;
-  }
-  .swal2-title {
-    color: #007bff!important;
-  }
-  .swal2-content {
-    color: #17a2b8!important;
-  }
-  #group_table_wrapper #group_table_length {
-    float: left;
-    width: fit-content;
-  }
-  #group_table_wrapper #group_table_length label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-  }
-  #group_table_wrapper #group_table_filter {
-    width: fit-content;
-    float: right;
-  }
-  #group_table_wrapper #group_table_filter label {
-    display: flex;
-    align-items: center;
-  }
-  #group_table_wrapper #group_table_filter input {
-    margin-left: 0.5em;
-    display: inline-block;
-    width: auto;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid #383e5d;
-    font-family: "roboto", sans-serif;
-    font-size: 0.75rem;
-    color: #fff;
-    line-height: 14px;
-    font-weight: 300;
-    background-color: #2a2c44;
-    background-clip: padding-box;
-    height: calc(1.5em + 0.5rem + 2px);
-    border-radius: 0.2rem;
-  }
 
-  #group_table_wrapper #group_table_info {
-    width: fit-content;
-    float: left;
-  }
-  #group_table_wrapper #group_table_paginate {
-    width: fit-content;
-    float: right;
-  }
-  .swal2-content {
-    width: 100%;
-  }
-  .custom-border {
-    border-right: 1px solid white;
-  }
-  @media only screen and (max-width: 768px) {
-    .custom-border {
-      border-bottom: 1px solid white;
-      border-right: unset;
-    }
-  }
-</style>
 <link rel="stylesheet" href="{% static 'vdx_id/css/home.css' %}">
 
 {% endblock %}
@@ -224,14 +143,14 @@
         </div>
 
         <div class="row p-3 flex-wrap-reverse">
-          <div class="col-12 col-sm-4 mt-3 mt-sm-0">
+          <div class="col-12 col-sm-4 p-0 mt-3 mt-sm-0">
             <button class="btn btn-secondary btn-block">Cancel</button>
           </div>
-          <div class="col-12 col-sm-8">
-            <div class="btn-group btn-block" role="group" aria-label="Request buttons">
-              <button class="btn btn-danger" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
+          <div class="col-12 col-sm-4">
+            <button class="btn btn-danger" data-pk="{{pk}}" data-group_name="{{identifier}}" onclick="group_revoke_popup(this)">Remove</button>
+          </div>
+          <div class="col-12 col-sm-4">
               <button class="btn btn-success" data-pk="{{pk}}" data-group_name="{{identifier}}" data-duration="{{membership_autoexpiry}}" onclick="group_request_popup(this)">Request</button>
-            </div>
           </div>
         </div>
       </div>

@@ -3,10 +3,7 @@
 
 {% block head_extra %}
 <link rel="stylesheet" href="{% static 'jstree/themes/default/style.min.css' %}" />
-<style>
-    /* Removes folder icon from children in collection tree */
-    .jstree-leaf > .jstree-anchor > .jstree-themeicon { background: none !important; }
-</style>
+
 <link rel="stylesheet"
     href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
@@ -35,31 +32,7 @@
 {% endblock %}
 
 {% block sidesearch_result %}
-<style>
-    .search_obj_card{
-        -moz-transition: all .2s ease-in;
-        -o-transition: all .2s ease-in;
-        -webkit-transition: all .2s ease-in;
-        transition: all .2s ease-in;
-    }
-    .search_obj_card:hover {
-        background-color: skyblue;
-        cursor: pointer;
-    }
-    .search_obj_card:active {
-        background-color: blue;
-        -moz-transition: none;
-        -webkit-transition: none;
-        -o-transition: color 0 ease-in;
-        transition: none;
-    }
-    .search_obj_card.selected {
-        background-color: steelblue;
-    }
-    #nav-tabContent {
-        overflow-y: auto;
-    }
-</style>
+
     {% for sgrp in server_groups %}
         <div class="row mt-3 border search_obj_card" data-sgroup_id={{sgrp.id}}>
             <div class="col-md-12 card-body ">

@@ -11,20 +11,6 @@
   </div>
   
   <div class="navbar-menu-wrapper d-flex align-items-center">
-    <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-      <span class="mdi mdi-menu"></span>
-    </button> -->
-    <!-- <div class="navbar-nav">
-      {% if user.is_authenticated %}
-        <a class="btn btn-outline-success" role="button" style="margin-left:10px" href="{% url 'web:acm:home' %}">Access Management</a>
-        <a class="btn btn-outline-light" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
-        {% if user.is_staff %}
-          <a class="btn btn-outline-warning" role="button" target="_admin" style="margin-left:10px" href="/admin">Administration</a>
-        {% endif %} 
-      {% else %}
-        <a class="btn btn-outline-info" role="button" target="_api" style="margin-left:10px" href="/docs_api">REST API</a>
-      {% endif %}
-    </div> -->
     <div class="navbar-nav ml-auto d-none d-lg-flex">
       {% if user.is_authenticated %}
         <a class="btn btn-outline-info" role="button" style="margin-left:10px" href="{% url 'logout' %}">Logout ({{user}})</a>

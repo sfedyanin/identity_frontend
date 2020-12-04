@@ -2,63 +2,6 @@
 {% load i18n staticfiles %}
 
 {% block head_extra %}
-<style>
-  #auth_table tbody tr {
-    cursor: pointer;
-  }
-  #auth_table {
-    display: table;
-  }
-  @media only screen and (max-width: 700px) {
-    #auth_table {
-      display: block;
-    }
-  }
-  
-  #auth_table_wrapper #auth_table_length {
-    float: left;
-    width: fit-content;
-  }
-  #auth_table_wrapper #auth_table_length label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-  }
-  #auth_table_wrapper #auth_table_filter {
-    width: fit-content;
-    float: right;
-  }
-  #auth_table_wrapper #auth_table_filter label {
-    display: flex;
-    align-items: center;
-  }
-  #auth_table_wrapper #auth_table_filter input {
-    margin-left: 0.5em;
-    display: inline-block;
-    width: auto;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid #383e5d;
-    font-family: "roboto", sans-serif;
-    font-size: 0.75rem;
-    color: #fff;
-    line-height: 14px;
-    font-weight: 300;
-    background-color: #2a2c44;
-    background-clip: padding-box;
-    height: calc(1.5em + 0.5rem + 2px);
-    border-radius: 0.2rem;
-  }
-
-  #auth_table_wrapper #auth_table_info {
-    width: fit-content;
-    float: left;
-  }
-  #auth_table_wrapper #auth_table_paginate {
-    width: fit-content;
-    float: right;
-  }
-</style>
 <link rel="stylesheet" href="{% static 'vdx_id/css/home.css' %}">
 
 {% endblock %}
